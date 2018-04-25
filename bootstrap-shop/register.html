@@ -519,7 +519,7 @@
 			<div class="controls">
 				<input type="hidden" name="email_create" value="1">
 				<input type="hidden" name="is_new_customer" value="1">
-				<input class="btn btn-large btn-success" type="button" value="Registers" onclick="Xu_Li_Luu_Tai_Khoan()" />
+				<input class="btn btn-large btn-success" type="button" value="Registers" onclick="HandleRegister()" />
 			</div>
 		</div>		
 	</form>
@@ -634,17 +634,5 @@
 </div>
 <span id="themesBtn"></span>
 </body>
-<script>
-	//Lưu tài khoản sau khi đăng kí thành công
-	var TK=[''];
-	var MK=[''];
-	function Xu_Li_Luu_Tai_Khoan()
-	{
-		var Tai_Khoan=document.getElementById("input_email").value;
-		var Mat_Khau=document.getElementById("inputPassword1").value;
-		TK.push(Tai_Khoan);
-		MK.push(Mat_Khau);
-		alert("Đăng kí tài khoản thành công với Tài khoản:"+Tai_Khoan+" và Mật khẩu:"+Mat_Khau );
-	}
-</script>
+<script src="./handle_register.js"></script>
 </html>
