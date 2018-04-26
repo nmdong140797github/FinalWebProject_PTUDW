@@ -29,6 +29,11 @@ function OnClickLogout()
     location.assign("index.html")
 }
 
+function ToAdminDashboard()
+{
+    location.assign("admin_dashboard.html");
+}
+
 function OnClickUpdate()
 {
     // Get data
@@ -66,8 +71,13 @@ window.onload = function()
             $('#login-account-area').children().remove();
             
             //-- Change button Login -> button Account
-            $('#login-account-area').append('<div class="btn-group open" style="margin-top:20px; "><button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tài Khoản '
-            +UserName+ '<span class="caret"></span></button><ul class="dropdown-menu" style="position: absolute;z-index:20"><li><a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a></li><li><a onclick="OnClickLogout()" href="#">Đăng Xuất</a></li></ul></div>');
+
+            var adminDashboard = (UserName == 'admin')?'<li><a onclick="ToAdminDashboard()" href="#">Admin dashboard</a></li>':'';
+
+            var loginArea = '<div class="btn-group open" style="margin-top:20px; "><button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tài Khoản '
+            +UserName+ '<span class="caret"></span></button><ul class="dropdown-menu" style="position: absolute;z-index:20"><li><a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a></li>' + adminDashboard + '<li><a onclick="OnClickLogout()" href="#">Đăng Xuất</a></li></ul></div>'
+
+            $('#login-account-area').append(loginArea);
 
             //-- Change User Name
             $('#Name-User').text(UserName);
