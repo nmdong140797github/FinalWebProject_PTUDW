@@ -15,7 +15,7 @@ function OnClickSignIn()
             alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
         }
 
-        location.assign("signed_in.html")
+        location.assign("index.html")
     }
     else if (UserName=="user1" && Password=="user1")
     {
@@ -27,7 +27,7 @@ function OnClickSignIn()
             alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
         }
 
-        location.assign("signed_in.html")
+        location.assign("index.html")
     }
 
     
