@@ -17,6 +17,18 @@ function OnClickSignIn()
 
         location.assign("signed_in.html")
     }
+    else if (UserName=="user1" && Password=="user1")
+    {
+        if ( typeof(Storage) !== "undefined") {
+            //set sesionStorage
+            sessionStorage.setItem('UserName',UserName);
+            sessionStorage.setItem('Password',Password);
+        } else {
+            alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
+        }
+
+        location.assign("signed_in.html")
+    }
 
     
 }
@@ -27,6 +39,16 @@ function OnClickLogout()
     sessionStorage.removeItem('Password');
     alert("Bạn đã đăng xuất thành công");
     location.assign("index.html")
+}
+
+function ToAdminDashboard()
+{
+    location.assign("admin_dashboard.html");
+}
+
+function ToReceiptHistory() 
+{
+    location.assign("receipt_history.html");
 }
 
 function OnClickUpdate()
@@ -66,8 +88,13 @@ window.onload = function()
             $('#login-account-area').children().remove();
             
             //-- Change button Login -> button Account
-            $('#login-account-area').append('<div class="btn-group open" style="margin-top:20px; "><button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tài Khoản '
-            +UserName+ '<span class="caret"></span></button><ul class="dropdown-menu" style="position: absolute;z-index:20"><li><a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a></li><li><a onclick="OnClickLogout()" href="#">Đăng Xuất</a></li></ul></div>');
+
+            var adminFeatures = (UserName == 'admin')?'<li><a onclick="ToAdminDashboard()" href="#">Admin dashboard</a></li>':'<li><a onclick="ToReceiptHistory()" href="#">Lịch Sử Mua Hàng</a></li>';
+
+            var loginArea = '<div class="btn-group open" style="margin-top:20px; "><button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tài Khoản '
+            +UserName+ '<span class="caret"></span></button><ul class="dropdown-menu" style="position: absolute;z-index:20"><li><a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a></li>' + adminFeatures + '<li><a onclick="OnClickLogout()" href="#">Đăng Xuất</a></li></ul></div>'
+
+            $('#login-account-area').append(loginArea);
 
             //-- Change User Name
             $('#Name-User').text(UserName);

@@ -34,8 +34,8 @@
 <body>
 <div id="header">
 <div class="container">
-<!-- <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+<div id="welcomeLine" class="row">
+	<div class="span6">Welcome!<strong id="Name-User"> User</strong></div>
 	<div class="span6">
 	<div class="pull-right">
 		<a href="product_summary.html"><span class="">Fr</span></a>
@@ -47,7 +47,7 @@
 		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
 	</div>
 	</div>
-</div> -->
+</div>
 <!-- Navbar ================================================== -->
 <div id="logoArea" class="navbar">
 <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
@@ -86,57 +86,344 @@
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
-<div id="sidebar" class="span3">
-	<!-- <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div> -->
-	<ul id="sideManu" class="nav nav-tabs nav-stacked">
-		<li class="subMenu open"><a> QUẢN LÝ SẢN PHẨM</a>
-			<ul>
-				<li>
-					<a class="active" href="products.html">
-						<i class="icon-chevron-right"></i>Sản phẩm </a>
-				</li>
-				<li>
-					<a href="categorizes_product.html">
-						<i class="icon-chevron-right"></i>Loại sản phẩm</a>
-				</li>
-				<li>
-					<a href="./producers.html">
-						<i class="icon-chevron-right"></i>Nhà sản xuất</a>
-				</li>
-			</ul>
-		</li>
-		<li class="subMenu open"><a>QUẢN LÝ ĐƠN HÀNG</a>
-		<ul>
-			<li>
-				<a href="receipt_management.html">
-					<i class="icon-chevron-right"></i>Quản lý đơn hàng</a>
-			</li>			
+	<div id="sidebar" class="span3">
+		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<ul id="sideManu" class="nav nav-tabs nav-stacked">
+			<li class="subMenu open">
+				<a> HÃNG SẢN XUẤT</a>
+				<ul>
+					<li>
+						<a class="active" href="products-canon.html">
+							<i class="icon-chevron-right"></i>Canon </a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Nikon</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>FujifilmSLR</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Leica</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Olympus</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Các hãng khác</a>
+					</li>
+				</ul>
+			</li>
+			<li class="subMenu open">
+				<a> MÁY ẢNH DSLR</a>
+				<ul>
+					<li>
+						<a class="active" href="products.html">
+							<i class="icon-chevron-right"></i>Canon DSLR </a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Nikon DSLR</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Fujifilm DSLR</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Leica DSLR</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Olympus DSLR</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Các hãng khác</a>
+					</li>
+				</ul>
+			</li>
+			<li class="subMenu">
+				<a> ỐNG KÍNH - LENS </a>
+				<ul style="display:none">
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Canon</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Nikon</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Sony</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Fujifilm</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Sigma</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Tamron</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Samyang</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Pentax</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Tokina</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Carl Zeiss</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Voitlander</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Baby</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Olympus</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Lens Yongnuo</a>
+					</li>
+				</ul>
+			</li>
+			<li class="subMenu">
+				<a>MÁY ẢNH MIRRORLESS</a>
+				<ul style="display:none">
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Fujifilm Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Sony Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Canon Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Olympus Mirrorless</a>
+					</li>
+				</ul>
+			</li>
+			<li class="subMenu">
+				<a>MÁY ẢNH DU LỊCH</a>
+				<ul style="display:none">
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy ảnh Canon</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy ảnh Nikon</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy ảnh Sony</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy ảnh Fujifilm</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy ảnh Ricoh-Theta 360</a>
+					</li>
+				</ul>
+			</li>
+			<li class="subMenu">
+				<a href="products.html">MÁY ẢNH CHỤP LẤY LIỀN</a>
+				<!-- <ul style="display:none">
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Fujifilm Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Sony Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Canon Mirrorless</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Olympus Mirrorless</a>
+					</li>
+				</ul> -->
+			</li>
+			<li class="subMenu">
+				<a>MÁY QUAY PHIM</a>
+				<ul style="display:none">
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy quay Sony</a>
+					</li>
+					<li>
+						<a href="products.html">
+							<i class="icon-chevron-right"></i>Máy quay Canon</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
-		</li>
-		
-	</ul>
-	<br/>
-</div>
+		<br/>
+		<div class="thumbnail">
+			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
+			<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
+			<div class="caption">
+				<h5>Panasonic</h5>
+				<h4 style="text-align:center">
+					<a class="btn" href="product_details.html">
+						<i class="icon-zoom-in"></i>
+					</a>
+					<a class="btn btn_add" href="#" >Add to
+						<i class="icon-shopping-cart"></i>
+					</a>
+					<a class="btn btn-primary" href="#">3.099.000đ</a>
+				</h4>
+			</div>
+		</div>
+		<br/>
+		<div class="thumbnail">
+			<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+			<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
+			<div class="caption">
+				<h5>Kindle</h5>
+				<h4 style="text-align:center">
+					<a class="btn" href="product_details.html">
+						<i class="icon-zoom-in"></i>
+					</a>
+					<a class="btn btn_add" href="#" >Add to
+						<i class="icon-shopping-cart"></i>
+					</a>
+					<a class="btn btn-primary" href="#">7.990.000đ</a>
+				</h4>
+			</div>
+		</div><br/>
+			<div class="thumbnail">
+				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+				<div class="caption">
+				  <h5>Payment Methods</h5>
+				</div>
+			  </div>
+	</div>
 <!-- Sidebar end=============================================== -->
-<div class="span9">
-<ul class="breadcrumb">
-	<li><a href="index.html">ADMIN DASHBOARD</a> <span class="divider">/</span></li>
-</ul>
-<h3> ADMIN DASHBOARD </h3>	
-<hr class="soft"/>
-<hr class="soft"/>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
+	<div class="span9" id="mainCol">
+    <ul class="breadcrumb">
+		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li class="active">Page Title</li>
+    </ul>
+	<table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mô tả</th>
+            <th>Ngày đặt</th>
+            <th>Tổng giá tiền</th>
+            <th>Thuế</th>
+            <th>Thành tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 1</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>515.000đ</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 2</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>450.000đ</td>
+            <td>10.000đ</td>
+            <td>460.000đ</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 3</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>485.000đ</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 4</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>515.000đ</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 5</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>450.000đ</td>
+            <td>10.000đ</td>
+            <td>460.000đ</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 6</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>485.000đ</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 7</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>515.000đ</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 8</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>450.000đ</td>
+            <td>10.000đ</td>
+            <td>460.000đ</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><a href="receipt_detail.html"><u><i>Đơn hàng 9</i></u></a></td>
+            <td>26/04/2018</td>
+            <td>500.000đ</td>
+            <td>15.000đ</td>
+            <td>485.000đ</td>
+          </tr>
+          </tbody>
+      </table>	
 </div>
-</div>
-</div>
+</div></div>
 </div>
 <!-- MainBody End ============================= -->
 <!-- Footer ================================================================== -->
