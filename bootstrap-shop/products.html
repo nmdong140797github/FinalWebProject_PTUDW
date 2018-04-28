@@ -59,46 +59,22 @@
     <a class="brand" href="index.html"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
 		<form class="form-inline navbar-search" method="post" action="products.html" >
 		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-					<option>All</option>
-					<option>MÁY ẢNH DSLR </option>
-					<option>ỐNG KÍNH - LENS </option>
-					<option>MÁY ẢNH MIRRORLESS </option>
-					<option>MÁY ẢNH DU LỊCH</option>
-					<option>MÁY ẢNH CHỤP LẤY LIỀN </option>
-					<option>MÁY QUAY PHIM </option>
+		  <select class="srchTxt" style="width:170px">
+			<option>All</option>
+			<option>CLOTHES </option>
+			<option>FOOD AND BEVERAGES </option>
+			<option>HEALTH & BEAUTY </option>
+			<option>SPORTS & LEISURE </option>
+			<option>BOOKS & ENTERTAINMENTS </option>
 		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		  <button type="submit" id="submitButton" class="btn btn-primary" onclick='OnClickSearch()'>Go</button>
     </form>
-    <ul id="topMenu" class="nav pull-right">
+    <ul id="topMenu" class="nav pull-left">
 	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
 	 <li class=""><a href="normal.html">Delivery</a></li>
 	 <li class=""><a href="contact.html">Contact</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
-			<h3>Login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	 <li id="login-account-area" class="">
+	 
 	</li>
     </ul>
   </div>
@@ -404,7 +380,7 @@
 				<input type="checkbox">  Adds product to compair
 			</label><br/>
 			
-			  <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+			  <a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 			  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 			
 				</form>
@@ -432,7 +408,7 @@
 				<input type="checkbox">  Adds product to compair
 				</label><br/>
 				
-				<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				<a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 				<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				
 			</form>
@@ -460,7 +436,7 @@
 					<input type="checkbox">  Adds product to compair
 				</label><br/>
 				
-				  <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				  <a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 				  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				
 			</form>
@@ -488,7 +464,7 @@
 				<input type="checkbox">  Adds product to compair
 				</label><br/>
 				
-				<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				<a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 				<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				
 				</form>
@@ -516,7 +492,7 @@
 				<label class="checkbox">
 				<input type="checkbox">  Adds product to compair
 				</label><br/>
-				<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				<a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 				<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				</form>
 			</div>
@@ -543,7 +519,7 @@
 				<input type="checkbox">  Adds product to compair
 				</label><br/>
 				
-				<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				<a href="product_details.html" class="btn btn-large btn-primary btn_add"> Add to <i class=" icon-shopping-cart"></i></a>
 				<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				
 				</form>
@@ -562,7 +538,7 @@
 				  <p> 
 					 
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">18.990.000đ</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">18.990.000đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -574,7 +550,7 @@
 				  <p> 
 					
 				  </p>
-				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">13.099.000đ</a></h4>
+				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">13.099.000đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -586,7 +562,7 @@
 				  <p> 
 					 
 				  </p>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">18.990.000đ</a></h4>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">18.990.000đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -598,7 +574,7 @@
 				  <p> 
 					 
 				  </p>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">9.599.000 đ</a></h4>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">9.599.000 đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -610,7 +586,7 @@
 				  <p> 
 					 
 				  </p>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">45.000.000đ</a></h4>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">45.000.000đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -622,7 +598,7 @@
 				  <p> 
 					 
 				  </p>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">64.900.000đ</a></h4>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn btn_add" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">64.900.000đ</a></h4>
 				</div>
 			  </div>
 			</li>
@@ -691,6 +667,8 @@
 	<script src="themes/js/jquery.js" type="text/javascript"></script>
 	<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="themes/js/google-code-prettify/prettify.js"></script>
+
+	<script src="themes/js/login.js" type="text/javascript"></script>
 	
 	<script src="themes/js/bootshop.js"></script>
     <script src="themes/js/jquery.lightbox-0.5.js"></script>
@@ -751,4 +729,5 @@
 </div>
 <span id="themesBtn"></span>
 </body>
+<script src="./handle_add.js"></script>
 </html>
