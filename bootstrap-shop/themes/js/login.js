@@ -53,16 +53,17 @@ function ToReceiptHistory()
 
 function OnClickUpdate()
 {
-    // Get data
-    var Name=document.getElementById("inputName").value;
-    //var DateOfBirth=document.getElementById("inputName").value;;
-    var Telephone=document.getElementById("inputTelephone").value;;
-    var Email=document.getElementById("inputEmail").value;;
+    // // Get data
+    // var Name=document.getElementById("inputName").value;
+    // //var DateOfBirth=document.getElementById("inputName").value;;
+    // var Telephone=document.getElementById("inputTelephone").value;;
+    // var Email=document.getElementById("inputEmail").value;;
     
     // Send data to server
-    location.assign("result_search.html")
+    
 
     // Finish
+    alert("Bạn đã cập nhật thành công dữ liệu cá nhân")
 
 }
 
