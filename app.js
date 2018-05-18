@@ -48,4 +48,4 @@ app.use('/product', productController);
 
 //app.use(handle404MDW);
  
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
