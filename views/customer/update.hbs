@@ -14,14 +14,14 @@
     <div class="control-group">
         <label class="control-label" for="inputName">Name <sup>*</sup></label>
         <div class="controls">
-            <input id="inputName" type="text" value={{ten_kh}}>
+            <input id="inputName" type="string" value={{ten_kh}}>
         </div>
     </div>
     
     <div class="control-group">
         <label class="control-label">Date of Birth <sup>*</sup></label>
         <div class="controls">
-            <input id="inputDate" type="date" value={{ngay_sinh}}>
+            <input id="inputDate" type="date" value={{ngay_sinh}}> 
         </div>
     </div>
 
@@ -39,5 +39,10 @@
         </div>
     </div>
 
+    <div class="control-group">
+        <div class="controls">
+            <input class="btn btn-large btn-success" type="submit" value="Update"  />
+        </div>
+    </div>	
 </form>
 {{/with}}
