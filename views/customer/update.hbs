@@ -3,18 +3,19 @@
 {{/section}}
 
 {{#with person}}
+{{ten_kh}}
 <form action="" method="POST" role="form">    
     <div class="control-group">
         <label class="control-label" for="inputId">ID <sup>*</sup></label>
         <div class="controls">
-            <input id="inputId" type="text" value={{ma_kh}} readonly="true">
+            <input id="inputId" type="text" value='{{ma_kh}}' readonly="true">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputName">Name <sup>*</sup></label>
         <div class="controls">
-            <input id="inputName" type="string" value={{ten_kh}}>
+            <input id="inputName" type="string" value='{{ten_kh}}'>
         </div>
     </div>
     
