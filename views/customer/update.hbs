@@ -1,0 +1,43 @@
+{{#section 'title'}}
+	Update Personal Information
+{{/section}}
+
+{{#with person}}
+<form action="" method="POST" role="form">    
+    <div class="control-group">
+        <label class="control-label" for="inputId">ID <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputId" type="text" value={{ma_kh}} readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputName" type="text" value={{ten_kh}}>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label">Date of Birth <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputDate" type="date" value={{ngay_sinh}}>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputAddress" type="text" value={{dia_chi}}>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputTelephone" type="text" value={{sdt}}>
+        </div>
+    </div>
+
+</form>
+{{/with}}

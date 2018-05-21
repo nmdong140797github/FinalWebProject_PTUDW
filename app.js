@@ -10,7 +10,9 @@ var handleLayoutMDW = require('./middle-wares/handleLayout'),
 
 var homeController = require('./controllers/homeController'),
     categoryController = require('./controllers/categoryController'),
-    productController = require('./controllers/productController');
+    productController = require('./controllers/productController'),
+    customerController = require('./controllers/customerController'),
+    searchController= require('./controllers/searchController');
  
 var app = express();
  
@@ -29,7 +31,7 @@ app.engine('hbs', exphbs({
 }));
 app.set('view engine', 'hbs');
  
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, 'server')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -45,6 +47,8 @@ app.get('/', function (req, res) {
 app.use('/home', homeController);
 app.use('/category', categoryController);
 app.use('/product', productController);
+app.use('/customer', customerController);
+app.use('/search',searchController);
 
 //app.use(handle404MDW);
  
