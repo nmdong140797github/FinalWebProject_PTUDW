@@ -15,7 +15,7 @@ function getString(date)
 
 function CheckEmailExists(srcEmail)
 {
-    if(customerRepo.email(email).length>0)
+    if(customerRepo.email(srcEmail).length>0)
         return false;
     return true;
 }
@@ -54,15 +54,13 @@ router.post('/register', (req, res) => {
     }
     else
     {
-        err=false;
-        var dob = moment(req.body.dob, 'D/M/YYYY')
-        .format('YYYY-MM-DDTHH:mm');
+        err=false;        
 
         var user = {
             name: req.body.name,
             email: req.body.email,
             password: SHA256(req.body.rawPWD).toString(),
-            dob: dob,
+            dob: req.body.dob,
             addr:req.body.address,
             telephone: req.body.telephone,
             permission: 0
