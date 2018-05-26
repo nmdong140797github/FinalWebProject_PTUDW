@@ -16,7 +16,7 @@ exports.single = (id) => {
 }
 
 exports.add = (c) => {
-    var sql = `insert into khach_hang(ma_kh,ten_kh,ngay_sinh,dia_chi,sdt) values('${c.inputId}','${c.inputName}','${c.inputDate}','${c.inputAddress}','${c.inputTelephone}')`;
+    var sql = `insert into khach_hang(ten_kh,email,password,ngay_sinh,dia_chi,sdt,permission) values('${c.name}','${c.email}','${c.password}','${c.dob}','${c.addr}','${c.telephone}','${c.permission}')`;
     return db.save(sql);
 }
 
@@ -25,7 +25,22 @@ exports.delete = (id) => {
     return db.save(sql);
 }
 
-exports.update = (c) => {
-    var sql = `update khach_hang set ten_kh = '${c.inputName}', ngay_sinh='${c.inputDate}', dia_chi='${c.inputAddress}', sdt='${c.inputTelephone}' where ma_kh = ${c.inputId}`;
+exports.updateInformationPersonal = (c) => {
+    var sql = `update khach_hang set ten_kh = '${c.name}', ngay_sinh='${c.dob}', dia_chi='${c.addr}',  sdt='${c.telephone}' where ma_kh = ${c.inputId}`;
     return db.save(sql);
+}
+
+exports.updateAccount = (c) => {
+    var sql = `update khach_hang set password='${c.password}', permission='${c.permission}' where ma_kh = ${c.inputId}`;
+    return db.save(sql);
+}
+
+exports.email = email => {
+    var sql = `select * from khach_hang where email = '${email}'`;
+    return db.load(sql);
+}
+
+exports.login = user => {
+    var sql = `select * from khach_hang where email = '${user.email}' and password = '${user.password}'`;
+    return db.load(sql);
 }

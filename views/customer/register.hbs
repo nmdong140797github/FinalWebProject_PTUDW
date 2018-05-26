@@ -1,0 +1,93 @@
+{{#section 'title'}}
+	Đăng ký
+{{/section}}
+
+{{#section 'css'}}
+	<link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+{{/section}}
+
+{{#section 'js'}}
+	<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+		
+        $(function () {
+            $('#txtDOB').datetimepicker({
+                defaultDate: "11/1/2013",
+                disabledDates: [
+                    moment("12/25/2013"),
+                    new Date(2013, 11 - 1, 21),
+                    "11/22/2013 00:53"
+                ]
+            });
+        });
+        
+
+		var validate = function() {
+		    if ($('#txtEmail').val().length === 0) {
+		        $('#email_error').html("Email không được để trống")
+		        return false;
+		    }
+
+             if ($('#txtPWD').val().length === 0) {
+		        $('#password_error').html("Password không được để trống")
+		        return false;
+		    }
+
+		    if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
+		        $('#confirm_error').html("Password không trung nhau")
+		        return false;
+		    }
+
+		    return true;
+		}
+	</script>
+{{/section}}
+
+<form action="" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
+	<div class="form-group">
+        <label for="txtName" class="col-sm-2 control-label">Họ tên</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtName" placeholder="Họ tên" name="name">
+            <span class="error"><p id="name_error"></p></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="txtEmail" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="txtEmail" placeholder="Email" name="email">
+            <span class="error"><p id="email_error"></p></span>
+            {{#if err}}
+                <strong style="color:red">Email đã tồn tại!</strong>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="txtPWD" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" id="txtPWD" placeholder="Password" name="rawPWD">
+            <span class="error"><p id="password_error"></p></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="txtCPWD" class="col-sm-2 control-label">Nhập lại</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" id="txtCPWD" placeholder="Nhập lại password" name="cPWD">
+            <span class="error"><p id="confirm_error"></p></span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="txtDOB" class="col-sm-2 control-label">Ngày sinh</label>
+        <div class="col-sm-4">
+            <input type="text" data-provide="datepicker" class="form-control" id="txtDOB" placeholder="d/m/yyyy" name="dob">
+            <span class="error"><p id="dob_error"></p></span>
+        </div>
+    </div>
+	<div class="form-group">
+		<div class="col-sm-10 col-sm-offset-2">
+			<button type="submit" class="btn btn-success">
+				Đăng ký
+			</button>
+		</div>
+	</div>
+</form>

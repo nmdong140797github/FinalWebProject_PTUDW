@@ -4,11 +4,11 @@ var mysql = require('mysql');
 exports.load = sql => {
     return new Promise((resolve, reject) => {
         var cn = mysql.createConnection({
-            host: 'us-cdbr-iron-east-04.cleardb.net',
+            host: 'localhost',
             //port: 8889,
-            user: 'b1c3dea7a9599d',
-            password: 'ecf18b83',
-            database: 'heroku_7aaf2925f12f4f6'
+            user: 'root',
+            password: '',
+            database: 'camera_database'
         });
 
         cn.connect();

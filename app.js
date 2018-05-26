@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var wnumb = require('wnumb');
 
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
+
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
 	handle404MDW = require('./middle-wares/handle404');
 
@@ -36,6 +39,34 @@ app.use(express.static(path.resolve(__dirname, 'server')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
+}));
+
+//
+// session
+
+var sessionStore = new MySQLStore({
+    host: 'localhost',
+    //port: 8889,
+    user: 'root',
+    password: '',
+    database: 'camera_database',
+    createDatabaseTable: true,
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }
+});
+
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'session_cookie_secret',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
 }));
 
 //app.use(handleLayoutMDW);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 11, 2018 at 01:40 PM
+-- Generation Time: May 26, 2018 at 01:17 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -107,27 +107,28 @@ CREATE TABLE IF NOT EXISTS `hoa_don` (
 
 DROP TABLE IF EXISTS `khach_hang`;
 CREATE TABLE IF NOT EXISTS `khach_hang` (
-  `ma_kh` int(10) NOT NULL,
+  `ma_kh` int(10) NOT NULL AUTO_INCREMENT,
   `ten_kh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngay_sinh` date NOT NULL,
   `dia_chi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sdt` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `permission` int(11) NOT NULL,
   PRIMARY KEY (`ma_kh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `khach_hang`
 --
 
-INSERT INTO `khach_hang` (`ma_kh`, `ten_kh`, `ngay_sinh`, `dia_chi`, `sdt`) VALUES
-(1, 'Đinh Bá Tiên', '1960-02-11', '119 Cống Quỳnh, Tp HCM', '01678093177'),
-(2, 'Nguyễn Thanh Tùng', '1962-08-20', '222 Nguyễn Văn Cừ, Tp HCM', '01678128177'),
-(3, 'Bùi Ngọc Hằng', '1963-08-02', '323 Nguyễn Thái Hoc, Tp HCM', '01679128177'),
-(4, 'Lê Quỳnh Như', '1967-02-01', '291 Hồ Văn Huê, Tp HCM', '01679128123'),
-(5, 'Nguyễn Mạnh Hùng', '1967-03-04', '95 Bà Rịa, Vũng Tàu', '01679567123'),
-(6, 'Trần Thanh Tâm', '1957-05-04', '34 Mai Thị Lự, Tp HCM', '01678907123'),
-(7, 'Trần Hồng Quang', '1967-09-01', '80 Lê Hồng Phong, Tp HCM', '01678948323'),
-(8, 'Phạm Văn Vinh', '1965-01-01', '65 Trưng Vương, Tp Hà Nội', '01678948287');
+INSERT INTO `khach_hang` (`ma_kh`, `ten_kh`, `ngay_sinh`, `dia_chi`, `sdt`, `permission`) VALUES
+(1, 'Đinh Bá Tiên', '1960-02-11', '119 Cống Quỳnh, Tp HCM', '01678093177', 0),
+(2, 'Nguyễn Thanh Tùng', '1962-08-20', '222 Nguyễn Văn Cừ, Tp HCM', '01678128177', 0),
+(3, 'Bùi Ngọc Hằng', '1963-08-02', '323 Nguyễn Thái Hoc, Tp HCM', '01679128177', 0),
+(4, 'Lê Quỳnh Như', '1967-02-01', '291 Hồ Văn Huê, Tp HCM', '01679128123', 0),
+(5, 'Nguyễn Mạnh Hùng', '1967-03-04', '95 Bà Rịa, Vũng Tàu', '01679567123', 0),
+(6, 'Trần Thanh Tâm', '1957-05-04', '34 Mai Thị Lự, Tp HCM', '01678907123', 0),
+(7, 'Trần Hồng Quang', '1967-09-01', '80 Lê Hồng Phong, Tp HCM', '01678948323', 0),
+(8, 'Phạm Văn Vinh', '1965-01-01', '65 Trưng Vương, Tp Hà Nội', '01678948287', 0);
 
 -- --------------------------------------------------------
 
