@@ -15,7 +15,8 @@ var homeController = require('./controllers/homeController'),
     categoryController = require('./controllers/categoryController'),
     productController = require('./controllers/productController'),
     customerController = require('./controllers/customerController'),
-    searchController= require('./controllers/searchController');
+    searchController= require('./controllers/searchController'),
+    producerControllerrequire=('./controllers/producerController');
  
 var app = express();
  
@@ -80,6 +81,7 @@ app.use('/category', categoryController);
 app.use('/product', productController);
 app.use('/customer', customerController);
 app.use('/search',searchController);
+app.use('/producer',producerController);
 
 //app.use(handle404MDW);
  

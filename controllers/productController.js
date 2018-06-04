@@ -1,22 +1,97 @@
+import { error } from 'util';
+
 var express = require('express');
-var categoryRepo = require('../repos/categoryRepo');
+var productRepo = require('../repos/productRepo');
 
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('product/index');
+    productRepo.loadAll().then(rows=>{
+        var vm = {
+            products: rows
+        };
+        res.render('product/index',vm);
+    }).catch(error=>{
+
+    });
+    
 });
 
 router.get('/add', (req, res) => {
     res.render('product/add');
 });
 
+router.post('/add', (req, res) => {
+    // Tham số bao gồm: 
+    var pr={
+        id: req.body.txtId,
+        name: req.body.txtName,
+        price: req.body.txtPrice,
+        path: req.body.txtPath,
+        number: req.body.txtNumber,
+        date: req.body.txtDate
+    }
+
+    productRepo.add(pr).then(value =>{
+        // thông báo đã thêm thành công
+        var vm = {
+            showAlert: true 
+        };
+        res.render('product/add');
+    }).catch(error=>{
+        res.end('fail');
+    });
+
+});
+
 router.get('/edit', (req, res) => {
-    res.render('product/edit');
+    productRepo.single(req.query.id).then(value=>{
+        var product=value;
+        res.render('product/edit',product);
+    });
+    
+});
+
+router.post('/edit', (req, res) => {
+    var pr={
+        id: req.body.txtName,
+        name: req.body.txtName,
+        price: req.body.txtPrice,
+        path: req.body.txtPath,
+        number: req.body.txtNumber,
+        date: req.body.txtDate
+    }
+
+    productRepo.update(pr).then(value=>{
+        var vm = {
+            showAlert: true 
+        };
+        res.render('product/edit',vm);
+    }).catch(error=>{
+        res.end('fail');
+    });
+
 });
 
 router.get('/delete', (req, res) => {
-    res.render('product/delete');
+    productRepo.single(req.query.id).then(value=>{
+        var product=value;
+        res.render('product/delete',product);
+    });
+    
+});
+
+router.post('/delete',(req,res)=>{
+    productRepo.delete(req.query.id).then(value =>{
+        // thông báo đã xóa thành công
+        var vm = {
+            showAlert: true 
+        };
+        res.render('product/delete',vm);
+    }).catch(error=>{
+        res.end('fail');
+    });
+
 });
 
 router.get('/byCat/:catId', (req, res) => {
@@ -55,6 +130,20 @@ router.get('/byCat/:catId', (req, res) => {
             page_numbers: numbers
         };
         res.render('product/byCat', vm);
+    });
+});
+
+router.get('/detail/:proId', (req, res) => {
+    var proId = req.params.proId;
+    productRepo.single(proId).then(rows => {
+        if (rows.length > 0) {
+            var vm = {
+                product: rows[0]
+            }
+            res.render('product/detail', vm);
+        } else {
+            res.redirect('/');
+        }
     });
 });
 

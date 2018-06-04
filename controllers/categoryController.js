@@ -1,3 +1,5 @@
+import { error } from 'util';
+
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
 
@@ -37,6 +39,17 @@ router.get('/edit', (req, res) => {
             Category: c
         };
         res.render('category/edit', vm);
+    });
+});
+
+router.post('/edit',(res,req)=>{
+    categoryRepo.update(req.body).then(value=>{
+        var vm = {
+            showAlert: true
+        };
+        res.render('category/edit', vm);
+    }).catch(error=>{
+
     });
 });
 

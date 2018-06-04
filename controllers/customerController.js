@@ -105,4 +105,9 @@ router.get('/profile', (req, res) => {
     res.render('customer/profile');
 });
 
+router.get('/admin', (req, res) => {
+    res.render('customer/admin');
+});
+
+
 module.exports = router;

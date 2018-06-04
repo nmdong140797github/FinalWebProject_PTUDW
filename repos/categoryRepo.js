@@ -21,7 +21,7 @@ exports.single = (id) => {
 }
 
 exports.add = (c) => {
-    var sql = `insert into loai(ma_loai) values('${c.CatName}')`;
+    var sql = `insert into loai(ten_loai) values('${c.CatName}')`;
     return db.save(sql);
 }
 
