@@ -16,7 +16,7 @@ var homeController = require('./controllers/homeController'),
     productController = require('./controllers/productController'),
     customerController = require('./controllers/customerController'),
     searchController= require('./controllers/searchController'),
-    producerControllerrequire=('./controllers/producerController');
+    producerController=require('./controllers/producerController');
  
 var app = express();
  
