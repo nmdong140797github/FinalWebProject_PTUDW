@@ -1,0 +1,40 @@
+{{#section 'title'}}
+	Product List
+{{/section}}
+
+{{#if noProducts}}
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		Không có sản phẩm thoả yêu cầu.
+	</div>
+</div>
+{{else}}
+<div class="row">
+	<ul class="thumbnails">		
+	{{#each products}}
+	<li class="span3">
+		<div class="thumbnail">
+			<a href="">
+				<img src="/web/image/{{ma_loai}}"+"_loai.jpg" alt="">
+			</a>
+			<div class="caption">
+				<h5>{{ten_loai}}</h5>
+				<p>
+					
+				</p>
+
+				<h4 style="text-align:center">
+					{{!-- <a class="btn" href="/product/detail/{{ma_may_anh}}">
+						<i class="icon-zoom-in"></i>
+					</a> --}}
+					<a class="btn btn_add" href="">Add to
+						<i class="icon-shopping-cart"></i>
+					</a><br>
+					
+				</h4>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+	</ul>
+</div>

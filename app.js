@@ -83,6 +83,6 @@ app.use('/customer', customerController);
 app.use('/search',searchController);
 app.use('/producer',producerController);
 
-//app.use(handle404MDW);
+app.use(handle404MDW);
  
 app.listen(process.env.PORT || 3000);

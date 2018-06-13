@@ -1,0 +1,40 @@
+{{#section 'title'}}
+	Product List
+{{/section}}
+
+{{#if noProducts}}
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		Không có sản phẩm thoả yêu cầu.
+	</div>
+</div>
+{{else}}
+<div class="row">
+	<ul class="thumbnails">		
+	{{#each producers}}
+	<li class="span3">
+		<div class="thumbnail">
+			<a href="">
+				<img src="/web/image/{{ma_ncc}}"+"_ncc.jpg" alt="">
+			</a>
+			<div class="caption">
+				<h5>{{ten_ncc}}</h5>
+				<p>
+					
+				</p>
+
+				<h4 style="text-align:center">
+					{{!-- <a class="btn" href="/producer/detail/{{ma_ncc}}">
+						<i class="icon-zoom-in"></i>
+					</a> --}}
+					<a class="btn btn_add" href="">Add to
+						<i class="icon-shopping-cart"></i>
+					</a><br>
+					<a class="btn btn-primary" href="#">{{sdt}} Đ</a>
+				</h4>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+	</ul>
+</div>

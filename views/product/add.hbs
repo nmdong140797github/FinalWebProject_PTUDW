@@ -2,6 +2,13 @@
 	Product Edit
 {{/section}}
 
+{{#if showAlert}}
+    <div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	Bạn đã thêm một máy ảnh thành công
+</div>
+{{/if}}
+
 {{#with product}}
 <form action="" method="POST" role="form">        
     <div class="control-group">

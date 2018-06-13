@@ -1,8 +1,13 @@
 var db = require('../fn/db');
 var config = require('../config/config');
 
-exports.loadAll = () => {
-    var sql = 'select * from may_anh';
+exports.loadAll = (offset) => {
+    var sql = `select * from may_anh limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    return db.load(sql);
+}
+
+exports.countProduct=()=>{
+    var sql = `select count(*) as total from may_anh `;
     return db.load(sql);
 }
 

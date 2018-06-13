@@ -22,15 +22,7 @@ router.get('/add',(res,req)=>{
 });
 
 router.post('/add',(res,req)=>{
-    // Tham số bao gồm: 
-    var producer={
-        id: req.body.txtId,
-        name: req.body.txtName,
-        address: req.body.txtAddress,
-        telephone: req.body.txtTelephone
-    }
-
-    producerRepo.add(producer).then(value =>{
+    producerRepo.add(req.body).then(value =>{
         // thông báo đã thêm thành công
         var vm = {
             showAlert: true 
@@ -70,15 +62,8 @@ router.get('/edit',(res,req)=>{
     
 });
 
-router.post('/edit',(res,req)=>{
-    var producer={
-        id: req.body.txtName,
-        name: req.body.txtName,
-        address: req.body.txtAddress,
-        telephone: req.body.txtTelephone
-    }
-
-    producerRepo.update(producer).then(value=>{
+router.post('/edit',(res,req)=>{    
+    producerRepo.update(req.body).then(value=>{
         var vm = {
             showAlert: true 
         };
