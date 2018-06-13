@@ -1,0 +1,37 @@
+{{#section 'title'}}
+	Product Edit
+{{/section}}
+
+{{#with product}}
+<form action="" method="POST" role="form">    
+    <div class="control-group">
+        <label class="control-label" for="inputId">ID <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputId" name="Producer" type="text" value='{{ma_ncc}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputName" name="ProducerName" type="string" value='{{ten_ncc}}'>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputAddress" name="ProducerAddress" type="string" value='{{dia_chi}}'>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputTelephone" name="ProducerTelephone" type="string" value='{{sdt}}'>
+        </div>
+    </div>
+
+</form>
+
+{{/with }}

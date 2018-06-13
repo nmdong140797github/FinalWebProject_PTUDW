@@ -1,0 +1,30 @@
+{{#section 'title'}}
+	Product Edit
+{{/section}}
+
+{{#with product}}
+<form action="" method="POST" role="form">       
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputName" name="ProducerName" type="string" value=''>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputAddress" name="ProducerAddress" type="string" value=''>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputTelephone" name="ProducerTelephone" type="string" value=''>
+        </div>
+    </div>
+
+</form>
+
+{{/with }}
