@@ -269,7 +269,12 @@
 							<span class="badge badge-warning pull-right">1.365.000đ</span>
 						</a>
 					</div>
-					
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">
+						{{#each layoutVM.categories}}
+							<li class="subMenu open">
+							<a> {{ten_loai}}</a>
+						{{/each}}
+					</ul>
 					<br/>
 					<div class="thumbnail">
 						<img src="/assets/themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
@@ -306,11 +311,6 @@
 					</div>
 					<br/>
 					<div class="thumbnail">
-						<img src="/assets/themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-						<div class="caption">
-							<h5>Payment Methods</h5>
-						</div>
-					</div>
 				</div>
 				
 				<div class="span9 " >
