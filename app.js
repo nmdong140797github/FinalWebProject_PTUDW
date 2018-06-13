@@ -70,7 +70,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-//app.use(handleLayoutMDW);
+app.use(handleLayoutMDW);
 
 app.get('/', function (req, res) {
     res.redirect('/home');
