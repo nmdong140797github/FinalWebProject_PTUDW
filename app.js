@@ -17,6 +17,8 @@ var homeController = require('./controllers/homeController'),
     customerController = require('./controllers/customerController'),
     searchController= require('./controllers/searchController'),
     producerController=require('./controllers/producerController');
+    //admin
+    adminController=require('./controllers/adminController');
  
 var app = express();
  
@@ -46,11 +48,11 @@ app.use(bodyParser.urlencoded({
 // session
 
 var sessionStore = new MySQLStore({
-    host: 'localhost',
+    host: 'us-cdbr-iron-east-04.cleardb.net',
     //port: 8889,
-    user: 'root',
-    password: '',
-    database: 'camera_database',
+    user: 'b1c3dea7a9599d',
+    password: 'ecf18b83',
+    database: 'heroku_7aaf2925f12f4f6',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -82,6 +84,7 @@ app.use('/product', productController);
 app.use('/customer', customerController);
 app.use('/search',searchController);
 app.use('/producer',producerController);
+app.use('/admin', adminController);
 
 app.use(handle404MDW);
  
