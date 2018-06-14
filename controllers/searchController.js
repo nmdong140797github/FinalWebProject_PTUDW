@@ -4,12 +4,15 @@ var config = require('../config/config');
 
 var router = express.Router();
 
-
 router.get('/byProduct/:productName', (req, res) => {
     
     // vd: http://localhost:3000/search/byProduct/canon?page=1
 
-    var productName = req.params.productName;
+    var productName = req.body.productName;
+    var priceStart=req.body.priceStart;
+    var priceEnd=req.body.priceEnd;
+    var catId=req.query.catId;
+    var producerId=req.query.producerId;
 
     var page = req.query.page;
     if (!page) {
@@ -18,7 +21,7 @@ router.get('/byProduct/:productName', (req, res) => {
 
     var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
 
-    var p1 = searchRepo.FindResult(productName, offset);
+    var p1 = searchRepo.findResult(productName, offset);
     var p2 = searchRepo.countByProduct(productName);
     Promise.all([p1, p2]).then(([pRows, countRows]) => {
         // console.log(pRows);
@@ -41,7 +44,8 @@ router.get('/byProduct/:productName', (req, res) => {
         var vm = {
             products: pRows,
             noProducts: pRows.length === 0,
-            page_numbers: numbers
+            page_numbers: numbers,
+            isSearch: true
         };
         res.render('search', vm);
     });

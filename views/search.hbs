@@ -1,6 +1,6 @@
-{{#section 'title'}} Product List {{/section}} 
-
-{{#if noProducts}}
+{{#section 'title'}} Product List {{/section}} {{#section 'search'}}
+    
+{{/section}} {{#if noProducts}}
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
         Không có sản phẩm thoả yêu cầu.
@@ -37,7 +37,7 @@
     <hr class="soft">
 </div>
 <div class="pagination">
-    <ul class="pagination">        
+    <ul class="pagination">
         <li class="disabled">
             <a href="#" aria-label="Previous">
                 <span aria-hidden="true">«</span>

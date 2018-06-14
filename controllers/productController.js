@@ -141,6 +141,45 @@ router.get('/byCat/:catId', (req, res) => {
     });
 });
 
+router.get('/byProducer/:producerId', (req, res) => {
+    var catId = req.params.producerId;
+
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+
+    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
+    var p1 = productRepo.loadAllByProducer(producerId, offset);
+    var p2 = productRepo.countByProducer(producerId);
+    Promise.all([p1, p2]).then(([pRows, countRows]) => {
+        // console.log(pRows);
+        // console.log(countRows);
+
+        var total = countRows[0].total;
+        var nPages = total / config.PRODUCTS_PER_PAGE;
+        if (total % config.PRODUCTS_PER_PAGE > 0) {
+            nPages++;
+        }
+
+        var numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
+
+        var vm = {
+            products: pRows,
+            noProducts: pRows.length === 0,
+            page_numbers: numbers
+        };
+        res.render('product/byProducer', vm);
+    });
+});
+
 router.get('/detail/:proId', (req, res) => {
     var proId = req.params.proId;
     productRepo.single(proId).then(rows => {

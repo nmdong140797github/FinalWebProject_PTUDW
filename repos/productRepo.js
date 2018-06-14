@@ -31,6 +31,11 @@ exports.loadAllByCat = (catId, offset) => {
     return db.load(sql);
 }
 
+exports.loadAllByProducer = (producerId, offset) => {
+    var sql = `select * from may_anh where ma_ncc=1  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    return db.load(sql);
+}
+
 exports.loadAllCategories = (proId)=>{
     // Load tất các mã loại của một máy ảnh
     var sql =  ``
@@ -38,6 +43,11 @@ exports.loadAllCategories = (proId)=>{
 
 exports.countByCat = catId => {
 	var sql = `select count(*) as total from loai_may_anh where ma_loai = ${catId}`;
+    return db.load(sql);
+}
+
+exports.countByProducer = producerId => {
+	var sql = `select count(*) as total from may_anh where ma_ncc = ${producerId}`;
     return db.load(sql);
 }
 

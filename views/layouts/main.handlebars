@@ -75,16 +75,17 @@
 						<img src="/assets/themes/images/logo.png" alt="Bootsshop" />
 					</a>
 					<form class="form-inline navbar-search" method="post" action="products.html">
-						<input id="srchFld" class="srchTxt" type="text" />
-						<select class="srchTxt" style="width:170px">
-							<option>All</option>
-							<option>MÁY ẢNH DSLR </option>
-							<option>ỐNG KÍNH - LENS </option>
-							<option>MÁY ẢNH MIRRORLESS </option>
-							<option>MÁY ẢNH DU LỊCH</option>
-							<option>MÁY ẢNH CHỤP LẤY LIỀN </option>
-							<option>MÁY QUAY PHIM </option>
-						</select>
+						<input id="srchFld" name="productName" class="srchTxt" type="text" />
+						<div style="width: 200px, height:30px, display:inline">
+							<label class="control-label" for="" >Giá  </label>
+							<div class="controls" >
+								<input id="inputStart" name="priceStart" type="string" value=''>
+							</div>
+							<div class="controls" >
+								<input id="inputEnd" name="priceEnd" type="string" value=''>
+							</div>
+						</div>
+						
 						<button type="submit" id="submitButton" class="btn btn-primary" onclick='OnClickSearch()'>Go</button>
 					</form>
 					<ul id="topMenu" class="nav pull-left">
@@ -269,14 +270,57 @@
 							<span class="badge badge-warning pull-right">1.365.000đ</span>
 						</a>
 					</div>
+
+					{{#if !isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
-						{{#each layoutVM.categories}}
-							<li class="subMenu open">
-							<a href="/product/byCat/{{ma_loai}}"> {{ten_loai}}</a>
-						{{/each}}
+						<li class="subMenu open">
+							<a href="">LOẠI MÁY ẢNH</a>
+							<ul >
+								{{#each layoutVM.categories}}
+									<li class="subMenu open">
+										<a href="/product/byCat/{{ma_loai}}"> {{ten_loai}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+						<li class="subMenu open">
+							<a href="">NHÀ SẢN XUẤT</a>
+							<ul >
+								{{#each layoutVM.producers}}
+									<li class="subMenu open">
+										<a href="/product/byProducer/{{ma_ncc}}"> {{ten_ncc}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+						
+					</ul>	
+					{{else}}	
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">
+						<li class="subMenu open">
+							<a href="">LOẠI MÁY ẢNH</a>
+							<ul >
+								{{#each layoutVM.categories}}
+									<li class="subMenu open">
+										<a href="/?catId={{ma_loai}}"> {{ten_loai}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+						<li class="subMenu open">
+							<a href="">NHÀ SẢN XUẤT</a>
+							<ul >
+								{{#each layoutVM.producers}}
+									<li class="subMenu open">
+										<a href="/?producerId={{ma_ncc}}"> {{ten_ncc}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+						
 					</ul>
-					<br/>
-					
+					{{/if}}			
+					<br/>					
 				</div>
 				
 				<div class="span9 " >
