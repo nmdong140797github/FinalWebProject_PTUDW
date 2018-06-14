@@ -72,7 +72,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-//app.use(handleLayoutMDW);
+app.use(handleLayoutMDW);
 
 app.get('/', function (req, res) {
     res.redirect('/home');
@@ -86,6 +86,6 @@ app.use('/search',searchController);
 app.use('/producer',producerController);
 app.use('/admin', adminController);
 
-//app.use(handle404MDW);
+app.use(handle404MDW);
  
 app.listen(process.env.PORT || 3000);

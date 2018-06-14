@@ -75,14 +75,14 @@ CREATE TABLE IF NOT EXISTS `cung_ung` (
 
 DROP TABLE IF EXISTS `don_dat_hang`;
 CREATE TABLE IF NOT EXISTS `don_dat_hang` (
-  `ma_ddh` int(10) NOT NULL,
+  `ma_ddh` int(10) NOT NULL AUTO_INCREMENT,
   `ma_kh` int(10) NOT NULL,
   `ngay_dat_hang` date DEFAULT NULL,
   `ma_ncc` int(10) DEFAULT NULL,
   PRIMARY KEY (`ma_ddh`),
   KEY `ma_ncc` (`ma_ncc`),
   KEY `ma_kh` (`ma_kh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -92,12 +92,12 @@ CREATE TABLE IF NOT EXISTS `don_dat_hang` (
 
 DROP TABLE IF EXISTS `hoa_don`;
 CREATE TABLE IF NOT EXISTS `hoa_don` (
-  `ma_hd` int(10) NOT NULL,
+  `ma_hd` int(10) NOT NULL AUTO_INCREMENT,
   `ma_kh` int(10) NOT NULL,
   `ngay_lap` date DEFAULT NULL,
   PRIMARY KEY (`ma_hd`),
   KEY `ma_kh` (`ma_kh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT =1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -264,7 +264,7 @@ INSERT INTO `loai_may_anh` (`ma_loai`, `ma_may_anh`) VALUES
 
 DROP TABLE IF EXISTS `may_anh`;
 CREATE TABLE IF NOT EXISTS `may_anh` (
-  `ma_may_anh` int(10) NOT NULL,
+  `ma_may_anh` int(10) NOT NULL AUTO_INCREMENT,
   `ten_may_anh` varchar(255) CHARACTER SET utf16 NOT NULL,
   `gia` int(11) NOT NULL,
   `duong_dan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `may_anh` (
   `xuat_xu` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`ma_may_anh`),
   KEY `ma_ncc` (`ma_ncc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `may_anh`
@@ -416,12 +416,12 @@ INSERT INTO `may_anh` (`ma_may_anh`, `ten_may_anh`, `gia`, `duong_dan`, `ma_ncc`
 
 DROP TABLE IF EXISTS `nha_cung_cap`;
 CREATE TABLE IF NOT EXISTS `nha_cung_cap` (
-  `ma_ncc` int(10) NOT NULL,
+  `ma_ncc` int(10) NOT NULL AUTO_INCREMENT,
   `ten_ncc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `dia_chi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sdt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ma_ncc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `nha_cung_cap`

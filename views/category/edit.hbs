@@ -1,0 +1,30 @@
+{{#section 'title'}}
+	Product Edit
+{{/section}}
+
+{{#if showAlert}}
+    <div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	Bạn đã sửa đổi loại máy ảnh thành công
+</div>
+{{/if}}
+
+{{#with product}}
+<form action="" method="POST" role="form">    
+    <div class="control-group">
+        <label class="control-label" for="inputId">ID <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputId" name="CatId" type="text" value='{{ma_loai}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputName" name="CatName" type="string" value='{{ten_loai}}'>
+        </div>
+    </div>
+    
+</form>
+
+{{/with }}

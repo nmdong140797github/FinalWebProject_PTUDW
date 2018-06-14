@@ -12,7 +12,7 @@ exports.single = proId => {
 }
 
 exports.add=(c)=>{
-    var sql= `INSERT INTO 'nha_cung_cap' ('ma_ncc', 'ten_ncc', 'dia_chi', 'sdt') VALUES (${c.id}, '${c.name}', '${c.address}', ${c.telephone})`;
+    var sql= `INSERT INTO 'nha_cung_cap' ( 'ten_ncc', 'dia_chi', 'sdt') VALUES ('${c.ProducerName}', '${c.ProducerAddress}', ${c.ProducerTelephone})`;
     return db.save(sql);
 }
 
@@ -22,6 +22,15 @@ exports.delete= (id)=>{
 }
 
 exports.update =  (c) =>{
-    var sql=`UPDATE 'nha_cung_cap' SET 'ten_ncc' = '${c.name}' 'dia_chi' = '${c.address}' 'sdt'=${c.telephone} WHERE 'nha_cung_cap'.'ma_ncc' = ${c.id}`;
+    var sql=`UPDATE 'nha_cung_cap' SET 'ten_ncc' = '${c.ProducerName}' 'dia_chi' = '${c.ProducerAddress}' 'sdt'=${c.ProducerTelephone} WHERE 'nha_cung_cap'.'ma_ncc' = ${c.id}`;
     return db.save(sql);
+}
+
+exports.loadAllByCat=(catId, offset)=>{
+    var sql = `SELECT * FROM loai_may_anh,may_anh where loai_may_anh.ma_loai= ${catId} and loai_may_anh.ma_may_anh=may_anh.ma_may_anh limit ${config.PRODUCTS_PER_PAGE} offset ${offset};`
+    return db.load(sql);
+}
+
+exports.countByCat=(catId)=>{
+    var sql = `SELECT count(*) as total FROM loai_may_anh,may_anh where loai_may_anh.ma_loai=${catId} and loai_may_anh.ma_may_anh=may_anh.ma_may_anh `
 }
