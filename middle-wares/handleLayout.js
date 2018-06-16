@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 	var p1=categoryRepo.loadAll();
 	var p2=producerRepo.loadAll();
 	
-	Promise.all([p1, p2]).then((rows1, rows2)=>{
+	Promise.all([p1, p2]).then(([rows1, rows2])=>{
 		res.locals.layoutVM={
 			categories: rows1,
 			producers: rows2,
@@ -19,7 +19,6 @@ module.exports = (req, res, next) => {
 			isSearch: false
 		};
 
-		console.log(res.locals.layoutVM.isSearch);
 		next();
 	});
 };

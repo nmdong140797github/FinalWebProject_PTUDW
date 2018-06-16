@@ -30,6 +30,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/themes/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/assets/themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	
 	{{{_sections.css}}}
 </head>
 
@@ -270,7 +271,7 @@
 							<span class="badge badge-warning pull-right">1.365.000đ</span>
 						</a>
 					</div>
-					{{#if isSearch}}
+					{{#if layoutVM.isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
@@ -393,6 +394,8 @@
 
 	<span id="themesBtn"></span>
 </body>
+
 <script src="/public/handle_add.js"></script>
+
 	{{{_sections.js}}}
 </html>

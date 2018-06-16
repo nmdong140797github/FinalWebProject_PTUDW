@@ -142,7 +142,7 @@ router.get('/byCat/:catId', (req, res) => {
 });
 
 router.get('/byProducer/:producerId', (req, res) => {
-    var catId = req.params.producerId;
+    var producerId = req.params.producerId;
 
     var page = req.query.page;
     if (!page) {
@@ -154,9 +154,7 @@ router.get('/byProducer/:producerId', (req, res) => {
     var p1 = productRepo.loadAllByProducer(producerId, offset);
     var p2 = productRepo.countByProducer(producerId);
     Promise.all([p1, p2]).then(([pRows, countRows]) => {
-        // console.log(pRows);
-        // console.log(countRows);
-
+        
         var total = countRows[0].total;
         var nPages = total / config.PRODUCTS_PER_PAGE;
         if (total % config.PRODUCTS_PER_PAGE > 0) {
