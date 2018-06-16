@@ -10,15 +10,16 @@ module.exports = (req, res, next) => {
 	var p1=categoryRepo.loadAll();
 	var p2=producerRepo.loadAll();
 	
-	Promise.all([p1, p2]).then(rows1, rows2=>{
+	Promise.all([p1, p2]).then((rows1, rows2)=>{
 		res.locals.layoutVM={
 			categories: rows1,
 			producers: rows2,
 			isLogged: req.session.isLogged,
-			curUser: req.session.user
+			curUser: req.session.user,
+			isSearch: false
 		};
 
-		console.log(res.locals.layoutVM.curUser);
+		console.log(res.locals.layoutVM.isSearch);
 		next();
 	});
 };

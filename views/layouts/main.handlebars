@@ -270,8 +270,30 @@
 							<span class="badge badge-warning pull-right">1.365.000đ</span>
 						</a>
 					</div>
-
-					{{#if !isSearch}}
+					{{#if isSearch}}
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">
+						<li class="subMenu open">
+							<a href="">LOẠI MÁY ẢNH</a>
+							<ul >
+								{{#each layoutVM.categories}}
+									<li class="subMenu open">
+										<a href="/?catId={{ma_loai}}"> {{ten_loai}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+						<li class="subMenu open">
+							<a href="">NHÀ SẢN XUẤT</a>
+							<ul >
+								{{#each layoutVM.producers}}
+									<li class="subMenu open">
+										<a href="/?producerId={{ma_ncc}}"> {{ten_ncc}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+					</ul>
+					{{else}}	
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
@@ -295,30 +317,6 @@
 						</li>
 						
 					</ul>	
-					{{else}}	
-					<ul id="sideManu" class="nav nav-tabs nav-stacked">
-						<li class="subMenu open">
-							<a href="">LOẠI MÁY ẢNH</a>
-							<ul >
-								{{#each layoutVM.categories}}
-									<li class="subMenu open">
-										<a href="/?catId={{ma_loai}}"> {{ten_loai}}</a>
-									</li>
-								{{/each}}
-							</ul>
-						</li>
-						<li class="subMenu open">
-							<a href="">NHÀ SẢN XUẤT</a>
-							<ul >
-								{{#each layoutVM.producers}}
-									<li class="subMenu open">
-										<a href="/?producerId={{ma_ncc}}"> {{ten_ncc}}</a>
-									</li>
-								{{/each}}
-							</ul>
-						</li>
-						
-					</ul>
 					{{/if}}			
 					<br/>					
 				</div>

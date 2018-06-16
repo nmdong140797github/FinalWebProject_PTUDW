@@ -1,7 +1,7 @@
 var express = require('express');
 var searchRepo = require('../repos/searchRepo');
 var config = require('../config/config');
-
+var error = require('util');
 var router = express.Router();
 
 router.get('/byProduct/:productName', (req, res) => {

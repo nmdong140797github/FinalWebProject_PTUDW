@@ -2,6 +2,7 @@
 
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
+var error = require('util');
 
 var router = express.Router();
 
@@ -27,7 +28,7 @@ router.post('/add', (req, res) => {
             showAlert: true
         };
         res.render('category/add', vm);
-    }).catch(err => {
+    }).catch(error => {
         res.end('fail');
     });
 });
