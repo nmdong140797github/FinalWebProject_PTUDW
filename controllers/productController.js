@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
             noProducts: pRows.length === 0,
             page_numbers: numbers
         };
-        res.render('product/index', vm);
+        res.render('home/index', vm);
     });
 });
 
