@@ -9,7 +9,8 @@ var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
-	handle404MDW = require('./middle-wares/handle404');
+    handle404MDW = require('./middle-wares/handle404');
+    restrict = require('./middle-wares/restrict');
 
 var homeController = require('./controllers/homeController'),
     categoryController = require('./controllers/categoryController'),
@@ -19,6 +20,7 @@ var homeController = require('./controllers/homeController'),
     producerController=require('./controllers/producerController');
     //admin
     adminController=require('./controllers/adminController');
+    cartController=require('./controllers/cartController');
  
 var app = express();
  
@@ -85,6 +87,7 @@ app.use('/customer', customerController);
 app.use('/search',searchController);
 app.use('/producer',producerController);
 app.use('/admin', adminController);
+app.use('/cart',cartController);
 
 
 

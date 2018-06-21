@@ -88,9 +88,16 @@ router.post('/login', (req, res) => {
             // user = rows[0];
 
             req.session.isLogged = true;
-
-            res.redirect('/');
-
+            //Quản lí giỏ hàng
+            req.session.user=rows[0]
+            req.session.cart=[];
+            var url= '/';
+            if(req.query.retUrl){
+                url=req.query.retUrl;
+            }
+            res.redirect(url);
+            //res.redirect('/');
+            
         } else {
             var vm = {
                 showError: true,
@@ -109,5 +116,11 @@ router.get('/admin', (req, res) => {
     res.render('customer/admin');
 });
 
+router.post('/logout',(req,res)=>{
+    req.session.isLogged = false;
+    req.session.user = null;
+    // req.session.cart = [];
+    res.redirect(req.headers.referer);
+})
 
 module.exports = router;
