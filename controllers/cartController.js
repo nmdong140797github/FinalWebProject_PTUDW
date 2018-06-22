@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
     }
 
     var items = [];
+    var total=0;
     Promise.all(arr_p).then(result => {
         console.log("ket qua items");
         console.log(result);
@@ -22,13 +23,15 @@ router.get('/', (req, res) => {
             var item = {
                 Product: pro,
                 Quantity: req.session.cart[i].Quantity,
-                Amount: pro.Price * req.session.cart[i].Quantity
+                Amount: pro.gia * req.session.cart[i].Quantity
             };
+            total=total+item.Amount;
             items.push(item);
         }
 
         var vm = {
-            items: items
+            items: items,
+            total: total
         };
         res.render('cart/index', vm);
     });

@@ -20,7 +20,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th class="col-sm-4">Sản phẩm</th>
+					<th class="col-sm-4" >Sản phẩm</th>
 					<th class="col-sm-2">Giá</th>
 					<th class="col-sm-2">Số lượng</th>
 					<th class="col-sm-2">Thành tiền</th>
@@ -30,7 +30,7 @@
 			<tbody id="list">
 			{{#each items}}
 				<tr>
-					<td>{{Product.ma_may_anh}} - {{Product.ten_may_anh}}</td>
+					<td><img src="/imgs/{{Product.duong_dan}}" alt="Smiley face" height="60" width="60">  {{Product.ten_may_anh}}</td>
 					<td>{{number_format Product.gia}}</td>
 					<td>{{Quantity}}</td>
 					<td>{{number_format Amount}}</td>
@@ -48,7 +48,7 @@
 					<td>&nbsp;</td>
 					<td><h4>Total:</h4></td>
 					<td class="text-danger" colspan="2">
-						<h4>5,000,000</h4>
+						<h4>{{number_format total}}</h4>
 					</td>
 				</tr>
 			</tfoot>
