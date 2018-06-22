@@ -238,6 +238,25 @@
 
 
 			<h4>SẢN PHẨM ĐƯỢC XEM NHIỀU NHẤT </h4>
+
+			//kiểm tra login và đưa sản phẩm vào giỏ hàng
+			{{#if layoutVM.isLogged}}
+<form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
+    <div class="form-group">
+        <div class="col-sm-4">
+            <div class="input-group" style="margin-left: 24px;">
+                <input name="proId" type="hidden" value="1">
+                <input id="txtQ" name="quantity" type="text" class="form-control" placeholder="Slg" value="1">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+{{/if}}
 			<ul class="thumbnails">
 				<li class="span3">
 					<div class="thumbnail">
