@@ -1,50 +1,81 @@
-var mysql = require('mysql');
-//mysql info
-//mysql://b1c3dea7a9599d:ecf18b83@us-cdbr-iron-east-04.cleardb.net/heroku_7aaf2925f12f4f6?reconnect=true
+var mysql = require('mysql')
+  , async = require('async');
+
+var PRODUCTION_DB = 'heroku_7aaf2925f12f4f6'
+  , TEST_DB = 'heroku_7aaf2925f12f4f6'
+
+exports.MODE_TEST = 'mode_test'
+exports.MODE_PRODUCTION = 'mode_production'
+
+var state = {
+  pool: null,
+  mode: null,
+}
+
+exports.connect = function(mode, done) {
+  state.pool = mysql.createPool({
+    host: 'us-cdbr-iron-east-04.cleardb.net',
+    user: 'b1c3dea7a9599d',
+    password: 'ecf18b83',
+    database: mode === exports.MODE_PRODUCTION ? PRODUCTION_DB : TEST_DB
+  })
+
+  state.mode = mode
+  done()
+}
+
+exports.get = function() {
+  return state.pool
+}
+
+exports.fixtures = function(data) {
+  var pool = state.pool
+  if (!pool) return done(new Error('Missing database connection.'))
+
+  var names = Object.keys(data.tables)
+  async.each(names, function(name, cb) {
+    async.each(data.tables[name], function(row, cb) {
+      var keys = Object.keys(row)
+        , values = keys.map(function(key) { return "'" + row[key] + "'" })
+
+      pool.query('INSERT INTO ' + name + ' (' + keys.join(',') + ') VALUES (' + values.join(',') + ')', cb)
+    }, cb)
+  }, done)
+}
+
+exports.drop = function(tables, done) {
+  var pool = state.pool
+  if (!pool) return done(new Error('Missing database connection.'))
+
+  async.each(tables, function(name, cb) {
+    pool.query('DELETE * FROM ' + name, cb)
+  }, done)
+}
+
 exports.load = sql => {
     return new Promise((resolve, reject) => {
-        var cn = mysql.createConnection({
-            host: 'us-cdbr-iron-east-04.cleardb.net',
-            //port: 8889,
-            user: 'b1c3dea7a9599d',
-            password: 'ecf18b83',
-            database: 'heroku_7aaf2925f12f4f6'
-        });
-
-        cn.connect();
-
-        cn.query(sql, function(error, rows, fields) {
+        state.pool.query(sql, function(error, rows, fields) {
             if (error) {
                 reject(error);
             } else {
                 resolve(rows);
             }
-
-            cn.end();
+            // cn.end();
+            console.log('end connection database');
         });
     });
 }
 
 exports.save = sql => {
     return new Promise((resolve, reject) => {
-        var cn = mysql.createConnection({
-            host: 'us-cdbr-iron-east-04.cleardb.net',
-            //port: 8889,
-            user: 'b1c3dea7a9599d',
-            password: 'ecf18b83',
-            database: 'heroku_7aaf2925f12f4f6'
-        });
-
-        cn.connect();
-
-        cn.query(sql, function(error, value) {
+        state.pool.query(sql, function(error, value) {
             if (error) {
                 reject(error);
             } else {
                 resolve(value);
             }
 
-            cn.end();
+            // cn.end();
         });
     });
 }
