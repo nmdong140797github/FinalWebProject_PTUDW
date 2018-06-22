@@ -21,6 +21,8 @@ var homeController = require('./controllers/homeController'),
     adminController=require('./controllers/adminController');
  
 var app = express();
+
+var db = require('./fn/db');
  
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -90,4 +92,12 @@ app.use('/admin', adminController);
 
 app.use(handle404MDW);
  
-app.listen(process.env.PORT || 3000);
+db.connect(db.MODE_PRODUCTION, function(err) {
+    if (err) {
+      console.log('Unable to connect to MySQL.')
+      process.exit(1)
+    } else {
+        app.listen(process.env.PORT || 3000);
+    }
+  })
+// app.listen(process.env.PORT || 3000);
