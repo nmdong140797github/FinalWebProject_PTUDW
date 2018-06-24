@@ -10,7 +10,6 @@ $(document).ready(function(){
 	$(function() {
 		$('#gallery a').lightBox();
 	});
-	
 	$('.subMenu > a').click(function(e)
 	{
 		e.preventDefault();
@@ -25,7 +24,7 @@ $(document).ready(function(){
 			} else {
 				subMenu.fadeOut(250);
 			}
-			li.removeClass('open');
+			
 		} else 
 		{
 			if(($(window).width() > 768) || ($(window).width() < 479)) {
@@ -36,7 +35,6 @@ $(document).ready(function(){
 				subMenu.fadeIn(250);
 			}
 			subMenus_parents.removeClass('open');		
-			li.addClass('open');	
 		}
 	});
 	var ul = $('#sidebar > ul');
