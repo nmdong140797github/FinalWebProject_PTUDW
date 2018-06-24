@@ -264,8 +264,9 @@
 	{{/if}}
 	<div id="mainBody">
 		<div class="container">
-			{{#if layoutVM.showSideBar}}
+			
 			<div class="row">
+				{{#if layoutVM.showSideBar}}
 				<!-- Sidebar ================================================== -->
 				<div id="sidebar" class="span3">
 					{{#if layoutVM.isLogged}}
@@ -349,10 +350,11 @@
 					</div>
 				</div>
 				</div>
+				{{else}}
+				{{{body}}}
+				{{/if}}
 			</div>
-			{{else}}
-			no side bar, free space
-			{{/if}}
+			
 		</div>
 	</div>
 	<!-- Footer ================================================================== -->
