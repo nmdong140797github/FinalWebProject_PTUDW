@@ -120,7 +120,8 @@ router.post('/logout',(req,res)=>{
     req.session.isLogged = false;
     req.session.user = null;
     // req.session.cart = [];
-    res.redirect(req.headers.referer);
+   // res.redirect(req.headers.referer);
+   res.redirect('/home');
 })
 
 module.exports = router;

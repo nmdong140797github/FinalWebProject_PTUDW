@@ -86,7 +86,6 @@
 								<input id="inputEnd" name="priceEnd" type="string" value=''>
 							</div>
 						</div>
-						
 						<button type="submit" id="submitButton" class="btn btn-primary" onclick='OnClickSearch()'>Go</button>
 					</form>
 					<ul id="topMenu" class="nav pull-left">
@@ -99,9 +98,28 @@
 						<li class="">
 							<a href="contact.html">Contact</a>
 						</li>
-						<li id="login-account-area" class="">
 							{{#if layoutVM.isLogged}}
-								<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
+						<li id="" class="">
+								<div class="btn-group open" style="margin-top:20px; ">
+									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										{{layoutVM.curUser.ten_kh}}
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" style="position: absolute;z-index:20">
+										<li>
+											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
+										</li> 
+										adminFeatures 
+										<li>
+											<form action="/customer/logout" method="post">
+											<button type="submit">Đăng xuất</button>
+											</form>
+										</li>
+									</ul>
+								</div>
+							{{else}}
+							<li id="" class="">
+							<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
 									<span class="btn btn-large btn-success">Login</span>
 								</a>
 								<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
@@ -110,12 +128,12 @@
 										<h3>Login Block</h3>
 									</div>
 									<div class="modal-body">
-										<form action="" method="POST" class="form-horizontal loginFrm" role="form" onsubmit="return validate();">
+										<form action="/customer/login" method="POST" class="form-horizontal loginFrm" role="form" onsubmit="return validate();">
 											<div class="control-group">
-												<input type="text" id="inputEmail" placeholder="Email">
+												<input type="text" id="inputEmail" placeholder="Email" name="email">
 											</div>
             								<div class="control-group">
-												<input type="password" id="inputPassword" placeholder="Password">
+												<input type="password" id="inputPassword" placeholder="Password" name="rawPWD">
 											</div>
 											<div class="control-group">
 												<label class="checkbox">
@@ -127,24 +145,10 @@
 										</form>
 									</div>
 								</div>
-							{{else}}
-								<div class="btn-group open" style="margin-top:20px; ">
-									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										Tài Khoản UserName 
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" style="position: absolute;z-index:20">
-										<li>
-											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
-										</li> 
-										adminFeatures 
-										<li>
-											<a onclick="OnClickLogout()" href="#">Đăng Xuất</a>
-										</li>
-									</ul>
-								</div>
-							{{/if}}
+							</li>
+								{{/if}}
 						</li>
+						
 					</ul>
 				</div>
 			</div>

@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
             itemsMoi1:row3,
             itemsMoi2:row4
         }
-        console.log(row4);
         res.render('home/index',home_vm);
     });
 });

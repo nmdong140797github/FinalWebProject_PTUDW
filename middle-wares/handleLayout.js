@@ -3,7 +3,8 @@ var producerRepo=require('../repos/producerRepo');
 var  productRepo = require('../repos/productRepo');
 
 module.exports = (req, res, next) => {
-
+	console.log("isLogged------------------")
+	console.log(req.session.isLogged);
 	if (req.session.isLogged === undefined) {
 		req.session.isLogged = false;
 	}
@@ -46,6 +47,7 @@ console.log(req.session.isLogged);
 			curUser: req.session.user,
 			isSearch: false,
 		};
+		console.log(req.session.user);
 		next();
 	});
 };
