@@ -1,6 +1,27 @@
 var db = require('../fn/db');
 var config = require('../config/config');
 
+exports.DanhSachSanPhamBanChay=(soLuong)=>{
+    var sql = `select * from may_anh order by so_luong_ban desc limit ${soLuong}`;
+    return db.load(sql);
+}
+exports.DanhSachSanPhamDuocXemNhieuNhat=(soLuong)=>{
+    var sql = `select * from may_anh order by so_luong_xem desc limit ${soLuong}`;
+    return db.load(sql);
+}
+exports.DanhSachSanPhamMoiNhat1=(soLuong)=>{
+    var sql = `select * from may_anh order by ngay_nhap desc limit ${soLuong}`;
+    return db.load(sql);
+}
+exports.DanhSachSanPhamMoiNhat2=(soLuong)=>{
+    var sql = `select * from may_anh order by ngay_nhap desc limit 4,${soLuong}`;
+    return db.load(sql);
+}
+exports.loadSanPhamTheoYeuCau = (soLuong) => {
+    var sql = `select * from may_anh limit ${soLuong}`;
+    return db.load(sql);
+}
+
 exports.loadAll = (offset) => {
     var sql = `select * from may_anh limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
     return db.load(sql);
