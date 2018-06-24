@@ -150,6 +150,8 @@
 		</div>
 	</div>
 	<!-- Header End====================================================================== -->
+	{{!-- nav bar: if admin dashboard is currently displayed, hide it --}}
+	{{#if layoutVM.showNavBar}}
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
@@ -259,8 +261,10 @@
 			<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
+	{{/if}}
 	<div id="mainBody">
 		<div class="container">
+			{{#if layoutVM.showSideBar}}
 			<div class="row">
 				<!-- Sidebar ================================================== -->
 				<div id="sidebar" class="span3">
@@ -272,7 +276,6 @@
 						</a>	
 					</div>
 					{{/if}}	
-
 					{{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search
 							+ nếu đang ở màn hình search thì các đường dẫn trong menu sẽ là tham số
 							+ nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}}
@@ -330,7 +333,7 @@
 						</li>						
 					</ul>	
 					{{/if}}	
-
+					
 					<br/>					
 				</div>
 				
@@ -347,6 +350,9 @@
 				</div>
 				</div>
 			</div>
+			{{else}}
+			no side bar, free space
+			{{/if}}
 		</div>
 	</div>
 	<!-- Footer ================================================================== -->

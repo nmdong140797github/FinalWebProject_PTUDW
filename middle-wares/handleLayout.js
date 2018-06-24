@@ -4,9 +4,14 @@ var  productRepo = require('../repos/productRepo');
 
 module.exports = (req, res, next) => {
 
-	// if (req.session.isLogged === undefined) {
-	// 	req.session.isLogged = false;
-	// }
+	if (req.session.isLogged === undefined) {
+		req.session.isLogged = false;
+	}
+
+	if (req.session.isAdmin === undefined) {
+		console.log('admin login failed')
+		req.session.isAdmin = false;
+	}
 
 	var p1=categoryRepo.loadAll();
 	var p2=producerRepo.loadAll();
@@ -47,7 +52,10 @@ module.exports = (req, res, next) => {
 			producers: rows2,
 			isLogged: req.session.isLogged,
 			curUser: req.session.user,
+			isAdmin: req.session.isAdmin, //flag for admin only layout
 			isSearch: false,
+			showNavBar: true,
+			showSideBar: true,
 		};
 		next();
 	});
