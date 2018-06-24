@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 	if (req.session.isLogged === undefined) {
 		req.session.isLogged = false;
 	}
-
+console.log(req.session.isLogged);
 	var p1=categoryRepo.loadAll();
 	var p2=producerRepo.loadAll();
 	if(req.session.isLogged==true)
