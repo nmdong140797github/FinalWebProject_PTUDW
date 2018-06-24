@@ -14,6 +14,7 @@ var state = {
 
 exports.connect = function(mode, done) {
   state.pool = mysql.createPool({
+    connectionLimit: 100,
     host: 'us-cdbr-iron-east-04.cleardb.net',
     user: 'b1c3dea7a9599d',
     password: 'ecf18b83',
@@ -60,7 +61,6 @@ exports.load = sql => {
             } else {
                 resolve(rows);
             }
-            // cn.end();
             console.log('end connection database');
         });
     });
