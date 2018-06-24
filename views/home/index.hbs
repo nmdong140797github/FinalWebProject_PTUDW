@@ -60,6 +60,7 @@
 			</div>
 			<!-- Kết Thúc sản phẩm mới-->
 			<h4>SẢN PHẨM BÁN CHẠY NHẤT </h4>
+			
 			<ul class="thumbnails">
 				{{#each itemsBanChay}}
 				<li class="span3">
@@ -73,22 +74,6 @@
 								<a class="btn" href="../product/detail/{{ma_may_anh}}">
 									<i class="icon-zoom-in"></i>
 								</a>
-								{{#if layoutVM.isLogged}}
-										<form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
-											<div class="form-group">
-												<div class="col-sm-4">
-													<div class="input-group" style="margin-left: 24px;">
-														<input name="proId" type="hidden" value="{{ma_may_anh}}">
-														<span class="input-group-btn">
-																				<button class="btn btn_add" type="submit">Add to
-																					<i class="icon-shopping-cart"></i>
-																				</button>
-																			</span>
-													</div>
-												</div>
-											</div>
-										</form>
-										{{/if}}				
 								</br>
 								<a class="btn btn-primary" href="#">{{number_format gia}} đ</a>
 							</h4>
@@ -112,25 +97,9 @@
 							<h4 style="text-align:center">
 								<a class="btn" href="../product/detail/{{ma_may_anh}}">
 									<i class="icon-zoom-in"></i>
-								</a>
-										{{#if layoutVM.isLogged}}
-										<form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
-											<div class="form-group">
-												<div class="col-sm-4">
-													<div class="input-group" style="margin-left: 24px;">
-														<input name="proId" type="hidden" value="{{ma_may_anh}}">
-														<span class="input-group-btn">
-																				<button class="btn btn_add" type="submit">Add to
-																					<i class="icon-shopping-cart"></i>
-																				</button>
-																			</span>
-													</div>
-												</div>
-											</div>
-										</form>
-										{{/if}}										
+								</a>					
 								</br>
-								<a class="btn btn-primary" href="#">{{number_format gia}}đ</a>
+								<a class="btn btn-primary" href="#">{{number_format gia}} đ</a>
 							</h4>
 						</div>
 					</div>

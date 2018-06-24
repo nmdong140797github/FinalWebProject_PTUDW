@@ -72,29 +72,32 @@
                 {{!-- <small>- (14MP, 18x Optical Zoom) 3-inch LCD</small> --}}
                 <hr class="soft">                               
                     {{{mo_ta}}}
-                <hr class="soft">
+               
+            </div>
+            {{/with}}
+
+           <!--Kiểm tra login-->
+            <hr class="soft">
                 
                 <form class="form-horizontal qtyFrm" method="post" action="/cart/add">
+                 <input name="proId"  value="{{product.ma_may_anh}}" type="hidden">
                     <div class="control-group">
                         <label class="control-label">
-                            <span>{{gia}} Đ</span>
+                            <span>{{number_format product.gia}} đ</span>
                         </label>
+                         {{#if layoutVM.isLogged}}
                         <div class="controls">
-                              <input name="proId"  value="{{ma_may_anh}}">
-                            <input class="Quantity" placeholder="Số lượng." type="number">
-                            <a >
+                            <input class="Quantity" placeholder="Số lượng." type="number" name="quantity" >
                                 <button type="submit"  class="btn btn-large btn-primary pull-right btn_add"> Thêm vào giỏ
                                     <i class=" icon-shopping-cart"></i>
                                 </button>
-                            </a>
                         </div>
+                        {{/if}}
+
                     </div>
                 </form>
 
                 <hr class="soft"> 
-            </div>
-            {{/with}}
-
             <div class="span9">
                 <ul id="productDetail" class="nav nav-tabs">
                     <li class="active">
