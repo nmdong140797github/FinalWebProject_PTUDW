@@ -12,9 +12,9 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<ul class="thumbnails">
-										{{#each itemsMoi1}}
-								<li class="span3">
-										<div class="thumbnail">
+									{{#each itemsMoi1}}
+									<li class="span3">
+										<div class="thumbnail" style="height:310px">
 											<i class="tag"></i>
 											<a href="../product/detail/{{ma_may_anh}}">
 												<img src="/imgs/{{duong_dan}}" alt="">
@@ -22,20 +22,20 @@
 											<div class="caption">
 												<h5>{{ten_may_anh}} </h5>
 												<h4>
-													<a class="btn" href="../product/detail/{{ma_may_anh}}">VIEW</a>
-													<span class="pull-right" style="color: red">{{number_format gia}}</span>
+													<a class="btn" style="margin-bottom: 20px" href="../product/detail/{{ma_may_anh}}">VIEW</a>
+													<span class="pull-right" style="color: red">{{number_format gia}} đ</span>
 												</h4>
 											</div>
 										</div>
 									</li>
-								{{/each}}
+									{{/each}}
 								</ul>
 							</div>
 							<div class="item">
 								<ul class="thumbnails">
 									{{#each itemsMoi2}}
-								<li class="span3">
-										<div class="thumbnail">
+									<li class="span3">
+										<div class="thumbnail" style="height:310px">
 											<i class="tag"></i>
 											<a href="../product/detail/{{ma_may_anh}}">
 												<img src="/imgs/{{duong_dan}}" alt="">
@@ -44,12 +44,12 @@
 												<h5>{{ten_may_anh}} </h5>
 												<h4>
 													<a class="btn" href="../product/detail/{{ma_may_anh}}">VIEW</a>
-													<span class="pull-right" style="color: red">{{number_format gia}}</span>
+													<span class="pull-right" style="color: red">{{number_format gia}} đ</span>
 												</h4>
 											</div>
 										</div>
 									</li>
-								{{/each}}
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -58,12 +58,12 @@
 					</div>
 				</div>
 			</div>
-<!-- Kết Thúc sản phẩm mới-->
+			<!-- Kết Thúc sản phẩm mới-->
 			<h4>SẢN PHẨM BÁN CHẠY NHẤT </h4>
 			<ul class="thumbnails">
 				{{#each itemsBanChay}}
 				<li class="span3">
-					<div class="thumbnail">
+					<div class="thumbnail" style="height:360px">
 						<a href="../product/detail/{{ma_may_anh}}">
 							<img src="/imgs/{{duong_dan}}" alt="" />
 						</a>
@@ -90,7 +90,7 @@
 										</form>
 										{{/if}}				
 								</br>
-								<a class="btn btn-primary" href="#">{{number_format gia}}</a>
+								<a class="btn btn-primary" href="#">{{number_format gia}} đ</a>
 							</h4>
 						</div>
 					</div>
@@ -98,12 +98,12 @@
 				{{/each}}
 			</ul>
 
-<!--Sản phẩm được xem nhiều nhất-->
+			<!--Sản phẩm được xem nhiều nhất-->
 			<h4>SẢN PHẨM ĐƯỢC XEM NHIỀU NHẤT </h4>
-	<ul class="thumbnails">
-				{{#each itemsXemNhieu}}					
+			<ul class="thumbnails">
+				{{#each itemsXemNhieu}}
 				<li class="span3">
-					<div class="thumbnail">
+					<div class="thumbnail" style="height:360px">
 						<a href="../product/detail/{{ma_may_anh}}">
 							<img src="/imgs/{{duong_dan}}" alt="" />
 						</a>
@@ -130,13 +130,12 @@
 										</form>
 										{{/if}}										
 								</br>
-								<a class="btn btn-primary" href="#">{{number_format gia}}</a>
+								<a class="btn btn-primary" href="#">{{number_format gia}}đ</a>
 							</h4>
 						</div>
 					</div>
 				</li>
 				{{/each}}
-				
 			</ul>
 			<!--Hết sản phẩm được xem nhiều nhất-->
 
