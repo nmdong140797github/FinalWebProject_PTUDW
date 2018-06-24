@@ -76,17 +76,11 @@
 						<img src="/assets/themes/images/logo.png" alt="Bootsshop" />
 					</a>
 					<form class="form-inline navbar-search" method="post" action="products.html">
-						<input id="srchFld" name="productName" class="srchTxt" type="text" />
-						<div style="width: 200px, height:30px, display:inline">
-							<label class="control-label" for="" >Giá  </label>
-							<div class="controls" >
-								<input id="inputStart" name="priceStart" type="string" value=''>
-							</div>
-							<div class="controls" >
-								<input id="inputEnd" name="priceEnd" type="string" value=''>
-							</div>
-						</div>
-						
+						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
+						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
+						<input id="inputStart" name="priceStart" class="srchTxt" type="text" value='' style="margin :2px; width:50px">
+						<b>-</b>
+						<input id="inputEnd" name="priceEnd" class="srchTxt" type="text" value='' style="margin:2px; width:50px">					
 						<button type="submit" id="submitButton" class="btn btn-primary" onclick='OnClickSearch()'>Go</button>
 					</form>
 					<ul id="topMenu" class="nav pull-left">
@@ -99,6 +93,10 @@
 						<li class="">
 							<a href="contact.html">Contact</a>
 						</li>
+
+						{{!-- thẻ li dùng để kiểm tra điều kiện đang nhập
+								+ nếu đã đăng nhập thì sẽ có nút tên tài khoản bên phải và kèm theo chức năng sửa thông tin cá nhân
+								+ nếu chưa đăng nhập thì có nút login bên phải --}}
 						<li id="login-account-area" class="">
 							{{#if layoutVM.isLogged}}
 								<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
@@ -273,6 +271,10 @@
 						</a>	
 					</div>
 					{{/if}}	
+
+					{{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search
+							+ nếu đang ở màn hình search thì các đường dẫn trong menu sẽ là tham số
+							+ nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}}
 					{{#if layoutVM.isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
@@ -297,14 +299,19 @@
 						</li>
 					</ul>
 					{{else}}	
-					<ul id="sideManu" class="nav nav-tabs nav-stacked">
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">						
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
 							<ul >
 								{{#each layoutVM.categories}}
+									
 									<li class="subMenu open">
-										<a href="/product/byCat/{{ma_loai}}"> {{ten_loai}}</a>
+										<a href="/product/byCat/{{ma_loai}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_loai}}
+										</a>
 									</li>
+									
 								{{/each}}
 							</ul>
 						</li>
@@ -312,15 +319,17 @@
 							<a href="">NHÀ SẢN XUẤT</a>
 							<ul >
 								{{#each layoutVM.producers}}
+									<script type="text/x-handlebars">
 									<li class="subMenu open">
 										<a href="/product/byProducer/{{ma_ncc}}"> {{ten_ncc}}</a>
 									</li>
+									</script>
 								{{/each}}
 							</ul>
-						</li>
-						
+						</li>						
 					</ul>	
-					{{/if}}			
+					{{/if}}	
+
 					<br/>					
 				</div>
 				
