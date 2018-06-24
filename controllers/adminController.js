@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
         isSearch: false,
         showNavBar: false,
         showSideBar: false,
+        isAdmin: req.session.isAdmin
     };
     res.render('admin/admin_dashboard');
 });

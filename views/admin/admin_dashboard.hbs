@@ -2,7 +2,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+{{#if layoutVM.isAdmin}}
 <div class="container-fluid">
     <div class="col col-md-3">
         <div class="panel-group" id="accordion">
@@ -91,3 +91,11 @@
         </div>
     </div>
 </div>
+{{else}}
+<p style="text-align:center;font-size: 50px;">BẠN KHÔNG CÓ QUYỀN TRUY CẬP TRANG NÀY</p>
+<img style="display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;" 
+    src="https://vignette.wikia.nocookie.net/hive/images/9/9d/Spoiler.png/revision/latest?cb=20140924212820">
+{{/if}}
