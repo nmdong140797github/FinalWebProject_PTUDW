@@ -4,9 +4,9 @@ var  productRepo = require('../repos/productRepo');
 
 module.exports = (req, res, next) => {
 
-	if (req.session.isLogged === undefined) {
-		req.session.isLogged = false;
-	}
+	// if (req.session.isLogged === undefined) {
+	// 	req.session.isLogged = false;
+	// }
 
 	var p1=categoryRepo.loadAll();
 	var p2=producerRepo.loadAll();

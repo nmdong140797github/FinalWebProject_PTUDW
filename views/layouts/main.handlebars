@@ -99,6 +99,23 @@
 								+ nếu chưa đăng nhập thì có nút login bên phải --}}
 						<li id="login-account-area" class="">
 							{{#if layoutVM.isLogged}}
+								<div class="btn-group open" style="margin-top:20px; ">
+									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										Tài Khoản UserName 
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" style="position: absolute;z-index:20">
+										<li>
+											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
+										</li> 
+										adminFeatures 
+										<li>
+											<a onclick="OnClickLogout()" href="#">Đăng Xuất</a>
+										</li>
+									</ul>
+								</div>
+								
+							{{else}}
 								<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
 									<span class="btn btn-large btn-success">Login</span>
 								</a>
@@ -124,22 +141,6 @@
 											<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 										</form>
 									</div>
-								</div>
-							{{else}}
-								<div class="btn-group open" style="margin-top:20px; ">
-									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										Tài Khoản UserName 
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" style="position: absolute;z-index:20">
-										<li>
-											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
-										</li> 
-										adminFeatures 
-										<li>
-											<a onclick="OnClickLogout()" href="#">Đăng Xuất</a>
-										</li>
-									</ul>
 								</div>
 							{{/if}}
 						</li>
