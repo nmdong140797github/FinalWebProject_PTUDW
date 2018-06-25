@@ -85,7 +85,7 @@
 						<button type="submit" id="submitButton" class="btn btn-primary" >Go</button>
 					</form>
 					{{else}}
-					<form class="form-inline navbar-search" method="get" role="form" action="../search/byProduct/">
+					<form class="form-inline navbar-search" method="get" role="form" action="search/byProduct/">
 						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
 						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
 						<input id="inputStart" name="priceStart" class="srchTxt" type="text" value='' style="margin :2px; width:50px">
@@ -298,7 +298,7 @@
 							<ul >
 								{{#each layoutVM.categories}}
 									<li class="list-group-item">
-										<a href="/?catId={{ma_loai}}"> 
+										<a href="?catId={{ma_loai}}"> 
 											<i class="icon-chevron-right"></i>
 											{{ten_loai}}
 										</a>
@@ -307,13 +307,13 @@
 							</ul>
 						</li>
 						<li class="subMenu open">
-							<a href="">NHÀ CUNG CẤP</a>
+							<a href="">NHÀ SẢN XUÂT</a>
 							<ul >
 								{{#each layoutVM.producers}}
 									<li class="subMenu open">
-										<a href="/?producerId={{ma_ncc}}"> 
+										<a href="?producerId={{ma_nsx}}"> 
 											<i class="icon-chevron-right"></i>
-											{{ten_ncc}}
+											{{ten_nsx}}
 										</a>
 									</li>
 								{{/each}}
@@ -342,9 +342,9 @@
 							<ul >
 								{{#each layoutVM.producers}}									
 									<li class="subMenu open">
-										<a href="/product/byProducer/{{ma_ncc}}"> 
+										<a href="/product/byProducer/{{ma_nsx}}"> 
 											<i class="icon-chevron-right"></i>
-											{{ten_ncc}}											
+											{{ten_nsx}}											
 										</a>
 									</li>
 								{{/each}}
