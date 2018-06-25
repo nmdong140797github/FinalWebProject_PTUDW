@@ -5,7 +5,7 @@
 			<div class="well well-small">
 				<!-- Bắt đầu sản phẩm mới-->
 				<h4>SẢN PHẨM MỚI
-					<small class="pull-right">8 sảm phẩm mới nhất</small>
+					<small class="pull-right">12 sảm phẩm mới nhất</small>
 				</h4>
 				<div class="row-fluid">
 					<div id="featured" class="carousel slide">
@@ -20,9 +20,9 @@
 												<img src="/imgs/{{duong_dan}}" alt="">
 											</a>
 											<div class="caption">
-												<h5>{{ten_may_anh}} </h5>
+												<h5 style="height: 60px">{{ten_may_anh}} </h5>
 												<h4>
-													<a class="btn" style="margin-bottom: 20px" href="../product/detail/{{ma_may_anh}}">VIEW</a>
+													<a class="btn"  href="../product/detail/{{ma_may_anh}}">VIEW</a>
 													<span class="pull-right" style="color: red">{{number_format gia}} đ</span>
 												</h4>
 											</div>
@@ -41,7 +41,28 @@
 												<img src="/imgs/{{duong_dan}}" alt="">
 											</a>
 											<div class="caption">
-												<h5>{{ten_may_anh}} </h5>
+												<h5 style="height: 60px">{{ten_may_anh}} </h5>
+												<h4>
+													<a class="btn" href="../product/detail/{{ma_may_anh}}">VIEW</a>
+													<span class="pull-right" style="color: red">{{number_format gia}} đ</span>
+												</h4>
+											</div>
+										</div>
+									</li>
+									{{/each}}
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">
+									{{#each itemsMoi3}}
+									<li class="span3">
+										<div class="thumbnail" style="height:310px">
+											<i class="tag"></i>
+											<a href="../product/detail/{{ma_may_anh}}">
+												<img src="/imgs/{{duong_dan}}" alt="">
+											</a>
+											<div class="caption">
+												<h5 style="height: 60px">{{ten_may_anh}} </h5>
 												<h4>
 													<a class="btn" href="../product/detail/{{ma_may_anh}}">VIEW</a>
 													<span class="pull-right" style="color: red">{{number_format gia}} đ</span>
