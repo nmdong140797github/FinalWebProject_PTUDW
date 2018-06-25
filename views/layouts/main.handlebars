@@ -287,7 +287,10 @@
 							<ul >
 								{{#each layoutVM.categories}}
 									<li class="list-group-item">
-										<!--<a href="/product/byCat/{{ma_loai}}"> {{ten_loai}}</a>-->
+										<a href="/?catId={{ma_loai}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_loai}}
+										</a>
 									</li>
 								{{/each}}
 							</ul>
@@ -297,7 +300,10 @@
 							<ul >
 								{{#each layoutVM.producers}}
 									<li class="subMenu open">
-										<a href="/?producerId={{ma_ncc}}"> {{ten_ncc}}</a>
+										<a href="/?producerId={{ma_ncc}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_ncc}}
+										</a>
 									</li>
 								{{/each}}
 							</ul>
@@ -323,12 +329,13 @@
 						<li class="subMenu open">
 							<a href="">NHÀ SẢN XUẤT</a>
 							<ul >
-								{{#each layoutVM.producers}}
-									<script type="text/x-handlebars">
+								{{#each layoutVM.producers}}									
 									<li class="subMenu open">
-										<a href="/product/byProducer/{{ma_ncc}}"> {{ten_ncc}}</a>
+										<a href="/product/byProducer/{{ma_ncc}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_ncc}}											
+										</a>
 									</li>
-									</script>
 								{{/each}}
 							</ul>
 						</li>						
