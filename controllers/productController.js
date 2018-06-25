@@ -103,6 +103,7 @@ router.post('/delete',(req,res)=>{
 });
 
 router.get('/byCat/:catId', (req, res) => {
+    console.log("vô by cát");
     var catId = req.params.catId;
 
     var page = req.query.page;

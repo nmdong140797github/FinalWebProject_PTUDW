@@ -104,15 +104,11 @@
 						<li class="">
 							<a href="contact.html">Contact</a>
 						</li>
-
-						{{!-- thẻ li dùng để kiểm tra điều kiện đang nhập
-								+ nếu đã đăng nhập thì sẽ có nút tên tài khoản bên phải và kèm theo chức năng sửa thông tin cá nhân
-								+ nếu chưa đăng nhập thì có nút login bên phải --}}
-						<li id="login-account-area" class="">
 							{{#if layoutVM.isLogged}}
+						<li id="" class="">
 								<div class="btn-group open" style="margin-top:20px; ">
 									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										Tài Khoản UserName 
+										{{layoutVM.curUser.ten_kh}}
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" style="position: absolute;z-index:20">
@@ -121,13 +117,15 @@
 										</li> 
 										adminFeatures 
 										<li>
-											<a onclick="OnClickLogout()" href="#">Đăng Xuất</a>
+											<form action="/customer/logout" method="post">
+											<button type="submit">Đăng xuất</button>
+											</form>
 										</li>
 									</ul>
 								</div>
-								
 							{{else}}
-								<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
+							<li id="" class="">
+							<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
 									<span class="btn btn-large btn-success">Login</span>
 								</a>
 								<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
@@ -136,12 +134,12 @@
 										<h3>Login Block</h3>
 									</div>
 									<div class="modal-body">
-										<form action="" method="POST" class="form-horizontal loginFrm" role="form" onsubmit="return validate();">
+										<form action="/customer/login" method="POST" class="form-horizontal loginFrm" role="form" onsubmit="return validate();">
 											<div class="control-group">
-												<input type="text" id="inputEmail" placeholder="Email">
+												<input type="text" id="inputEmail" placeholder="Email" name="email">
 											</div>
             								<div class="control-group">
-												<input type="password" id="inputPassword" placeholder="Password">
+												<input type="password" id="inputPassword" placeholder="Password" name="rawPWD">
 											</div>
 											<div class="control-group">
 												<label class="checkbox">
@@ -153,14 +151,18 @@
 										</form>
 									</div>
 								</div>
-							{{/if}}
+							</li>
+								{{/if}}
 						</li>
+						
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Header End====================================================================== -->
+	{{!-- nav bar: if admin dashboard is currently displayed, hide it --}}
+	{{#if layoutVM.showNavBar}}
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
@@ -270,20 +272,22 @@
 			<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
+	{{/if}}
 	<div id="mainBody">
 		<div class="container">
+			
 			<div class="row">
+				{{#if layoutVM.showSideBar}}
 				<!-- Sidebar ================================================== -->
 				<div id="sidebar" class="span3">
 					{{#if layoutVM.isLogged}}
 					<div class="well well-small">
 						<a id="myCart" href="/cart">
-							<img src="/assets/themes/images/ico-cart.png" alt="cart">{{CartInfo.items.length}} sản phẩm trong giỏ
-							<span class="badge badge-warning pull-right">{{number_format CartInfo.total}}</span>
+							<img src="/assets/themes/images/ico-cart.png" alt="cart">{{CartInfo.items.length}} sản phẩm
+							<span class="badge badge-warning pull-right">{{number_format CartInfo.total}} đ</span>
 						</a>	
 					</div>
 					{{/if}}	
-
 					{{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search
 							+ nếu đang ở màn hình search thì các đường dẫn trong menu sẽ là tham số
 							+ nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}}
@@ -293,8 +297,11 @@
 							<a href="">LOẠI MÁY ẢNH</a>
 							<ul >
 								{{#each layoutVM.categories}}
-									<li class="subMenu open">
-										<a href="/?catId={{ma_loai}}"> {{ten_loai}}</a>
+									<li class="list-group-item">
+										<a href="/?catId={{ma_loai}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_loai}}
+										</a>
 									</li>
 								{{/each}}
 							</ul>
@@ -304,7 +311,10 @@
 							<ul >
 								{{#each layoutVM.producers}}
 									<li class="subMenu open">
-										<a href="/?producerId={{ma_ncc}}"> {{ten_ncc}}</a>
+										<a href="/?producerId={{ma_ncc}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_ncc}}
+										</a>
 									</li>
 								{{/each}}
 							</ul>
@@ -314,7 +324,7 @@
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">						
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
-							<ul >
+							<ul class="menu">
 								{{#each layoutVM.categories}}
 									
 									<li class="subMenu open">
@@ -330,18 +340,61 @@
 						<li class="subMenu open">
 							<a href="">NHÀ SẢN XUẤT</a>
 							<ul >
-								{{#each layoutVM.producers}}
-									
+								{{#each layoutVM.producers}}									
 									<li class="subMenu open">
-										<a href="/product/byProducer/{{ma_ncc}}"> {{ten_ncc}}</a>
+										<a href="/product/byProducer/{{ma_ncc}}"> 
+											<i class="icon-chevron-right"></i>
+											{{ten_ncc}}											
+										</a>
 									</li>
-									
 								{{/each}}
 							</ul>
 						</li>						
 					</ul>	
 					{{/if}}	
 
+					<br/>	
+					{{!-- <div class="thumbnail">
+						<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
+						<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
+						<div class="caption">
+							<h5>Panasonic</h5>
+							<h4 style="text-align:center">
+								<a class="btn" href="product_details.html">
+									<i class="icon-zoom-in"></i>
+								</a>
+								<a class="btn btn_add" href="#">Add to
+									<i class="icon-shopping-cart"></i>
+								</a>
+								<a class="btn btn-primary" href="#">3.099.000đ</a>
+							</h4>
+						</div>
+					</div>
+					<br/>
+					<div class="thumbnail">
+						<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+						<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
+						<div class="caption">
+							<h5>Kindle</h5>
+							<h4 style="text-align:center">
+								<a class="btn" href="product_details.html">
+									<i class="icon-zoom-in"></i>
+								</a>
+								<a class="btn btn_add" href="#">Add to
+									<i class="icon-shopping-cart"></i>
+								</a>
+								<a class="btn btn-primary" href="#">7.990.000đ</a>
+							</h4>
+						</div>
+					</div>
+					<br/>
+					<div class="thumbnail">
+						<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+						<div class="caption">
+							<h5>Payment Methods</h5>
+						</div>
+					</div>				 --}}
+					
 					<br/>					
 				</div>
 				
@@ -357,7 +410,11 @@
 					</div>
 				</div>
 				</div>
+				{{else}}
+				{{{body}}}
+				{{/if}}
 			</div>
+			
 		</div>
 	</div>
 	<!-- Footer ================================================================== -->
@@ -412,9 +469,20 @@
 	<script src="/assets/themes/js/login.js" type="text/javascript"></script>
 	
 
-	<script src="/assets/themes/js/bootshop.js"></script>
+	{{!-- <script src="/assets/themes/js/bootshop.js"></script> --}}
+	{{!-- do file js này, nó bắt event click vào từng category, khi đó nó sẽ ẩn đi --}}
 	<script src="/assets/themes/js/jquery.lightbox-0.5.js"></script>
-
+	<script>
+		$(document).ready(()=>{
+			var ele = $(".menu").find('li');
+			for (let i = 0;i < ele.length; i++) {
+				if ($(ele[i]).children('a').attr('href') === window.location.pathname) {
+					$(ele[i]).children('a').css('color', 'red');
+					break;
+				}
+			}
+		});
+	</script>
 	<span id="themesBtn"></span>
 </body>
 

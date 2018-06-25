@@ -78,6 +78,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+
     var user = {
         email: req.body.email,
         password: SHA256(req.body.rawPWD).toString()
@@ -85,6 +86,9 @@ router.post('/login', (req, res) => {
 
     customerRepo.login(user).then(rows => {
         if (rows.length > 0) {
+
+            //check if admin
+            req.session.isAdmin = user.email === 'admin' ? true : false;
             // user = rows[0];
 
             req.session.isLogged = true;
@@ -95,7 +99,7 @@ router.post('/login', (req, res) => {
             if(req.query.retUrl){
                 url=req.query.retUrl;
             }
-            res.redirect(url);
+            res.redirect(req.session.isAdmin? '../admin' : url);
             //res.redirect('/');
             
         } else {
@@ -120,7 +124,8 @@ router.post('/logout',(req,res)=>{
     req.session.isLogged = false;
     req.session.user = null;
     // req.session.cart = [];
-    res.redirect(req.headers.referer);
+   // res.redirect(req.headers.referer);
+   res.redirect('/home');
 })
 
 module.exports = router;
