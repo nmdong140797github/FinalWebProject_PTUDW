@@ -116,10 +116,6 @@ router.get('/profile', (req, res) => {
     res.render('customer/profile');
 });
 
-router.get('/admin', (req, res) => {
-    res.render('customer/admin');
-});
-
 router.post('/logout',(req,res)=>{
     req.session.isLogged = false;
     req.session.user = null;

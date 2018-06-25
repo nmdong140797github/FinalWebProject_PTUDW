@@ -47,7 +47,7 @@ exports.loadAll = () => {
 // }
 
 exports.loadAllByCat = (catId, offset) => {
-    var sql = `select * from may_anh where ma_loai =${catId} )  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    var sql = `select * from may_anh where ma_loai =${catId}  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
     return db.load(sql);
 }
 
