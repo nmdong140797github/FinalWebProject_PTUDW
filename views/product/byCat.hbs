@@ -1,3 +1,69 @@
+{{!-- {{#section 'title'}}
+	Product List
+{{/section}}
+
+{{#if noProducts}}
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		Không có sản phẩm.
+	</div>
+</div>
+{{else}}
+<div class="row">
+	<ul class="thumbnails">		
+	{{#each products}}
+	<li class="span3">
+		<div class="thumbnail">
+			<a href="/product/detail/{{ma_may_anh}}">
+				<img src="/web/image/{{duong_dan}}" alt="">
+			</a>
+			<div class="caption">
+				<h5>{{ten_may_anh}}</h5>
+				<p>
+					
+				</p>
+
+				<h4 style="text-align:center">
+					<a class="btn" href="/product/detail/{{ma_may_anh}}">
+						<i class="icon-zoom-in"></i>
+					</a>
+					<a class="btn btn_add" href="">Add to
+						<i class="icon-shopping-cart"></i>
+					</a><br>
+					<a class="btn btn-primary" href="#">{{gia}} Đ</a>
+				</h4>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+	</ul>
+</div>
+<div class="pagination">
+    <ul class="pagination">        
+        <li class="disabled">
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        </li>
+        {{#each page_numbers}} {{#if isCurPage}}
+        <li class="active">
+            <a href="javascript:;">{{value}}</a>
+        </li>
+        {{else}}
+        <li>
+            <a href="?page={{value}}">{{value}}</a>
+        </li>
+        {{/if}} {{/each}}
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">»</span>
+            </a>
+        </li>
+    </ul>
+</div>
+{{/if}} --}}
+
+
 {{#section 'title'}}
 	Product List
 {{/section}}
