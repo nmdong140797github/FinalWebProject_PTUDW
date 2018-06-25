@@ -47,7 +47,7 @@ module.exports = (req, res, next) => {
 			producers: rows2,
 			isLogged: req.session.isLogged,
 			curUser: req.session.user,
-			isSearch: false,
+			
 		};
 		next();
 	});

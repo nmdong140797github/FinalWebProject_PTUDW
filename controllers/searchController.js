@@ -4,13 +4,13 @@ var config = require('../config/config');
 var error = require('util');
 var router = express.Router();
 
-router.get('/byProduct/:productName', (req, res) => {
+router.get('/byProduct', (req, res) => {
     
     // vd: http://localhost:3000/search/byProduct/canon?page=1
 
-    var productName = req.body.productName;
-    var priceStart=req.body.priceStart;
-    var priceEnd=req.body.priceEnd;
+    var productName = req.query.productName;
+    var priceStart=req.query.priceStart;
+    var priceEnd=req.query.priceEnd;
     var catId=req.query.catId;
     var producerId=req.query.producerId;
 
@@ -21,7 +21,7 @@ router.get('/byProduct/:productName', (req, res) => {
 
     var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
 
-    var p1 = searchRepo.findResult(productName, offset);
+    var p1 = searchRepo.findResult(productName, priceStart, priceEnd, catId, producerId, offset);
     var p2 = searchRepo.countByProduct(productName);
     Promise.all([p1, p2]).then(([pRows, countRows]) => {
         // console.log(pRows);
