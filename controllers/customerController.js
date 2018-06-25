@@ -67,7 +67,10 @@ router.post('/register', (req, res) => {
         };
         
         customerRepo.add(user).then(value => {
-            res.render('customer/register',err);
+            var vm={
+                showAlert: true
+            }
+            res.render('customer/register',vm);
         });
     }
     

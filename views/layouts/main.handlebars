@@ -108,17 +108,18 @@
 						<li id="" class="">
 								<div class="btn-group open" style="margin-top:20px; ">
 									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										{{layoutVM.curUser.ten_kh}}
+										{{layoutVM.curUser.ten_nd}}
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" style="position: absolute;z-index:20">
 										<li>
-											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
-										</li> 
-										adminFeatures 
+											<form action="/customer/update" method="post">
+											<a href="/customer/update">Cập Nhật Thông Tin Cá Nhân</a>
+											</form>
+										</li>  
 										<li>
 											<form action="/customer/logout" method="post">
-											<button type="submit">Đăng xuất</button>
+											<a href="update_personal_information.html">Đăng Xuất</a>
 											</form>
 										</li>
 									</ul>
