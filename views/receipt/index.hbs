@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-md-12">
+		<form id="frmRemoveItem" method="post" action="/cart/remove">
+			<input id="txtProId_R" type="hidden" name="ma_may_anh">
+		</form>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="col-sm-2">Tên khách hàng</th>
+					<th class="col-sm-4">email</th>
+					<th class="col-sm-4">Địa chỉ</th>
+					<th class="col-sm-2">SĐT</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+				<tr>
+					<td>{{curUser.ten_nd}}</td>
+					<td>{{curUser.email}}</td>
+					<td>{{curUser.dia_chi}}</td>
+					<td>{{curUser.sdt}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-hover table-stripe">
+			<thead>
+				<tr>
+					<th class="col-sm-4">STT</th>
+					<th class="col-sm-4">Sản phẩm</th>
+					<th class="col-sm-2">Giá</th>
+					<th class="col-sm-2">Số lượng</th>
+					<th class="col-sm-2">Thành tiền</th>
+					<th class="col-sm-2">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+				{{#each items}}
+				<tr>
+					<td>
+						<span id="index">{{@index}}</span>
+					</td>
+					{{#section 'js'}}
+					<script type="text/javascript">
+						var text = $('#index').text();
+						var number = parseInt(text, 10);
+
+						function var1() {
+							document.getElementById('index').innerHTML = number + 1;
+						}
+						window.onload = var1;
+						console.log('reunaaaaaaaaaaaa');
+					</script> {{/section}}
+					<td> {{Product.ten_may_anh}}</td>
+					<td>{{number_format Product.gia}}</td>
+					<td>{{Quantity}}</td>
+					<td>{{number_format Amount}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>
+						<h4>Total:</h4>
+					</td>
+					<td class="text-danger" colspan="2">
+						<h4>{{number_format total}}</h4>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<form action="/receipt/add" method="post">
+			<button type="submit" style="display: block;margin-left: auto;margin-right: auto;width: 25%;" type="button" class="btn btn-success">Đặt hàng</button>
+		</form>
+
+	</div>
+</div>

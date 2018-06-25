@@ -1,16 +1,11 @@
-{{#section 'title'}}
-	Your Shopping Cart
-{{/section}}
-
-{{#section 'js'}}
-	<script type="text/javascript">
-		$('.removeItem').on('click', function() {
-		    var id = $(this).data('proid');
-		    $('#txtProId_R').val(id);
-		    $('#frmRemoveItem').submit();
-		});
-	</script>
-{{/section}}
+{{#section 'title'}} Your Shopping Cart {{/section}} {{#section 'js'}}
+<script type="text/javascript">
+	$('.removeItem').on('click', function () {
+		var id = $(this).data('proid');
+		$('#txtProId_R').val(id);
+		$('#frmRemoveItem').submit();
+	});
+</script> {{/section}}
 
 <div class="row">
 	<div class="col-md-12">
@@ -20,7 +15,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th class="col-sm-4" >Sản phẩm</th>
+					<th class="col-sm-4">Sản phẩm</th>
 					<th class="col-sm-2">Giá</th>
 					<th class="col-sm-2">Số lượng</th>
 					<th class="col-sm-2">Thành tiền</th>
@@ -28,9 +23,10 @@
 				</tr>
 			</thead>
 			<tbody id="list">
-			{{#each items}}
+				{{#each items}}
 				<tr>
-					<td><img src="/imgs/{{Product.duong_dan}}" alt="Smiley face" height="60" width="60">  {{Product.ten_may_anh}}</td>
+					<td>
+						<img src="/imgs/{{Product.duong_dan}}" alt="Smiley face" height="60" width="60"> {{Product.ten_may_anh}}</td>
 					<td>{{number_format Product.gia}}</td>
 					<td>{{Quantity}}</td>
 					<td>{{number_format Amount}}</td>
@@ -40,18 +36,21 @@
 						</a>
 					</td>
 				</tr>
-			{{/each}}
+				{{/each}}
 			</tbody>
 			<tfoot>
 				<tr>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td><h4>Total:</h4></td>
+					<td>
+						<h4>Total:</h4>
+					</td>
 					<td class="text-danger" colspan="2">
 						<h4>{{number_format total}}</h4>
 					</td>
 				</tr>
 			</tfoot>
 		</table>
+		<button onclick="location.href='/'" style="display: block;margin-left: auto;margin-right: auto;width: 25%;" type="button" class="btn btn-success">Thanh toán</button>
 	</div>
 </div>

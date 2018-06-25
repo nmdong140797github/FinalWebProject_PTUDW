@@ -67,11 +67,13 @@ exports.load = sql => {
 }
 
 exports.save = sql => {
+    console.log(sql);
     return new Promise((resolve, reject) => {
         state.pool.query(sql, function(error, value) {
             if (error) {
                 reject(error);
             } else {
+                console.log('\ngood', value);
                 resolve(value);
             }
 
