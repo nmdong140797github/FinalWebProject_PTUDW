@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 
         var vm = {
             items: items,
-            total: total
+            total: total,
         };
         res.render('cart/index', vm);
     });

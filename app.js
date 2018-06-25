@@ -1,5 +1,5 @@
 var express = require('express');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 var express_handlebars_sections = require('express-handlebars-sections');
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -10,22 +10,24 @@ var MySQLStore = require('express-mysql-session')(session);
 
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
     handle404MDW = require('./middle-wares/handle404');
-    restrict = require('./middle-wares/restrict');
+restrict = require('./middle-wares/restrict');
 
 var homeController = require('./controllers/homeController'),
     categoryController = require('./controllers/categoryController'),
     productController = require('./controllers/productController'),
     customerController = require('./controllers/customerController'),
-    searchController= require('./controllers/searchController'),
-    producerController=require('./controllers/producerController');
-    //admin
-    adminController=require('./controllers/adminController');
-    cartController=require('./controllers/cartController');
- 
+    searchController = require('./controllers/searchController'),
+    producerController = require('./controllers/producerController');
+//admin
+adminController = require('./controllers/adminController');
+cartController = require('./controllers/cartController');
+//receipt
+receiptController = require('./controllers/receiptController');
+
 var app = express();
 
 var db = require('./fn/db');
- 
+
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
     layoutsDir: 'views/layouts/',
@@ -40,7 +42,7 @@ app.engine('hbs', exphbs({
     }
 }));
 app.set('view engine', 'hbs');
- 
+
 app.use(express.static(path.resolve(__dirname, 'server')));
 
 app.use(bodyParser.json());
@@ -86,21 +88,21 @@ app.use('/home', homeController);
 app.use('/category', categoryController);
 app.use('/product', productController);
 app.use('/customer', customerController);
-app.use('/search',searchController);
-app.use('/producer',producerController);
+app.use('/search', searchController);
+app.use('/producer', producerController);
 app.use('/admin', adminController);
-app.use('/cart',cartController);
-
+app.use('/cart', cartController);
+app.use('/receipt', receiptController);
 
 
 app.use(handle404MDW);
- 
-db.connect(db.MODE_PRODUCTION, function(err) {
+
+db.connect(db.MODE_PRODUCTION, function (err) {
     if (err) {
-      console.log('Unable to connect to MySQL.')
-      process.exit(1)
+        console.log('Unable to connect to MySQL.')
+        process.exit(1)
     } else {
         app.listen(process.env.PORT || 3000);
     }
-  })
+})
 // app.listen(process.env.PORT || 3000);

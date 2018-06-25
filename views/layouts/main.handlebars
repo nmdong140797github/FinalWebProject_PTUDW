@@ -7,13 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<!--Less styles -->
-	<!-- Other Less css file //different less files has different color scheam
-*	<link rel="stylesheet/less" type="text/css" href="/assets/themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="/assets/themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-	<!--<link rel="stylesheet/less" type="text/css" href="/assets/themes/less/bootshop.less">
-	<script src="/assets/themes/js/less.js" type="text/javascript"></script> -->
+	
 
 	<!-- Bootstrap style -->
 	<link id="callCss" rel="stylesheet" href="/assets/themes/bootshop/bootstrap.min.css" media="screen" />
@@ -37,33 +31,6 @@
 <body>
 	<div id="header">
 		<div class="container">
-			<!-- <div id="welcomeLine" class="row">
-				<div class="span6">Welcome!
-					<strong id="Name-User"> User</strong>
-				</div>
-				<div class="span6">
-					<div class="pull-right">
-						<a href="product_summary.html">
-							<span class="">Fr</span>
-						</a>
-						<a href="product_summary.html">
-							<span class="">Es</span>
-						</a>
-						<span class="btn btn-mini">En</span>
-						<a href="product_summary.html">
-							<span>&pound;</span>
-						</a>
-						<span class="btn btn-mini">$155.00</span>
-						<a href="product_summary.html">
-							<span class="">$</span>
-						</a>
-						<a href="product_summary.html">
-							<span class="btn btn-mini btn-primary">
-								<i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span>
-						</a>
-					</div>
-				</div>
-			</div> -->
 			<!-- Navbar ================================================== -->
 			<div id="logoArea" class="navbar">
 				<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
@@ -72,7 +39,7 @@
 					<span class="icon-bar"></span>
 				</a>
 				<div class="navbar-inner">
-					<a class="brand" href="index.html">
+					<a class="brand" href="/home">
 						<img src="/assets/themes/images/logo.png" alt="Bootsshop" />
 					</a>
 					{{#if isSearch}}
@@ -325,7 +292,7 @@
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">						
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
-							<ul class="menu">
+							<ul class="menu1">
 								{{#each layoutVM.categories}}
 									
 									<li class="subMenu open">
@@ -340,7 +307,7 @@
 						</li>
 						<li class="subMenu open">
 							<a href="">NHÀ SẢN XUẤT</a>
-							<ul >
+							<ul class="menu2">
 								{{#each layoutVM.producers}}									
 									<li class="subMenu open">
 										<a href="/product/byProducer/{{ma_nsx}}"> 
@@ -354,48 +321,7 @@
 					</ul>	
 					{{/if}}	
 
-					<br/>	
-					{{!-- <div class="thumbnail">
-						<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
-						<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
-						<div class="caption">
-							<h5>Panasonic</h5>
-							<h4 style="text-align:center">
-								<a class="btn" href="product_details.html">
-									<i class="icon-zoom-in"></i>
-								</a>
-								<a class="btn btn_add" href="#">Add to
-									<i class="icon-shopping-cart"></i>
-								</a>
-								<a class="btn btn-primary" href="#">3.099.000đ</a>
-							</h4>
-						</div>
-					</div>
-					<br/>
-					<div class="thumbnail">
-						<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-						<img src="themes/images/sale.jpg" style="width: 50%; height: 50%;">
-						<div class="caption">
-							<h5>Kindle</h5>
-							<h4 style="text-align:center">
-								<a class="btn" href="product_details.html">
-									<i class="icon-zoom-in"></i>
-								</a>
-								<a class="btn btn_add" href="#">Add to
-									<i class="icon-shopping-cart"></i>
-								</a>
-								<a class="btn btn-primary" href="#">7.990.000đ</a>
-							</h4>
-						</div>
-					</div>
-					<br/>
-					<div class="thumbnail">
-						<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-						<div class="caption">
-							<h5>Payment Methods</h5>
-						</div>
-					</div>				 --}}
-					
+					<br/>		
 					<br/>					
 				</div>
 				
@@ -475,7 +401,18 @@
 	<script src="/assets/themes/js/jquery.lightbox-0.5.js"></script>
 	<script>
 		$(document).ready(()=>{
-			var ele = $(".menu").find('li');
+			var ele = $(".menu2").find('li');
+			for (let i = 0;i < ele.length; i++) {
+				if ($(ele[i]).children('a').attr('href') === window.location.pathname) {
+					$(ele[i]).children('a').css('color', 'red');
+					break;
+				}
+			}
+		});
+
+
+		$(document).ready(()=>{
+			var ele = $(".menu1").find('li');
 			for (let i = 0;i < ele.length; i++) {
 				if ($(ele[i]).children('a').attr('href') === window.location.pathname) {
 					$(ele[i]).children('a').css('color', 'red');
