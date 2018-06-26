@@ -16,10 +16,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/add', (req, res) => {
-    var vm = {
-        showAlert: false
-    };
-    res.render('category/add', vm);
+    
+    res.render('category/add');
 });
 
 router.post('/add', (req, res) => {
@@ -43,7 +41,7 @@ router.get('/edit', (req, res) => {
     });
 });
 
-router.post('/edit',(res,req)=>{
+router.post('/edit',(req, res)=>{
     categoryRepo.update(req.body).then(value=>{
         var vm = {
             showAlert: true

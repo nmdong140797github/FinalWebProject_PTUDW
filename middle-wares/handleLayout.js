@@ -58,7 +58,8 @@ module.exports = (req, res, next) => {
 			showNavBar: true,
 			showSideBar: true,
 		};
-		console.log(req.session.user);
+		//console.log(req.session.user);
+		console.log(res.locals.layoutVM);
 		next();
 	});
 };

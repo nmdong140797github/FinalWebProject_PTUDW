@@ -42,7 +42,7 @@
 					<a class="brand" href="/home">
 						<img src="/assets/themes/images/logo.png" alt="Bootsshop" />
 					</a>
-					{{#if isSearch}}
+					{{#if layoutVM.isSearch}}
 					<form class="form-inline navbar-search" method="get" role="form" action="">
 						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
 						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
@@ -52,7 +52,7 @@
 						<button type="submit" id="submitButton" class="btn btn-primary" >Go</button>
 					</form>
 					{{else}}
-					<form class="form-inline navbar-search" method="get" role="form" action="search/byProduct/">
+					<form class="form-inline navbar-search" method="get" role="form" action="/search/byProduct/">
 						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
 						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
 						<input id="inputStart" name="priceStart" class="srchTxt" type="text" value='' style="margin :2px; width:50px">
@@ -80,12 +80,13 @@
 									</button>
 									<ul class="dropdown-menu" style="position: absolute;z-index:20">
 										<li>
-											<a href="update_personal_information.html">Cập Nhật Thông Tin Cá Nhân</a>
-										</li> 
-										adminFeatures 
+											<form action="/customer/update" method="post">
+											<a href="/customer/update">Cập Nhật Thông Tin Cá Nhân</a>
+											</form>
+										</li>  
 										<li>
 											<form action="/customer/logout" method="post">
-											<button type="submit">Đăng xuất</button>
+											<button type="submit">Đăng Xuất</button> 
 											</form>
 										</li>
 									</ul>
@@ -266,7 +267,7 @@
 							<ul >
 								{{#each layoutVM.categories}}
 									<li class="list-group-item">
-										<a href="?catId={{ma_loai}}"> 
+										<a class="subMenu item" href="?catId={{ma_loai}}"> 
 											<i class="icon-chevron-right"></i>
 											{{ten_loai}}
 										</a>
@@ -279,7 +280,7 @@
 							<ul >
 								{{#each layoutVM.producers}}
 									<li class="subMenu open">
-										<a href="?producerId={{ma_nsx}}"> 
+										<a class="subMenu item" href="?producerId={{ma_nsx}}"> 
 											<i class="icon-chevron-right"></i>
 											{{ten_nsx}}
 										</a>
