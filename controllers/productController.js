@@ -155,4 +155,5 @@ router.get('/detail/:proId', (req, res) => {
     });
 });
 
+
 module.exports = router;
