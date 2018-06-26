@@ -100,7 +100,8 @@ router.get('/personal', (req, res) => {
         
         console.log('receipts', receipts);
         var vm = {
-            receipts: receipts
+            receipts: receipts,
+            isLogged: req.session.isLogged
         };
         res.render('receipt/personal', vm);
     });

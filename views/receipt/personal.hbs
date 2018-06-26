@@ -1,3 +1,4 @@
+{{#if isLogged}}
 <div class="row">
 	<div class="col-md-12">
 		<table class="table table-hover table-stripe">
@@ -25,3 +26,7 @@
 		</table>
 	</div>
 </div>
+{{else}}
+<p style="text-align:center;font-size: 50px;">Bạn chưa đăng nhập</p>
+
+{{/if}}
