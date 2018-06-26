@@ -9,12 +9,14 @@ router.get('/', (req, res) => {
     var p2 = productRepo.DanhSachSanPhamDuocXemNhieuNhat(6);
     var p3 = productRepo.DanhSachSanPhamMoiNhat1(4);
     var p4 = productRepo.DanhSachSanPhamMoiNhat2(4);
-    Promise.all([p1,p2,p3,p4]).then(([row1,row2,row3,row4])=>{
+    var p5 = productRepo.DanhSachSanPhamMoiNhat3(4);
+    Promise.all([p1,p2,p3,p4, p5]).then(([row1,row2,row3,row4,row5])=>{
         var home_vm={
             itemsBanChay:row1,
             itemsXemNhieu:row2,
             itemsMoi1:row3,
-            itemsMoi2:row4
+            itemsMoi2:row4,
+            itemsMoi3:row5
         }
         res.render('home/index',home_vm);
     });

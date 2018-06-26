@@ -17,6 +17,10 @@ exports.DanhSachSanPhamMoiNhat2=(soLuong)=>{
     var sql = `select * from may_anh order by ngay_nhap desc limit 4,${soLuong}`;
     return db.load(sql);
 }
+exports.DanhSachSanPhamMoiNhat3=(soLuong)=>{
+    var sql = `select * from may_anh order by ngay_nhap desc limit 8,${soLuong}`;
+    return db.load(sql);
+}
 exports.loadSanPhamTheoYeuCau = (soLuong) => {
     var sql = `select * from may_anh limit ${soLuong}`;
     return db.load(sql);
@@ -41,10 +45,6 @@ exports.loadAll = () => {
     return db.load(sql);
 }
 
-// exports.loadAllByCat = (catId) => {
-//     var sql = `select * from products where CatID = ${catId}`;
-//     return db.load(sql);
-// }
 
 exports.loadAllByCat = (catId, offset) => {
     var sql = `select * from may_anh where ma_loai =${catId}  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
