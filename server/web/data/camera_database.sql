@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `don_dat_hang` (
 
 DROP TABLE IF EXISTS `nguoi_dung`;
 CREATE TABLE IF NOT EXISTS `nguoi_dung` (
-  `ma_nd` int(11) NOT NULL,
+  `ma_nd` int(11) NOT NULL AUTO_INCREMENT,
   `ten_nd` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,

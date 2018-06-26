@@ -9,9 +9,8 @@ router.get('/',(res,req)=>{
         var vm = {
             producers: rows
         };
+        console.log(vm);
         res.render('producer/index',vm);
-    }).catch(error=>{
-
     });
     
 });
