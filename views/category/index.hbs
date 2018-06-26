@@ -19,23 +19,66 @@
 			</a>
 			<div class="caption">
 				<h5>{{ten_loai}}</h5>
-				<p>
-					
-				</p>
-
+				
 				<h4 style="text-align:center">
 					{{!-- <a class="btn" href="/product/detail/{{ma_may_anh}}">
 						<i class="icon-zoom-in"></i>
 					</a> --}}
-					<a class="btn btn_add" href="">Add to
-						<i class="icon-shopping-cart"></i>
-					</a><br>
-					
+					<button style="padding:5px; margin: 5px" type="submit"  class="btn btn-large btn-primary pull-right btn_add">
+						<a href="/category/edit/?id={{ma_loai}}">Edit
+							<i class="icon-edit"></i>
+						</a>
+					</button>
+
+					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-primary pull-right btn_add">
+						<a href="#delete{{ma_loai}}" role="button" data-toggle="modal" >Delete
+							<i class="icon-remove-sign"></i>
+						</a><br>
+					</button>
+
+					<div id="delete{{ma_loai}}" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h3>Delete</h3>
+						</div>
+						<div class="modal-body">
+							<form action="/category/delete" method="POST" class="form-horizontal loginFrm" role="form" >
+								<div class="control-group">
+									<label class="control-label" for="inputId">ID <sup>*</sup></label>
+									<div class="controls">
+										<input id="inputId" name="CatId" type="text" value='{{ma_loai}}' readonly="true">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="inputName">Name <sup>*</sup></label>
+									<div class="controls">
+										<input id="inputName" name="CatName" type="string" value='{{ten_loai}}'>
+									</div>
+								</div>
+								
+								<button type="submit" class="btn btn-success" >Delete</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</form>
+						</div>
+					</div>
 				</h4>
 			</div>
 		</div>
 	</li>
 	{{/each}}
+
+	<li class="span3">
+		<div class="thumbnail">
+			<a href="/category/add">
+				<img style="width: 260px; height:240px"src="/web/image/add.jpg" alt="">
+			</a>
+			<div class="caption">
+				<h5>Thêm loại</h5>
+			</div>
+		</div>
+	</li>
+
 	</ul>
 </div>
 {{/if}}

@@ -13,8 +13,6 @@ router.get('/',(res,req)=>{
         };
         console.log(vm);
         res.render('producer/index',vm);
-    }).catch(error=>{
-
     });
     
 });
