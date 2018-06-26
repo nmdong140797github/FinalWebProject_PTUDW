@@ -1,5 +1,5 @@
 {{#section 'title'}}
-	Product List
+	Category List
 {{/section}}
 
 {{#if noProducts}}
@@ -11,11 +11,11 @@
 {{else}}
 <div class="row">
 	<ul class="thumbnails">		
-	{{#each products}}
+	{{#each categories}}
 	<li class="span3">
 		<div class="thumbnail">
 			<a href="">
-				<img src="/web/image/{{ma_loai}}"+"_loai.jpg" alt="">
+				<img style="width: 260px; height:180px"src="/web/image/{{ma_loai}}_loai.jpg" alt="">
 			</a>
 			<div class="caption">
 				<h5>{{ten_loai}}</h5>
@@ -38,3 +38,4 @@
 	{{/each}}
 	</ul>
 </div>
+{{/if}}

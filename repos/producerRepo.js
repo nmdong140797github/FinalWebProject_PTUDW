@@ -6,6 +6,11 @@ exports.loadAll = () => {
     return db.load(sql);
 }
 
+exports.countProducer=()=>{
+    var sql = `select count(*) as total from nha_san_xuat `;
+    return db.load(sql);
+}
+
 exports.single = proId => {
     var sql = `select * from nha_san_xuat where ma_ncc = ${proId}`;
     return db.load(sql);

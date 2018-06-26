@@ -2,41 +2,68 @@
 	Update Personal Information
 {{/section}}
 
+{{#if isUpdate}}
+    <div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	Bạn đã cập nhật thông tin cá nhân thành công
+{{/if}}
+
 {{#with person}}
 {{ten_nd}}
 <form action="" method="POST" role="form">    
     <div class="control-group">
         <label class="control-label" for="inputId">ID <sup>*</sup></label>
         <div class="controls">
-            <input id="inputId" type="text" value='{{ma_nd}}' readonly="true">
+            <input id="inputId" name="id" type="text" value='{{ma_nd}}' readonly="true">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputName">Name <sup>*</sup></label>
         <div class="controls">
-            <input id="inputName" type="string" value='{{ten_nd}}'>
+            <input id="inputName" name="name" type="string" value='{{ten_nd}}'>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputEmail" name="email" type="string" value='{{email}}'>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputCurrentPassword">Current Password <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputCurrentPassword" name="currentPassword" type="password" value=''>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputNewPassword">New Password <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputNewPassword" name="newPassword" type="password" value=''>
         </div>
     </div>
     
     <div class="control-group">
         <label class="control-label">Date of Birth <sup>*</sup></label>
         <div class="controls">
-            <input id="inputDate" type="date" value={{ngay_sinh}}> 
+            <input id="inputDate" name="dob" type="date" value={{ngay_sinh}}> 
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
         <div class="controls">
-            <input id="inputAddress" type="text" value={{dia_chi}}>
+            <input id="inputAddress" name="address" type="string" value='{{{dia_chi}}}'>
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
         <div class="controls">
-            <input id="inputTelephone" type="text" value={{sdt}}>
+            <input id="inputTelephone" name="telephone" type="text" value={{sdt}}>
         </div>
     </div>
 

@@ -34,3 +34,8 @@ exports.update = (c) => {
     var sql = `update loai set ten_loai = '${c.CatName}' where ma_loai = ${c.CatId}`;
     return db.save(sql);
 }
+
+exports.countCategory=()=>{
+    var sql = `select count(*) as total from loai `;
+    return db.load(sql);
+}
