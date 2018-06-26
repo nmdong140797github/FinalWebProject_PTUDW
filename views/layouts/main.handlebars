@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	
+
 
 	<!-- Bootstrap style -->
 	<link id="callCss" rel="stylesheet" href="/assets/themes/bootshop/bootstrap.min.css" media="screen" />
@@ -24,7 +24,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/themes/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/assets/themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
-	
+
 	{{{_sections.css}}}
 </head>
 
@@ -44,21 +44,21 @@
 					</a>
 					{{#if layoutVM.isSearch}}
 					<form class="form-inline navbar-search" method="get" role="form" action="">
-						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
-						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
+						<input id="srchFld" name="productName" class="srchTxt" type="text" />
+						<label class="control-label" for="" style="margin :2px;color:beige">Giá </label>
 						<input id="inputStart" name="priceStart" class="srchTxt" type="text" value='' style="margin :2px; width:50px">
 						<b>-</b>
-						<input id="inputEnd" name="priceEnd" class="srchTxt" type="text" value='' style="margin:2px; width:50px">					
-						<button type="submit" id="submitButton" class="btn btn-primary" >Go</button>
+						<input id="inputEnd" name="priceEnd" class="srchTxt" type="text" value='' style="margin:2px; width:50px">
+						<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 					</form>
 					{{else}}
 					<form class="form-inline navbar-search" method="get" role="form" action="/search/byProduct/">
-						<input id="srchFld" name="productName" class="srchTxt" type="text" />						
-						<label class="control-label" for="" style="margin :2px;color:beige" >Giá  </label>
+						<input id="srchFld" name="productName" class="srchTxt" type="text" />
+						<label class="control-label" for="" style="margin :2px;color:beige">Giá </label>
 						<input id="inputStart" name="priceStart" class="srchTxt" type="text" value='' style="margin :2px; width:50px">
 						<b>-</b>
-						<input id="inputEnd" name="priceEnd" class="srchTxt" type="text" value='' style="margin:2px; width:50px">					
-						<button type="submit" id="submitButton" class="btn btn-primary" >Go</button>
+						<input id="inputEnd" name="priceEnd" class="srchTxt" type="text" value='' style="margin:2px; width:50px">
+						<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 					</form>
 					{{/if}}
 					<ul id="topMenu" class="nav pull-left">
@@ -71,32 +71,33 @@
 						<li class="">
 							<a href="contact.html">Contact</a>
 						</li>
-							{{#if layoutVM.isLogged}}
+						{{#if layoutVM.isLogged}}
 						<li id="" class="">
-								<div class="btn-group open" style="margin-top:20px; ">
-									<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										{{layoutVM.curUser.ten_nd}}
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" style="position: absolute;z-index:20">
-										<li>
-											<form action="/customer/update" method="post">
-											<a href="/customer/update">Cập Nhật Thông Tin Cá Nhân</a>
-											</form>
-										</li>  
-										<li>
-											<form action="/customer/logout" method="post">
-											<button type="submit">Đăng Xuất</button> 
-											</form>
-										</li>
-									</ul>
-								</div>
+							<div class="btn-group open" style="margin-top:20px; ">
+								<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									{{layoutVM.curUser.ten_nd}}
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" style="position: absolute;z-index:20">
+									<li>
+										<a href="/receipt/personal">Lịch sử mua hàng</a>
+									</li>
+									<li>
+										<a href="/customer/update">Cập Nhật Thông Tin</a>
+									</li>
+									<li>
+										<form action="/customer/logout" method="post">
+											<a href="/customer/logout" type="submit">Đăng Xuất</a>
+										</form>
+									</li>
+								</ul>
+							</div>
 							{{else}}
 							<li id="" class="">
-							<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
+								<a href="#login" role="button" data-toggle="modal" style="padding-right:0">
 									<span class="btn btn-large btn-success">Login</span>
 								</a>
-								<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+								<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h3>Login Block</h3>
@@ -106,32 +107,32 @@
 											<div class="control-group">
 												<input type="text" id="inputEmail" placeholder="Email" name="email">
 											</div>
-            								<div class="control-group">
+											<div class="control-group">
 												<input type="password" id="inputPassword" placeholder="Password" name="rawPWD">
 											</div>
 											<div class="control-group">
 												<label class="checkbox">
-													<input type="checkbox"> Remember me  
+													<input type="checkbox"> Remember me
 												</label>
 											</div>
 											<button type="submit" class="btn btn-success" onclick="OnClickSignIn()">Sign in</button>
-											<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button><br/>
-											Quên mật khẩu?  <a href="/customer/register">Sign up</a>
+											<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+											<br/> Quên mật khẩu?
+											<a href="/customer/register">Sign up</a>
 										</form>
 									</div>
 								</div>
 							</li>
-								{{/if}}
+							{{/if}}
 						</li>
-						
+
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Header End====================================================================== -->
-	{{!-- nav bar: if admin dashboard is currently displayed, hide it --}}
-	{{#if layoutVM.showNavBar}}
+	{{!-- nav bar: if admin dashboard is currently displayed, hide it --}} {{#if layoutVM.showNavBar}}
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
@@ -142,7 +143,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -153,7 +154,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -164,7 +165,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -175,7 +176,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -186,7 +187,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -197,7 +198,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 
 					</div>
@@ -209,7 +210,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 
 					</div>
@@ -221,7 +222,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -232,7 +233,7 @@
 						</a>
 						<div class="carousel-caption">
 							<h4>Second Thumbnail label</h4>
-							
+
 						</div>
 					</div>
 				</div>
@@ -244,7 +245,7 @@
 	{{/if}}
 	<div id="mainBody" style="background-color:#e0f7fa">
 		<div class="container">
-			
+
 			<div class="row">
 				{{#if layoutVM.showSideBar}}
 				<!-- Sidebar ================================================== -->
@@ -254,95 +255,91 @@
 						<a id="myCart" href="/cart">
 							<img src="/assets/themes/images/ico-cart.png" alt="cart">{{CartInfo.items.length}} sản phẩm
 							<span class="badge badge-warning pull-right">{{number_format CartInfo.total}} đ</span>
-						</a>	
+						</a>
 					</div>
-					{{/if}}	
-					{{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search
-							+ nếu đang ở màn hình search thì các đường dẫn trong menu sẽ là tham số
-							+ nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}}
-					{{#if isSearch}}
+					{{/if}} {{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search + nếu đang ở màn hình search thì các đường dẫn
+					trong menu sẽ là tham số + nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}} {{#if
+					isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
-							<ul >
+							<ul>
 								{{#each layoutVM.categories}}
-									<li class="list-group-item">
-										<a class="subMenu item" href="?catId={{ma_loai}}"> 
-											<i class="icon-chevron-right"></i>
-											{{ten_loai}}
-										</a>
-									</li>
+								<li class="list-group-item">
+									<a class="subMenu item" href="?catId={{ma_loai}}">
+										<i class="icon-chevron-right"></i>
+										{{ten_loai}}
+									</a>
+								</li>
 								{{/each}}
 							</ul>
 						</li>
 						<li class="subMenu open">
 							<a href="">NHÀ SẢN XUÂT</a>
-							<ul >
+							<ul>
 								{{#each layoutVM.producers}}
-									<li class="subMenu open">
-										<a class="subMenu item" href="?producerId={{ma_nsx}}"> 
-											<i class="icon-chevron-right"></i>
-											{{ten_nsx}}
-										</a>
-									</li>
+								<li class="subMenu open">
+									<a class="subMenu item" href="?producerId={{ma_nsx}}">
+										<i class="icon-chevron-right"></i>
+										{{ten_nsx}}
+									</a>
+								</li>
 								{{/each}}
 							</ul>
 						</li>
 					</ul>
-					{{else}}	
-					<ul id="sideManu" class="nav nav-tabs nav-stacked">						
+					{{else}}
+					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="">LOẠI MÁY ẢNH</a>
 							<ul class="menu1">
 								{{#each layoutVM.categories}}
-									
-									<li class="subMenu open">
-										<a href="/product/byCat/{{ma_loai}}"> 
-											<i class="icon-chevron-right"></i>
-											{{ten_loai}}
-										</a>
-									</li>
-									
+
+								<li class="subMenu open">
+									<a href="/product/byCat/{{ma_loai}}">
+										<i class="icon-chevron-right"></i>
+										{{ten_loai}}
+									</a>
+								</li>
+
 								{{/each}}
 							</ul>
 						</li>
 						<li class="subMenu open">
 							<a href="">NHÀ SẢN XUẤT</a>
 							<ul class="menu2">
-								{{#each layoutVM.producers}}									
-									<li class="subMenu open">
-										<a href="/product/byProducer/{{ma_nsx}}"> 
-											<i class="icon-chevron-right"></i>
-											{{ten_nsx}}											
-										</a>
-									</li>
+								{{#each layoutVM.producers}}
+								<li class="subMenu open">
+									<a href="/product/byProducer/{{ma_nsx}}">
+										<i class="icon-chevron-right"></i>
+										{{ten_nsx}}
+									</a>
+								</li>
 								{{/each}}
 							</ul>
-						</li>						
-					</ul>	
-					{{/if}}	
+						</li>
+					</ul>
+					{{/if}}
 
-					<br/>		
-					<br/>					
+					<br/>
+					<br/>
 				</div>
-				
-				<div class="span9 " >
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							{{{_sections.title}}}
-						</h3>
+
+				<div class="span9 ">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{{_sections.title}}}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{{body}}}
+						</div>
 					</div>
-					<div class="panel-body">
-						{{{body}}}
-					</div>
 				</div>
-				</div>
-				{{else}}
-				{{{body}}}
-				{{/if}}
+				{{else}} {{{body}}} {{/if}}
 			</div>
-			
+
 		</div>
 	</div>
 	<!-- Footer ================================================================== -->
@@ -394,16 +391,13 @@
 	<script src="/assets/themes/js/jquery.js" type="text/javascript"></script>
 	<script src="/assets/themes/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/assets/themes/js/google-code-prettify/prettify.js"></script>
-	<script src="/assets/themes/js/login.js" type="text/javascript"></script>
-	
-
-	{{!-- <script src="/assets/themes/js/bootshop.js"></script> --}}
-	{{!-- do file js này, nó bắt event click vào từng category, khi đó nó sẽ ẩn đi --}}
+	<script src="/assets/themes/js/login.js" type="text/javascript"></script> {{!--
+	<script src="/assets/themes/js/bootshop.js"></script> --}} {{!-- do file js này, nó bắt event click vào từng category, khi đó nó sẽ ẩn đi --}}
 	<script src="/assets/themes/js/jquery.lightbox-0.5.js"></script>
 	<script>
-		$(document).ready(()=>{
+		$(document).ready(() => {
 			var ele = $(".menu2").find('li');
-			for (let i = 0;i < ele.length; i++) {
+			for (let i = 0; i < ele.length; i++) {
 				if ($(ele[i]).children('a').attr('href') === window.location.pathname) {
 					$(ele[i]).children('a').css('background-color', '#b2ebf2');
 					$(ele[i]).children('a').css('color', 'blue');
@@ -413,9 +407,9 @@
 		});
 
 
-		$(document).ready(()=>{
+		$(document).ready(() => {
 			var ele = $(".menu1").find('li');
-			for (let i = 0;i < ele.length; i++) {
+			for (let i = 0; i < ele.length; i++) {
 				if ($(ele[i]).children('a').attr('href') === window.location.pathname) {
 					$(ele[i]).children('a').css('background-color', '#b2ebf2');
 					$(ele[i]).children('a').css('color', 'blue');
@@ -427,7 +421,6 @@
 	<span id="themesBtn"></span>
 </body>
 
-<script src="/public/handle_add.js"></script>
+<script src="/public/handle_add.js"></script> {{{_sections.js}}}
 
-	{{{_sections.js}}}
 </html>
