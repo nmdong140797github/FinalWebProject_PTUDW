@@ -21,6 +21,10 @@ exports.DanhSachSanPhamMoiNhat3=(soLuong)=>{
     var sql = `select * from may_anh order by ngay_nhap desc limit 8,${soLuong}`;
     return db.load(sql);
 }
+exports.DanhSachSanPhamCungLoai=(catId, soLuong)=>{
+    var sql = `select * from may_anh ma_loai=${catId} limit ${soLuong}`;
+    return db.load(sql);
+}
 exports.loadSanPhamTheoYeuCau = (soLuong) => {
     var sql = `select * from may_anh limit ${soLuong}`;
     return db.load(sql);
