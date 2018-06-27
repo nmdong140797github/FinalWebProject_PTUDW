@@ -38,13 +38,24 @@ router.post('/add', (req, res) => {
         ProId: req.body.proId,
         Quantity: +req.body.quantity
     };
-
-    cartRepo.add(req.session.cart, item);
+    if(item.Quantity>0){
+        cartRepo.add(req.session.cart, item);
+    }
     res.redirect(req.headers.referer);
 });
 
 router.post('/remove', (req, res) => {
     cartRepo.remove(req.session.cart, req.body.ma_may_anh);
+    res.redirect(req.headers.referer);
+});
+
+router.post('/update', (req, res) => {
+    if(req.body.quantity>0)
+    {
+        cartRepo.update(req.session.cart, req.body.proId,req.body.quantity);
+        console.log("update thanh cong");
+        console.log(req.body.quantity);
+    }
     res.redirect(req.headers.referer);
 });
 

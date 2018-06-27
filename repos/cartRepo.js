@@ -17,3 +17,13 @@ exports.remove = (cart, proId) => {
         }
     }
 }
+
+exports.update = (cart, proId, quantity) => {
+    console.log(cart.length);
+    for (var i = cart.length - 1; i >= 0; i--) {
+        if (proId === cart[i].ProId) {
+            cart[i].Quantity = quantity;
+            return;
+        }
+    }
+}

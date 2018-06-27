@@ -6,7 +6,20 @@
 		$('#frmRemoveItem').submit();
 	});
 </script> {{/section}}
+ {{#section 'js'}}
+<script type="text/javascript">
+    // Kiểm tra nhập đúng số lượng sản phẩm update vào giỏ hàng
+    $(document).ready(function () {
+        $("#btnU").click(function () {
+            if(parseInt($("#txtQ").val())<0)
+            {
+                alert("Nhập số lượng sản phẩm không hợp lệ, bạn vui lòng nhập lại!");
+            }
+            
+        });
+    });
 
+</script> {{/section}}
 <div class="row">
 	<div class="col-md-12">
 		<form id="frmRemoveItem" method="post" action="/cart/remove">
@@ -28,7 +41,11 @@
 					<td>
 						<img src="/imgs/{{Product.duong_dan}}" alt="Smiley face" height="60" width="60"> {{Product.ten_may_anh}}</td>
 					<td>{{number_format Product.gia}}</td>
-					<td>{{Quantity}}</td>
+					<td><form action="/cart/update" method="post">
+					<input id="txtQ" type="number" value="{{Quantity}}" name="quantity">
+					<input type="hidden" value="{{Product.ma_may_anh}}" name="proId">
+					<button id="btnU" type="submit">update</button>
+					</form></td>
 					<td>{{number_format Amount}}</td>
 					<td class="text-right">
 						<a data-proid="{{Product.ma_may_anh}}" class="btn btn-xs btn-danger removeItem" href="javascript:;" role="button">

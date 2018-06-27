@@ -2,6 +2,21 @@
 	Product List
 {{/section}}
 
+ {{#section 'js'}}
+<script type="text/javascript">
+    // Kiểm tra nhập đúng số lượng sản phẩm thêm vào giỏ hàng
+    $(document).ready(function () {
+        $("#btnThem").click(function () {
+            if(parseInt($("#txtQuantity").val())<0)
+            {
+                alert("Nhập số lượng sản phẩm không hợp lệ, bạn vui lòng nhập lại!");
+            }
+            
+        });
+    });
+
+</script> {{/section}}
+
 {{#if noProduct}}
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
@@ -87,8 +102,8 @@
                         </label>
                          {{#if layoutVM.isLogged}}
                         <div class="controls">
-                            <input class="Quantity" placeholder="Số lượng." type="number" name="quantity" >
-                                <button type="submit"  class="btn btn-large btn-primary pull-right btn_add"> Thêm vào giỏ
+                            <input  id="txtQuantity" class="Quantity" placeholder="" type="number" name="quantity" value="1" />
+                                <button id="btnThem" type="submit"  class="btn btn-large btn-primary pull-right btn_add"> Thêm vào giỏ
                                     <i class=" icon-shopping-cart"></i>
                                 </button>
                         </div>
