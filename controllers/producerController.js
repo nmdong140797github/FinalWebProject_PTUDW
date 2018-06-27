@@ -4,44 +4,47 @@ var error = require('util');
 
 var router = express.Router();
 
-router.get('/',(res,req)=>{
+router.get('/',(req,res)=>{
     producerRepo.loadAll().then(rows=>{
         var vm = {
             producers: rows
         };
+        //console.log(vm);
         res.render('producer/index',vm);
     }).catch(error=>{
-
+        res.end('fail');
     });
     
 });
 
-router.get('/add',(res,req)=>{
-    router.render('producer/add')
+router.get('/add',(req,res)=>{
+    res.render('producer/add')
 });
 
-router.post('/add',(res,req)=>{
+router.post('/add',(req,res)=>{
     producerRepo.add(req.body).then(value =>{
         // thông báo đã thêm thành công
         var vm = {
             showAlert: true 
         };
-        res.render('producer/add');
+        res.render('producer/add',vm);
     }).catch(error=>{
         res.end('fail');
     });
 });
 
-router.get('/delete',(res,req)=>{
+router.get('/delete',(req,res)=>{
     producerRepo.single(req.query.id).then(value=>{
         var producer=value;
         res.render('producer/delete',product);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
 
-router.post('/delete',(res,req)=>{
-    producerRepo.delete(req.query.id).then(value =>{
+router.post('/delete',(req,res)=>{
+    producerRepo.delete(req.body.ProducerId).then(value =>{
         // thông báo đã xóa thành công
         var vm = {
             showAlert: true 
@@ -53,15 +56,19 @@ router.post('/delete',(res,req)=>{
 
 });
 
-router.get('/edit',(res,req)=>{
+router.get('/edit',(req,res)=>{
     producerRepo.single(req.query.id).then(value=>{
-        var producer=value;
-        res.render('producer/edit',producer);
+        var vm={
+            producer: value[0]
+        }
+        res.render('producer/edit',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
 
-router.post('/edit',(res,req)=>{    
+router.post('/edit',(req,res)=>{    
     producerRepo.update(req.body).then(value=>{
         var vm = {
             showAlert: true 

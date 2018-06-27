@@ -21,24 +21,64 @@ function CheckEmailExists(srcEmail)
 }
 
 router.get('/update', (req, res) => {
-    customerRepo.single(req.query.id).then((result) => {
-        result.ngay_sinh=getString(result.ngay_sinh);
+    if(req.session.isLogged==true)
+	{
+        var date=new Date(req.session.user.ngay_sinh);
+        var dob=date.getFullYear()+'-';
+        dob+=parseInt(date.getMonth())>9?date.getMonth()+1:'0'+(date.getMonth()+1);
+        dob+='-';
+        dob+=parseInt(date.getDate())>9?date.getDate():'0'+date.getDate();
+        var user = {
+            ma_nd: req.session.user.ma_nd,
+            ten_nd: req.session.user.ten_nd,
+            email: req.session.user.email,
+            ngay_sinh: dob,
+            dia_chi:req.session.user.dia_chi,
+            sdt: req.session.user.sdt
+        };
         var vm={
-            person: result
+            person: user
         }
-        res.render('customer/update',vm);
-    }).catch((err) => {
-        
-    });
+        res.render('customer/update',vm); 
+    }
 });
 
 router.post('/update', (req, res) => {
-    customerRepo.update(req.body).then(value => {
+    // Kiểm tra mật khẩu có phù hợp không
+    var newPassword=req.body.newPassword==''? req.session.user.password:SHA256(req.body.newPassword).toString();
+    
+    if(newPassword==req.session.user.password )
+    {
+        var user = {
+            id: req.body.id,
+            name: req.body.name,
+            email: req.body.email,
+            password: newPassword,
+            dob: req.body.dob,
+            addr:req.body.address,
+            telephone: req.body.telephone,
+            permission: 0
+        };
+
+        customerRepo.updateInformationPersonal(user).then(value => {
+            //req.session.user=customerRepo.single(req.session.user.ma_nd);
+            var vm={
+                isUpdate:true,
+                person: req.session.user
+            }
+            res.render('customer/update',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }
+    else
+    {
         var vm={
-            person: value
+            isUpdate:false,
+            person: req.session.user
         }
-        res.redirect('customer/update',vm);
-    });
+        res.render('customer/update',vm);
+    }
 });
 
 router.get('/register', (req, res) => {
@@ -56,7 +96,7 @@ router.post('/register', (req, res) => {
     {
         err=false;        
 
-        var user = {
+        var user = {            
             name: req.body.name,
             email: req.body.email,
             password: SHA256(req.body.rawPWD).toString(),
@@ -67,7 +107,10 @@ router.post('/register', (req, res) => {
         };
         
         customerRepo.add(user).then(value => {
-            res.render('customer/register',err);
+            var vm={
+                showAlert: true
+            }
+            res.render('customer/register',vm);
         });
     }
     
@@ -109,15 +152,13 @@ router.post('/login', (req, res) => {
             };
             res.render('account/login', vm);
         }
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
 router.get('/profile', (req, res) => {
     res.render('customer/profile');
-});
-
-router.get('/admin', (req, res) => {
-    res.render('customer/admin');
 });
 
 router.post('/logout',(req,res)=>{

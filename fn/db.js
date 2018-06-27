@@ -19,6 +19,10 @@ exports.connect = function(mode, done) {
     user: 'b1c3dea7a9599d',
     password: 'ecf18b83',
     database: mode === exports.MODE_PRODUCTION ? PRODUCTION_DB : TEST_DB
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
+    // database: 'camera_database'
   })
 
   state.mode = mode

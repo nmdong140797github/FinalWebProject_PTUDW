@@ -1,13 +1,4 @@
-{{#if isChecked}}
-<p style="text-align:center;font-size: 50px;">Đặt hàng thành công</p>
-<img style="display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;" 
-    src="https://files.gotocon.com/uploads/images/conference_3/topics/63/original/checkmark.svg">
-{{else}}
-
-<div class="row">
+<div class="row" style="background:#ffffff">
 	<div class="col-md-12">
 		<table class="table table-hover">
 			<thead>
@@ -75,10 +66,5 @@
 				</tr>
 			</tfoot>
 		</table>
-		<form action="/receipt/add" method="post">
-			<button type="submit" style="display: block;margin-left: auto;margin-right: auto;width: 25%;" type="button" class="btn btn-success">Đặt hàng</button>
-		</form>
-
 	</div>
 </div>
-{{/if}}

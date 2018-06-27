@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
             categories: rows
         };
         res.render('category/index', vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
 router.get('/add', (req, res) => {
-    var vm = {
-        showAlert: false
-    };
-    res.render('category/add', vm);
+    
+    res.render('category/add');
 });
 
 router.post('/add', (req, res) => {
@@ -40,17 +40,19 @@ router.get('/edit', (req, res) => {
             Category: c
         };
         res.render('category/edit', vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
-router.post('/edit',(res,req)=>{
+router.post('/edit',(req, res)=>{
     categoryRepo.update(req.body).then(value=>{
         var vm = {
             showAlert: true
         };
         res.render('category/edit', vm);
     }).catch(error=>{
-
+        res.end('fail');
     });
 });
 
@@ -64,6 +66,8 @@ router.get('/delete', (req, res) => {
 router.post('/delete', (req, res) => {
     categoryRepo.delete(req.body.CatId).then(value => {
         res.redirect('/category');
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 

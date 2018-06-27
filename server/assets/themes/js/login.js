@@ -1,5 +1,10 @@
 
-
+$(document).ready(function() {
+    $('.subMenu item').bind('click', function( event ){
+       window.location.replace($(location).attr('href')+this.attr("href"));
+    });
+ });
+ 
 function OnClickSignIn()
 {
     var UserName=document.getElementById("inputEmail").value;

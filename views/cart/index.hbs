@@ -5,20 +5,16 @@
 		$('#txtProId_R').val(id);
 		$('#frmRemoveItem').submit();
 	});
-</script> {{/section}}
- {{#section 'js'}}
-<script type="text/javascript">
-    // Kiểm tra nhập đúng số lượng sản phẩm update vào giỏ hàng
+	// Kiểm tra nhập đúng số lượng sản phẩm update vào giỏ hàng
     $(document).ready(function () {
         $("#btnU").click(function () {
-            if(parseInt($("#txtQ").val())<0)
+            if(parseInt($("#txtQ").val())<=0)
             {
                 alert("Nhập số lượng sản phẩm không hợp lệ, bạn vui lòng nhập lại!");
             }
             
         });
     });
-
 </script> {{/section}}
 <div class="row">
 	<div class="col-md-12">
@@ -44,12 +40,14 @@
 					<td><form action="/cart/update" method="post">
 					<input id="txtQ" type="number" value="{{Quantity}}" name="quantity">
 					<input type="hidden" value="{{Product.ma_may_anh}}" name="proId">
-					<button id="btnU" type="submit">update</button>
+					<button id="btnU" class="btn btn-info" type="submit">
+						Update
+					</button>
 					</form></td>
 					<td>{{number_format Amount}}</td>
 					<td class="text-right">
 						<a data-proid="{{Product.ma_may_anh}}" class="btn btn-xs btn-danger removeItem" href="javascript:;" role="button">
-							<span class="glyphicon glyphicon-remove"></span>
+							Delete
 						</a>
 					</td>
 				</tr>
@@ -68,6 +66,6 @@
 				</tr>
 			</tfoot>
 		</table>
-		<button onclick="location.href='/'" style="display: block;margin-left: auto;margin-right: auto;width: 25%;" type="button" class="btn btn-success">Thanh toán</button>
+		<button onclick="location.href='/receipt'" style="display: block;margin-left: auto;margin-right: auto;width: 25%;" type="button" class="btn btn-success">Thanh toán</button>
 	</div>
 </div>
