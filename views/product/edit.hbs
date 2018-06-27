@@ -9,40 +9,39 @@
 </div>
 {{/if}}
 
-{{#with product}}
 <form action="" method="POST" role="form">    
     <div class="control-group">
         <label class="control-label" for="inputId">ID <sup>*</sup></label>
         <div class="controls">
-            <input id="inputId" name="ProductId" type="text" value='{{ma_may_anh}}' readonly="true">
+            <input id="inputId" name="ProductId" type="text" value='{{product.ma_may_anh}}' readonly="true">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputName">Name <sup>*</sup></label>
         <div class="controls">
-            <input id="inputName" name="ProductName" type="string" value='{{ten_may_anh}}'>
+            <input id="inputName" name="ProductName" type="string" value='{{product.ten_may_anh}}'>
         </div>
     </div>
     
     <div class="control-group">
         <label class="control-label" for="inputPrice">Price <sup>*</sup></label>
         <div class="controls">
-            <input id="inputPrice" name="ProductPrice" type="string" value='{{gia}}'>
+            <input id="inputPrice" name="ProductPrice" type="string" value='{{product.gia}}'>
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputLink">Link <sup>*</sup></label>
         <div class="controls">
-            <input id="inputLink" name="ProductLink" type="string" value=''>
+            <input id="inputLink" name="ProductLink" type="string" value='{{product.duong_dan}}'>
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputCat">Categorize <sup>*</sup></label>
         <div class="controls">
-            <select name="ProductCategory">
+            <select name="ProductCat">
                 {{#each category}}
                     <option value="{{ma_loai}}">{{ten_loai}}</option>
                 {{/each}}
@@ -75,31 +74,36 @@
     <div class="control-group">
         <label class="control-label" for="inputNumber">Number <sup>*</sup></label>
         <div class="controls">
-            <input id="inputNumber" name="ProductNumber" type="string" value='{{so_luong}}'>
+            <input id="inputNumber" name="ProductNumber" type="string" value='{{product.so_luong}}'>
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label">Import Date <sup>*</sup></label>
         <div class="controls">
-            <input id="inputImportDate" name="ProductDate" type="date" value={{ngay_nhap}}> 
+            <input id="inputImportDate" name="ProductDate" type="date" value='{{product.ngay_nhap}}'> 
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputDescribe">Describe <sup>*</sup></label>
         <div class="controls">
-            <input id="inputDescribe" name="ProductDescribe" type="text" value={{mo_ta}}>
+            <input id="inputDescribe" name="ProductDescribe" type="text" value={{product.mo_ta}}>
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputOrigin">Origin <sup>*</sup></label>
         <div class="controls">
-            <input id="inputOrigin" name="ProductOrigin" type="text" value='{{xuat_xu}}'>
+            <input id="inputOrigin" name="ProductOrigin" type="text" value='{{product.xuat_xu}}'>
         </div>
     </div>
 
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success">
+                Sửa đổi
+            </button>
+        </div>
+    </div>
 </form>
-
-{{/with }}

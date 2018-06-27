@@ -67,6 +67,8 @@ router.post('/update', (req, res) => {
                 person: req.session.user
             }
             res.render('customer/update',vm);
+        }).catch(error=>{
+            res.end('fail');
         });
     }
     else
@@ -150,6 +152,8 @@ router.post('/login', (req, res) => {
             };
             res.render('account/login', vm);
         }
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 

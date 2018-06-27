@@ -11,6 +11,8 @@ router.get('/',(req,res)=>{
         };
         //console.log(vm);
         res.render('producer/index',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
@@ -35,6 +37,8 @@ router.get('/delete',(req,res)=>{
     producerRepo.single(req.query.id).then(value=>{
         var producer=value;
         res.render('producer/delete',product);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
@@ -58,6 +62,8 @@ router.get('/edit',(req,res)=>{
             producer: value[0]
         }
         res.render('producer/edit',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });

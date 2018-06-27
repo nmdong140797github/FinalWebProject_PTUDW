@@ -21,6 +21,8 @@ router.get('/add', (req, res) => {
             supplier: rows3
         }
         res.render('product/add',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
@@ -30,19 +32,41 @@ router.post('/add', (req, res) => {
         var vm = {
             showAlert: true 
         };
-        res.render('product/add');
+        res.render('product/add',vm);
     }).catch(error=>{
         res.end('fail');
     });
 
 });
 
+function convert2FormatYYYYmmdd(date)
+{
+    var chuoi='';
+    chuoi+=date.getFullYear()+'-';
+    chuoi+=parseInt(date.getMonth())+1>9 ? (parseInt(date.getMonth())+1) : '0'+(parseInt(date.getMonth())+1);
+    chuoi+='-';
+    chuoi+=parseInt(date.getDate())>9 ? (parseInt(date.getDate())) : '0'+(parseInt(date.getDate()));
+    return chuoi;
+}
+
 router.get('/edit', (req, res) => {
-    productRepo.single(req.query.id).then(value=>{
+
+    var p1=categoryRepo.loadAll();
+    var p2=producerRepo.loadAll();
+    var p3=supplierRepo.loadAll();
+    var p4=productRepo.single(req.query.id);
+
+    Promise.all([p1,p2,p3,p4]).then(([rows1,rows2,rows3,rows4])=>{
         var vm={
-            product: value
+            category: rows1,
+            producer: rows2,
+            supplier: rows3,
+            product: rows4[0]
         }
+        vm.product.ngay_nhap=convert2FormatYYYYmmdd(vm.product.ngay_nhap);
         res.render('product/edit',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
@@ -63,12 +87,14 @@ router.get('/delete', (req, res) => {
     productRepo.single(req.query.id).then(value=>{
         var product=value;
         res.render('product/delete',product);
+    }).catch(error=>{
+        res.end('fail');
     });
     
 });
 
 router.post('/delete',(req,res)=>{
-    productRepo.delete(req.query.id).then(value =>{
+    productRepo.delete(req.body.ProductId).then(value =>{
         // thông báo đã xóa thành công
         var vm = {
             showAlert: true 
@@ -114,6 +140,8 @@ router.get('/byCat/:catId', (req, res) => {
             page_numbers: numbers
         };
         res.render('product/byCat', vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
@@ -151,6 +179,8 @@ router.get('/byProducer/:producerId', (req, res) => {
             page_numbers: numbers
         };
         res.render('product/byProducer', vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
@@ -166,6 +196,8 @@ router.get('/detail/:proId', (req, res) => {
         } else {
             res.redirect('/');
         }
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
