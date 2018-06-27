@@ -152,82 +152,8 @@
             <ul id="productDetail" class="nav nav-tabs">
                 <h4>CÁC SẢN PHẨM TƯƠNG TỰ </h4>
 
-                {{!--
                 <ul class="thumbnails">
-                    <li class="span3">
-                        <div class="thumbnail">
-                            <a href="product_details.html">
-                                <img src="themes/images/products/6.jpg" alt="" />
-                            </a>
-                            <div class="caption">
-                                <h5>Thẻ nhớ Sandisk 8gb</h5>
-                                <p>
-
-                                </p>
-
-                                <h4 style="text-align:center">
-                                    <a class="btn" href="product_details.html">
-                                        <i class="icon-zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn_add" href="product_summary1.html">Add to
-                                        <i class="icon-shopping-cart"></i>
-                                    </a>
-                                    </br>
-                                    <a class="btn btn-primary" href="#">150.000đ</a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail">
-                            <a href="product_details.html">
-                                <img src="themes/images/products/7.jpg" alt="" />
-                            </a>
-                            <div class="caption">
-                                <h5>Đầu đọc thẻ nhớ Integral</h5>
-                                <p>
-
-                                </p>
-                                <h4 style="text-align:center">
-                                    <a class="btn" href="product_details.html">
-                                        <i class="icon-zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn_add" href="product_summary2.html">Add to
-                                        <i class="icon-shopping-cart"></i>
-                                    </a>
-                                    </br>
-                                    <a class="btn btn-primary" href="#">99.000đ</a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail">
-                            <a href="product_details.html">
-                                <img src="themes/images/products/8.jpg" alt="" />
-                            </a>
-                            <div class="caption">
-                                <h5>Thẻ nhớ Sandisk 3.0 16gb</h5>
-                                <p>
-
-                                </p>
-                                <h4 style="text-align:center">
-                                    <a class="btn" href="product_details.html">
-                                        <i class="icon-zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn_add" href="#">Add to
-                                        <i class="icon-shopping-cart"></i>
-                                    </a>
-                                    </br>
-                                    <a class="btn btn-primary" href="#">220.000đ</a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul> --}}
-
-                <ul class="thumbnails">
-                    {{#each itemsCungLoai}}
+                    {{#each itemCungLoai}}
                     <li class="span3">
                         <div class="thumbnail" style="height:360px">
                             <a href="../product/detail/{{ma_may_anh}}">
