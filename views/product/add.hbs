@@ -9,93 +9,106 @@
 </div>
 {{/if}}
 
-<form action="" method="POST" role="form">        
-    <div class="control-group">
-        <label class="control-label" for="inputName">Name <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputName" name="ProductName" type="string" value=''>
+<div class="span9">
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/product">Products</a>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Add Product</li>
+    </ul>
+    <form action="" method="POST" role="form">        
+        <div class="control-group">
+            <label class="control-label" for="inputName">Name <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputName" name="ProductName" type="string" value=''>
+            </div>
         </div>
-    </div>
-    
-    <div class="control-group">
-        <label class="control-label" for="inputPrice">Price <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputPrice" name="ProductPrice" type="number" value=''>
+        
+        <div class="control-group">
+            <label class="control-label" for="inputPrice">Price <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputPrice" name="ProductPrice" type="number" value=''>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputLink">Link <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputLink" name="ProductLink" type="string" value=''>
+        <div class="control-group">
+            <label class="control-label" for="inputLink">Link <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputLink" name="ProductLink" type="string" value=''>
+            </div>
         </div>
-    </div>
-    
-    <div class="control-group">
-        <label class="control-label" for="inputCat">Categorize <sup>*</sup></label>
-        <div class="controls">
-            <select name="ProductCat">
-                {{#each category}}
-                    <option value="{{ma_loai}}">{{ten_loai}}</option>
-                {{/each}}
-            </select>
+        
+        <div class="control-group">
+            <label class="control-label" for="inputCat">Categorize <sup>*</sup></label>
+            <div class="controls">
+                <select name="ProductCat">
+                    {{#each category}}
+                        <option value="{{ma_loai}}">{{ten_loai}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputSupplier">Supplier <sup>*</sup></label>
-        <div class="controls">
-            <select name="ProductSupplier">
-                {{#each supplier}}
-                    <option value="{{ma_ncc}}">{{ten_ncc}}</option>
-                {{/each}}
-            </select>
+        <div class="control-group">
+            <label class="control-label" for="inputSupplier">Supplier <sup>*</sup></label>
+            <div class="controls">
+                <select name="ProductSupplier">
+                    {{#each supplier}}
+                        <option value="{{ma_ncc}}">{{ten_ncc}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputProducer">Producer <sup>*</sup></label>
-        <div class="controls">
-            <select name="ProductProducer">
-                {{#each producer}}
-                    <option value="{{ma_nsx}}">{{ten_nsx}}</option>
-                {{/each}}
-            </select>
+        <div class="control-group">
+            <label class="control-label" for="inputProducer">Producer <sup>*</sup></label>
+            <div class="controls">
+                <select name="ProductProducer">
+                    {{#each producer}}
+                        <option value="{{ma_nsx}}">{{ten_nsx}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputNumber">Number <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputNumber" name="ProductNumber" type="number" value=''>
+        <div class="control-group">
+            <label class="control-label" for="inputNumber">Number <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputNumber" name="ProductNumber" type="number" value=''>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label">Import Date <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputImportDate" name="ProductDate" type="date" value=''> 
+        <div class="control-group">
+            <label class="control-label">Import Date <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputImportDate" name="ProductDate" type="date" value=''> 
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputDescribe">Describe <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputDescribe" name="ProductDescribe" type="text" value=''>
+        <div class="control-group">
+            <label class="control-label" for="inputDescribe">Describe <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputDescribe" name="ProductDescribe" type="text" value=''>
+            </div>
         </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputOrigin">Origin <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputOrigin" name="ProductOrigin" type="text" value=''>
+        <div class="control-group">
+            <label class="control-label" for="inputOrigin">Origin <sup>*</sup></label>
+            <div class="controls">
+                <input id="inputOrigin" name="ProductOrigin" type="text" value=''>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-            <button type="submit" class="btn btn-success">
-                Thêm máy ảnh
-            </button>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-success">
+                    Thêm máy ảnh
+                </button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>

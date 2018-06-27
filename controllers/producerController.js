@@ -18,7 +18,12 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/add',(req,res)=>{
-    res.render('producer/add')
+    if(req.session.isAdmin==true)
+    {
+        res.render('producer/add')
+    }else{
+        res.render('error/index');
+    }
 });
 
 router.post('/add',(req,res)=>{
@@ -34,37 +39,52 @@ router.post('/add',(req,res)=>{
 });
 
 router.get('/delete',(req,res)=>{
-    producerRepo.single(req.query.id).then(value=>{
-        var producer=value;
-        res.render('producer/delete',product);
-    }).catch(error=>{
-        res.end('fail');
-    });
+    if(req.session.isAdmin==true)
+    {
+        producerRepo.single(req.query.id).then(value=>{
+            var producer=value;
+            res.render('producer/delete',product);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
     
 });
 
 router.post('/delete',(req,res)=>{
-    producerRepo.delete(req.body.ProducerId).then(value =>{
-        // thông báo đã xóa thành công
-        var vm = {
-            showAlert: true 
-        };
-        res.render('producer/delete',vm);
-    }).catch(error=>{
-        res.end('fail');
-    });
+    if(req.session.isAdmin==true)
+    {
+        producerRepo.delete(req.body.ProducerId).then(value =>{
+            // thông báo đã xóa thành công
+            var vm = {
+                showAlert: true 
+            };
+            res.render('producer/delete',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
 
 });
 
 router.get('/edit',(req,res)=>{
-    producerRepo.single(req.query.id).then(value=>{
-        var vm={
-            producer: value[0]
-        }
-        res.render('producer/edit',vm);
-    }).catch(error=>{
-        res.end('fail');
-    });
+    if(req.session.isAdmin==true)
+    {
+        producerRepo.single(req.query.id).then(value=>{
+            var vm={
+                producer: value[0]
+            }
+            res.render('producer/edit',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
     
 });
 

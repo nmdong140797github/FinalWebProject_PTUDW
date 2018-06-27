@@ -9,36 +9,75 @@ var config = require("../config/config");
 var error = require("util");
 var router = express.Router();
 
-router.get("/add", (req, res) => {
-  var p1 = categoryRepo.loadAll();
-  var p2 = producerRepo.loadAll();
-  var p3 = supplierRepo.loadAll();
-  Promise.all([p1, p2, p3])
-    .then(([rows1, rows2, rows3]) => {
-      var vm = {
-        category: rows1,
-        producer: rows2,
-        supplier: rows3
-      };
-      res.render("product/add", vm);
-    })
-    .catch(error => {
-      res.end("fail");
+router.get('/',(req, res) => {
+    var catId = req.params.catId;
+
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+
+    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
+    var p1 = productRepo.loadAll(offset);
+    var p2 = productRepo.countAll();
+    Promise.all([p1, p2]).then(([pRows, countRows]) => {
+
+        var total = countRows[0].total;
+        var nPages = total / config.PRODUCTS_PER_PAGE;
+        if (total % config.PRODUCTS_PER_PAGE > 0) {
+            nPages++;
+        }
+
+        var numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
+
+        var vm = {
+            products: pRows,
+            noProducts: pRows.length === 0,
+            page_numbers: numbers
+        };
+        res.render('product/index', vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
-router.post("/add", (req, res) => {
-  productRepo
-    .add(req.body)
-    .then(value => {
-      // thông báo đã thêm thành công
-      var vm = {
-        showAlert: true
-      };
-      res.render("product/add", vm);
-    })
-    .catch(error => {
-      res.end("fail");
+router.get('/add', (req, res) => {
+    if(req.session.isAdmin==true)
+    {
+        var p1=categoryRepo.loadAll();
+        var p2=producerRepo.loadAll();
+        var p3=supplierRepo.loadAll();
+        Promise.all([p1,p2,p3]).then(([rows1,rows2,rows3])=>{
+            var vm={
+                category: rows1,
+                producer: rows2,
+                supplier: rows3
+            }
+            res.render('product/add',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.end('BẠN CÓ THỂ THỰC HIỆN TÁC VỤ NÀY');
+    }
+});
+
+router.post('/add', (req, res) => {
+    productRepo.add(req.body).then(value =>{
+        // thông báo đã thêm thành công
+        var vm = {
+            showAlert: true 
+        };
+        res.render('product/add',vm);
+    }).catch(error=>{
+        res.end('fail');
     });
 });
 
@@ -57,26 +96,32 @@ function convert2FormatYYYYmmdd(date) {
   return chuoi;
 }
 
-router.get("/edit", (req, res) => {
-  var p1 = categoryRepo.loadAll();
-  var p2 = producerRepo.loadAll();
-  var p3 = supplierRepo.loadAll();
-  var p4 = productRepo.single(req.query.id);
+// thực hiện nhiều request
+router.get('/edit', (req, res) => {
 
-  Promise.all([p1, p2, p3, p4])
-    .then(([rows1, rows2, rows3, rows4]) => {
-      var vm = {
-        category: rows1,
-        producer: rows2,
-        supplier: rows3,
-        product: rows4[0]
-      };
-      vm.product.ngay_nhap = convert2FormatYYYYmmdd(vm.product.ngay_nhap);
-      res.render("product/edit", vm);
-    })
-    .catch(error => {
-      res.end("fail");
-    });
+    if(req.session.isAdmin==true)
+    {
+        var p1=categoryRepo.loadAll();
+        var p2=producerRepo.loadAll();
+        var p3=supplierRepo.loadAll();
+        var p4=productRepo.single(req.query.id);
+    
+        Promise.all([p1,p2,p3,p4]).then(([rows1,rows2,rows3,rows4])=>{
+            var vm={
+                category: rows1,
+                producer: rows2,
+                supplier: rows3,
+                product: rows4[0]
+            }
+            vm.product.ngay_nhap=convert2FormatYYYYmmdd(vm.product.ngay_nhap);
+            res.render('product/edit',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
+    
 });
 
 router.post("/edit", (req, res) => {
@@ -93,31 +138,37 @@ router.post("/edit", (req, res) => {
     });
 });
 
-router.get("/delete", (req, res) => {
-  productRepo
-    .single(req.query.id)
-    .then(value => {
-      var product = value;
-      res.render("product/delete", product);
-    })
-    .catch(error => {
-      res.end("fail");
-    });
+router.get('/delete', (req, res) => {
+    if(req.session.isAdmin==true)
+    {
+        productRepo.single(req.query.id).then(value=>{
+            var product=value;
+            res.render('product/delete',product);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
+    
 });
 
-router.post("/delete", (req, res) => {
-  productRepo
-    .delete(req.body.ProductId)
-    .then(value => {
-      // thông báo đã xóa thành công
-      var vm = {
-        showAlert: true
-      };
-      res.render("product/delete", vm);
-    })
-    .catch(error => {
-      res.end("fail");
-    });
+router.post('/delete',(req,res)=>{
+    if(req.session.isAdmin==true)
+    {
+        productRepo.delete(req.body.ProductId).then(value =>{
+            // thông báo đã xóa thành công
+            var vm = {
+                showAlert: true 
+            };
+            res.render('product/delete',vm);
+        }).catch(error=>{
+            res.end('fail');
+        });
+    }else{
+        res.render('error/index');
+    }
+
 });
 
 router.get("/byCat/:catId", (req, res) => {
