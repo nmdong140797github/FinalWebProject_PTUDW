@@ -59,7 +59,7 @@ module.exports = (req, res, next) => {
 			showSideBar: true,
 		};
 		//console.log(req.session.user);
-		console.log(res.locals.layoutVM);
+		//console.log(res.locals.layoutVM);
 		next();
 	});
 };

@@ -1,13 +1,27 @@
 // import { error } from 'util';
 
 var express = require('express');
-var productRepo = require('../repos/productRepo');
+var productRepo = require('../repos/productRepo'),
+    producerRepo = require('../repos/producerRepo'),
+    categoryRepo = require('../repos/categoryRepo'),
+    supplierRepo = require('../repos/supplierRepo');
 var config = require('../config/config');
+var error = require('util');
 var router = express.Router();
 
 
 router.get('/add', (req, res) => {
-    res.render('product/add');
+    var p1=categoryRepo.loadAll();
+    var p2=producerRepo.loadAll();
+    var p3=supplierRepo.loadAll();
+    Promise.all([p1,p2,p3]).then(([rows1,rows2,rows3])=>{
+        var vm={
+            category: rows1,
+            producer: rows2,
+            supplier: rows3
+        }
+        res.render('product/add',vm);
+    });
 });
 
 router.post('/add', (req, res) => {

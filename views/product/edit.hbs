@@ -40,9 +40,35 @@
     </div>
 
     <div class="control-group">
+        <label class="control-label" for="inputCat">Categorize <sup>*</sup></label>
+        <div class="controls">
+            <select name="ProductCategory">
+                {{#each category}}
+                    <option value="{{ma_loai}}">{{ten_loai}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputSupplier">Supplier <sup>*</sup></label>
+        <div class="controls">
+            <select name="ProductSupplier">
+                {{#each supplier}}
+                    <option value="{{ma_ncc}}">{{ten_ncc}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
         <label class="control-label" for="inputProducer">Producer <sup>*</sup></label>
         <div class="controls">
-            <input id="inputProducer" name="ProductProducer" type="string" value='{{ma_ncc}}'>
+            <select name="ProductProducer">
+                {{#each producer}}
+                    <option value="{{ma_nsx}}">{{ten_nsx}}</option>
+                {{/each}}
+            </select>
         </div>
     </div>
 

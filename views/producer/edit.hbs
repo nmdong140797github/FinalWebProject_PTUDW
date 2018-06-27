@@ -1,5 +1,5 @@
 {{#section 'title'}}
-	Product Edit
+	Edit Producer
 {{/section}}
 
 {{#if showAlert}}
@@ -9,36 +9,29 @@
 </div>
 {{/if}}
 
-{{#with product}}
-<form action="" method="POST" role="form">    
+{{#with producer}}
+<form action="" method="POST" class="form-horizontal" role="form">    
     <div class="control-group">
         <label class="control-label" for="inputId">ID <sup>*</sup></label>
         <div class="controls">
-            <input id="inputId" name="Producer" type="text" value='{{ma_ncc}}' readonly="true">
+            <input id="inputId" name="ProducerId" type="text" value='{{ma_nsx}}' readonly="true">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="inputName">Name <sup>*</sup></label>
         <div class="controls">
-            <input id="inputName" name="ProducerName" type="string" value='{{ten_ncc}}'>
+            <input id="inputName" name="ProducerName" type="string" value='{{ten_nsx}}'>
         </div>
     </div>
     
-    <div class="control-group">
-        <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputAddress" name="ProducerAddress" type="string" value='{{dia_chi}}'>
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success">
+                Sửa
+            </button>
         </div>
     </div>
-
-    <div class="control-group">
-        <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
-        <div class="controls">
-            <input id="inputTelephone" name="ProducerTelephone" type="string" value='{{sdt}}'>
-        </div>
-    </div>
-
 </form>
 
 {{/with }}
