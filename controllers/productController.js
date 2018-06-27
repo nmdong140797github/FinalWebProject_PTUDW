@@ -49,6 +49,7 @@ function convert2FormatYYYYmmdd(date)
     return chuoi;
 }
 
+// thực hiện nhiều request
 router.get('/edit', (req, res) => {
 
     var p1=categoryRepo.loadAll();

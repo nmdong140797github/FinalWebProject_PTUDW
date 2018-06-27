@@ -258,11 +258,11 @@
 						</a>
 					</div>
 					{{/if}} {{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search + nếu đang ở màn hình search thì các đường dẫn
-					trong menu sẽ là tham số + nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}} {{#if
-					isSearch}}
+					trong menu sẽ là tham số + nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}} 
+					{{#if isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
-							<a href="">LOẠI MÁY ẢNH</a>
+							<a href="/category">LOẠI MÁY ẢNH</a>
 							<ul>
 								{{#each layoutVM.categories}}
 								<li class="list-group-item">
@@ -275,7 +275,7 @@
 							</ul>
 						</li>
 						<li class="subMenu open">
-							<a href="">NHÀ SẢN XUÂT</a>
+							<a href="/producer">NHÀ SẢN XUÂT</a>
 							<ul>
 								{{#each layoutVM.producers}}
 								<li class="subMenu open">
@@ -291,7 +291,7 @@
 					{{else}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
-							<a href="">LOẠI MÁY ẢNH</a>
+							<a href="/category">LOẠI MÁY ẢNH</a>
 							<ul class="menu1">
 								{{#each layoutVM.categories}}
 
@@ -306,7 +306,7 @@
 							</ul>
 						</li>
 						<li class="subMenu open">
-							<a href="">NHÀ SẢN XUẤT</a>
+							<a href="/producer">NHÀ SẢN XUẤT</a>
 							<ul class="menu2">
 								{{#each layoutVM.producers}}
 								<li class="subMenu open">
