@@ -10,6 +10,17 @@
 </div>
 {{else}}
 <div class="row">
+	<ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/product">Products</a>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Product By Producer</li>
+    </ul>
 	<ul class="thumbnails">		
 	{{#each products}}
 	<li class="span3">

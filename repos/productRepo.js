@@ -34,7 +34,7 @@ exports.loadAll = (offset) => {
     return db.load(sql);
 }
 
-exports.countProduct=()=>{
+exports.countAll=()=>{
     var sql = `select count(*) as total from may_anh `;
     return db.load(sql);
 }
@@ -43,12 +43,6 @@ exports.single = proId => {
     var sql = `select * from may_anh where ma_may_anh = ${proId}`;
     return db.load(sql);
 }
-
-exports.loadAll = () => {
-    var sql = 'select * from may_anh';
-    return db.load(sql);
-}
-
 
 exports.loadAllByCat = (catId, offset) => {
     var sql = `select * from may_anh where ma_loai =${catId}  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
