@@ -80,7 +80,7 @@ router.post('/add', (req, res) => {
 });
 
 router.get('/personal', (req, res) => {
-    
+
     // console.log(req.session.user.ma_nd);
     receiptRepo.getPersonalReceipt(req.session.user.ma_nd).then(result => {
         var receipts = [];
@@ -97,7 +97,7 @@ router.get('/personal', (req, res) => {
             }
             receipts.push(receipt);
         }
-        
+
         console.log('receipts', receipts);
         var vm = {
             receipts: receipts,
@@ -107,5 +107,45 @@ router.get('/personal', (req, res) => {
     });
 });
 
+router.get('/detail/:receiptId', (req, res) => {
+    var receiptId = req.params.receiptId;
+    receiptRepo.single(receiptId).then(rows => {
+        if (rows.length > 0) {
+            var arr_p = []; //san pham
+            for (var i = 0; i < rows.length; i++) {
+                var cartItem = rows[i];
+                var p = productRepo.single(cartItem.ma_may_anh);
+                arr_p.push(p);
+            }
+
+            var items = [];
+            var total = 0;
+            Promise.all(arr_p).then(result => {
+                for (var i = result.length - 1; i >= 0; i--) {
+                    var pro = result[i][0];
+                    var item = {
+                        Product: pro,
+                        Quantity: rows[i].so_luong_ban,
+                        Amount: rows[i].gia,
+                    };
+                    total = total + item.Amount;
+                    items.push(item);
+                }
+
+                state.cameras = items;
+                state.total = total;
+                var vm = {
+                    items: items,
+                    total: total,
+                    curUser: req.session.user,
+                    isChecked: false
+                };
+                res.render('receipt/detail', vm);
+            });
+        } else {
+            res.redirect('/');
+        }
+    });
+});
 
 module.exports = router;

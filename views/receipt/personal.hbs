@@ -1,5 +1,5 @@
 {{#if isLogged}}
-<div class="row">
+<div class="row" style="background:#ffffff">
 	<div class="col-md-12">
 		<table class="table table-hover table-stripe">
 			<thead>
@@ -7,17 +7,17 @@
 					{{!-- <th class="col-sm-4">STT</th> --}}
 					<th class="col-sm-2">Mã đơn hàng</th>
 					<th class="col-sm-2">Ngày đặt hàng</th>
-                    <th class="col-sm-2">Sản phẩm</th>
-                    <th class="col-sm-2">Tổng tiền</th>
+                    <th class="col-sm-4">Sản phẩm</th>
+                    <th class="col-sm-4">Tổng tiền</th>
 					<th class="col-sm-2">Trang thái đơn hàng</th>
 				</tr>
 			</thead>
 			<tbody id="list">
 				{{#each receipts}}
 				<tr>
-					<td> {{ma_ddh}}</td>
+					<td><a style="color: rgb(0, 0, 255)" href="./detail/{{ma_ddh}}" >#000{{ma_ddh}}</a></td>
 					<td>{{ngay_lap}}</td>
-                    <td>{{sample}} {{#if showMore}} và {{so_luong_hang}} sản phẩm khác {{/if}}</td>
+                    <td><a style="color: rgb(4, 56, 20)" href="./detail/{{ma_ddh}}" >{{sample}} {{#if showMore}} và {{so_luong_hang}} sản phẩm khác {{/if}}</a></td>
 					<td>{{number_format tong_tien}} đ</td>
 					<td>{{trang_thai_don_hang}}</td>
 				</tr>
