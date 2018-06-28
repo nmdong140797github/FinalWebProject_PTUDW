@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/byProduct', (req, res) => {
     
-    // vd: http://localhost:3000/search/byProduct/canon?page=1
+    // vd: http://localhost:3000/search/byProduct/?productName=canon&priceStart=4000000&priceEnd=12000000&catId=3&producerId=1
 
     var productName = req.query.productName;
     var priceStart=req.query.priceStart;
