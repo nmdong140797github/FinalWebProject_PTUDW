@@ -1,32 +1,61 @@
-{{#if isLogged}}
+{{#if isLogged}} {{#if length}}
 <div class="row" style="background:#ffffff">
 	<div class="col-md-12">
 		<table class="table table-hover table-stripe">
 			<thead>
 				<tr>
-					{{!-- <th class="col-sm-4">STT</th> --}}
 					<th class="col-sm-2">Mã đơn hàng</th>
 					<th class="col-sm-2">Ngày đặt hàng</th>
-                    <th class="col-sm-4">Sản phẩm</th>
-                    <th class="col-sm-4">Tổng tiền</th>
+					<th class="col-sm-2">Sản phẩm</th>
+					<th class="col-sm-2">Tổng tiền</th>
 					<th class="col-sm-2">Trang thái đơn hàng</th>
 				</tr>
 			</thead>
 			<tbody id="list">
 				{{#each receipts}}
-				<tr>
-					<td><a style="color: rgb(0, 0, 255)" href="./detail/{{ma_ddh}}" >#000{{ma_ddh}}</a></td>
+				<tr class="{{statusRow}}">
+					<td>
+						<a style="color: rgb(0, 0, 255)" href="./detail/{{ma_ddh}}">#000{{ma_ddh}}</a>
+					</td>
 					<td>{{ngay_lap}}</td>
-                    <td><a style="color: rgb(4, 56, 20)" href="./detail/{{ma_ddh}}" >{{sample}} {{#if showMore}} và {{so_luong_hang}} sản phẩm khác {{/if}}</a></td>
+					<td>
+						<a style="color: rgb(4, 56, 20)" href="./detail/{{ma_ddh}}">{{sample}} {{#if showMore}} và {{so_luong_hang}} sản phẩm khác {{/if}}</a>
+					</td>
 					<td>{{number_format tong_tien}} đ</td>
 					<td>{{trang_thai_don_hang}}</td>
 				</tr>
-				{{/each}}
+				{{#if ../isAdmin}}
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>
+						<form style="display: inline-block" action="/receipt/update" method="post">
+							<input type="hidden" value="{{ma_ddh}}" name="maddh">
+							<input type="hidden" value="1" name="trang_thai">
+							<button type="submit" class="btn btn-success">Đã giao</button>
+						</form>
+						<form style="display: inline-block" action="/receipt/update" method="post">
+							<input type="hidden" value="{{ma_ddh}}" name="maddh">
+							<input type="hidden" value="0" name="trang_thai">
+							<button type="submit" class="btn btn-warning">Đang giao</button>
+						</form>
+						<form style="display: inline-block" action="/receipt/update" method="post">
+							<input type="hidden" value="{{ma_ddh}}" name="maddh">
+							<input type="hidden" value="2" name="trang_thai">
+							<button type="submit" class="btn btn-danger">Huỷ</button>
+						</form>
+					</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				{{/if}} {{/each}}
 			</tbody>
 		</table>
 	</div>
 </div>
 {{else}}
+<p style="text-align:center;font-size: 50px;">Hoá đơn trống</p>
+{{/if}} {{else}}
 <p style="text-align:center;font-size: 50px;">Bạn chưa đăng nhập</p>
 
 {{/if}}
