@@ -1,5 +1,52 @@
 {{#section 'title'}}
-	Thông tin cá nhân
+	Personal Imformation 
 {{/section}}
 
-Sinh viên tự thực hiện
+{{#with person}}
+{{ten_nd}}
+<form action="/customer/update" method="GET" role="form">    
+    <div class="control-group">
+        <label class="control-label" for="inputId">ID <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputId" name="id" type="text" value='{{ma_nd}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputName" name="name" type="string" value='{{ten_nd}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputEmail" name="email" type="string" value='{{email}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Date of Birth <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputDate" name="dob" type="date" value={{ngay_sinh}} readonly="true"> 
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputAddress">Address <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputAddress" name="address" type="string" value='{{{dia_chi}}}' readonly="true">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
+        <div class="controls">
+            <input id="inputTelephone" name="telephone" type="text" value={{sdt}} readonly="true">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-large btn-primary pull-right btn_add"> Sửa thông tin	</button>
+</form>
+{{/with}}

@@ -41,6 +41,9 @@ router.get('/update', (req, res) => {
         }
         res.render('customer/update',vm); 
     }
+    else{
+        res.render('customer/login'); 
+    }
 });
 
 router.post('/update', (req, res) => {
@@ -158,7 +161,29 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    res.render('customer/profile');
+    if(req.session.isLogged==true)
+	{
+        var date=new Date(req.session.user.ngay_sinh);
+        var dob=date.getFullYear()+'-';
+        dob+=parseInt(date.getMonth())>9?date.getMonth()+1:'0'+(date.getMonth()+1);
+        dob+='-';
+        dob+=parseInt(date.getDate())>9?date.getDate():'0'+date.getDate();
+        var user = {
+            ma_nd: req.session.user.ma_nd,
+            ten_nd: req.session.user.ten_nd,
+            email: req.session.user.email,
+            ngay_sinh: dob,
+            dia_chi:req.session.user.dia_chi,
+            sdt: req.session.user.sdt
+        };
+        var vm={
+            person: user
+        }
+        res.render('customer/profile');
+    }
+    else{
+        res.render('customer/login'); 
+    }
 });
 
 router.post('/logout',(req,res)=>{
