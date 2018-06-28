@@ -2,7 +2,8 @@ var express = require('express');
 var cartRepo = require('../repos/cartRepo'),
     productRepo = require('../repos/productRepo'),
     categoryRepo=require('../repos/categoryRepo'),
-    producerRepo = require('../repos/producerRepo');
+    producerRepo = require('../repos/producerRepo'),
+    receiptRepo = require('../repos/receiptRepo');
 var router = express.Router();
 
 
@@ -11,8 +12,9 @@ router.get('/', (req, res) => {
     var p1=productRepo.countProduct();
     var p2=producerRepo.countProducer();
     var p3=categoryRepo.countCategory();
+    var p4=receiptRepo.countReceipt();
 
-    Promise.all([p1, p2, p3]).then(([countProduct,countProducer,countCategory]) => {
+    Promise.all([p1, p2, p3, p4]).then(([countProduct,countProducer,countCategory, countReceipt]) => {
 
         res.locals.layoutVM={
             ...res.locals.layoutVM,
@@ -23,11 +25,11 @@ router.get('/', (req, res) => {
             isAdmin: req.session.isAdmin,
             numberCat: countCategory[0].total,
             numberProduct: countProduct[0].total,
-            numberProducer: countProducer[0].total
+            numberProducer: countProducer[0].total,
+            numberReceipt: countReceipt[0].total
         };
         res.render('admin/admin_dashboard');
     });
-
 });
 
 module.exports = router;

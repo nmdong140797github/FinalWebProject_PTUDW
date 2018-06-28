@@ -79,6 +79,11 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" style="position: absolute;z-index:20">
+									{{#if layoutVM.isAdmin}}
+									<li>
+										<a href="/admin">Admin Dashboard</a>
+									</li>
+									{{/if}}
 									<li>
 										<a href="/receipt/personal">Lịch sử mua hàng</a>
 									</li>

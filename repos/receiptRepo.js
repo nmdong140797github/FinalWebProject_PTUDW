@@ -15,6 +15,16 @@ exports.single = (id) => {
         });
     });
 }
+exports.updateReceipt = (ma_ddh, trang_thai_don_hang) => {
+    var sql = `update don_dat_hang set trang_thai_don_hang=${trang_thai_don_hang} where ma_ddh =${ma_ddh}`;
+    return db.save(sql);
+}
+
+
+exports.countReceipt=()=>{
+    var sql = `select count(*) as total from don_dat_hang `;
+    return db.load(sql);
+}
 
 exports.addReceipt = (receipt) => {
     console.log('receipt', receipt);
@@ -30,6 +40,20 @@ exports.addCTReceipt = (camera, ma_ddh) => {
 exports.getPersonalReceipt = (ma_nd) => {
     return new Promise((resolve, reject) => {
         var sql = `select * from don_dat_hang where ma_nd = ${ma_nd}`;
+        db.load(sql).then(rows => {
+            if (rows.length === 0) {
+                resolve(null);
+            } else {
+                resolve(rows);
+            }
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
+exports.getAllReceipt = () => {
+    return new Promise((resolve, reject) => {
+        var sql = `select * from don_dat_hang`;
         db.load(sql).then(rows => {
             if (rows.length === 0) {
                 resolve(null);
