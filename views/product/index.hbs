@@ -2,6 +2,12 @@
 	Product List
 {{/section}}
 
+{{#section 'js'}}
+	<script type="text/javascript">
+		
+	</script>
+{{/section}}
+
 {{#if noProducts}}
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
@@ -36,6 +42,47 @@
 					</a>
 					<br>
 					<a class="btn btn-primary" href="#">{{gia}} Đ</a>
+
+                    {{#if ../isAdmin}}
+                    <button style="padding:5px; margin: 5px" type="submit"  class="btn btn-large btn-primary pull-right btn_add">
+						<a href="/product/edit/?id={{ma_may_anh}}">Edit
+							<i class="icon-edit"></i>
+						</a>
+					</button>
+
+					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-primary pull-right btn_add">
+						<a href="#delete{{ma_may_anh}}" role="button" data-toggle="modal" >Delete
+							<i class="icon-remove-sign"></i>
+						</a><br>
+					</button>
+
+					<div id="delete{{ma_may_anh}}" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h3>Delete</h3>
+						</div>
+						<div class="modal-body">
+							<form action="/product/delete" method="POST" class="form-horizontal loginFrm" role="form" >
+								<div class="control-group">
+									<label class="control-label" for="inputId">ID <sup>*</sup></label>
+									<div class="controls">
+										<input id="inputId" name="CatId" type="text" value='{{ma_loai}}' readonly="true">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="inputName">Name <sup>*</sup></label>
+									<div class="controls">
+										<input id="inputName" name="CatName" type="string" value='{{ten_loai}}'>
+									</div>
+								</div>
+								
+								<button type="submit" class="btn btn-success" >Delete</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</form>
+						</div>
+					</div>
+                    {{/if}}
 				</h4>
 			</div>
 		</div>

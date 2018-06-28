@@ -33,15 +33,17 @@ router.get('/',(req, res) => {
         for (i = 1; i <= nPages; i++) {
             numbers.push({
                 value: i,
-                isCurPage: i === +page
+                isCurPage: i === +page,
             });
         }
 
         var vm = {
             products: pRows,
             noProducts: pRows.length === 0,
-            page_numbers: numbers
+            page_numbers: numbers,
+            isAdmin: req.session.isAdmin
         };
+        console.log('đây là của trang product'+vm.isAdmin);
         res.render('product/index', vm);
     }).catch(error=>{
         res.end('fail');

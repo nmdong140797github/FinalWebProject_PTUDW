@@ -9,7 +9,8 @@
         function theFunction (link) {
             alert(window.location.href+link);
             
-            window.location.href =window.location.href+link;
+            var url =window.location.href+link;
+            return url;
         }
 	</script>
 {{/section}} 
