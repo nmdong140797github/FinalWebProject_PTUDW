@@ -9,7 +9,7 @@ var router = express.Router();
 
 
 router.get('/', (req, res) => {
-    var p1=productRepo.countProduct();
+    var p1=productRepo.countAll();
     var p2=producerRepo.countProducer();
     var p3=categoryRepo.countCategory();
     var p4=receiptRepo.countReceipt();

@@ -15,6 +15,12 @@ exports.single = (id) => {
         });
     });
 }
+
+exports.getUserId=(ma_ddh)=>{
+    var sql = `select * from don_dat_hang where ma_ddh = ${ma_ddh}`;
+    return db.load(sql);
+}
+
 exports.updateReceipt = (ma_ddh, trang_thai_don_hang) => {
     var sql = `update don_dat_hang set trang_thai_don_hang=${trang_thai_don_hang} where ma_ddh =${ma_ddh}`;
     return db.save(sql);
