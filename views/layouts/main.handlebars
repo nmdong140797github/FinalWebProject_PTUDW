@@ -271,7 +271,7 @@
 							<ul>
 								{{#each layoutVM.categories}}
 								<li class="list-group-item">
-									<a class="subMenu item" href="?catId={{ma_loai}}">
+									<a class="subMenu item" href="" onclick='return theFunction("&catId={{ma_loai}}");'>
 										<i class="icon-chevron-right"></i>
 										{{ten_loai}}
 									</a>
@@ -299,14 +299,12 @@
 							<a href="/category">LOẠI MÁY ẢNH</a>
 							<ul class="menu1">
 								{{#each layoutVM.categories}}
-
 								<li class="subMenu open">
-									<a href="/product/byCat/{{ma_loai}}">
+									<a class="subMenu item" href="/product/byCat/{{ma_loai}}">
 										<i class="icon-chevron-right"></i>
 										{{ten_loai}}
 									</a>
 								</li>
-
 								{{/each}}
 							</ul>
 						</li>
@@ -315,7 +313,7 @@
 							<ul class="menu2">
 								{{#each layoutVM.producers}}
 								<li class="subMenu open">
-									<a href="/product/byProducer/{{ma_nsx}}">
+									<a class="subMenu item" href="/product/byProducer/{{ma_nsx}}">
 										<i class="icon-chevron-right"></i>
 										{{ten_nsx}}
 									</a>

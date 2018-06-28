@@ -2,10 +2,15 @@
 
 {{#section 'js'}}    
     <script type="text/javascript">
-		$('.subMenu item').on('click', function() {
-		    alert('dia chi'+$(location).attr('href')+this.attr("href"));
-               window.location.replace($(location).attr('href')+this.attr("href"));
-		});
+		//$('.subMenu item').on('click', function() {
+		    //alert('dia chi'+$(location).attr('href')+this.attr("href"));
+              // window.location.replace($(location).attr('href')+this.attr("href"));
+		//});
+        function theFunction (link) {
+            alert(window.location.href+link);
+            
+            window.location.href =window.location.href+link;
+        }
 	</script>
 {{/section}} 
 
