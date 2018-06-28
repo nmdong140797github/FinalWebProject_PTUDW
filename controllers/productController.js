@@ -254,11 +254,13 @@ router.get("/byProducer/:producerId", (req, res) => {
 router.get("/detail/:proId", (req, res) => {
   var proId = req.params.proId;
   var p1 = productRepo.single(proId);
-  var p2 = productRepo.DanhSachSanPhamBanChay(3);
+  var p2 = productRepo.load5ProductByCat(proId);
+  var p3 = productRepo.load5ProductByProducer(proId);
 
-  Promise.all([p1, p2]).then(([row1, row2]) => {
+  Promise.all([p1, p2, p3]).then(([row1, row2, row3]) => {
         var vm = {
           itemCungLoai: row2,
+          itemCungNSX: row3,
           product: row1[0],
           noProduct: row1.length === 0,
         };
