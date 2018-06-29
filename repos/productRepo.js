@@ -86,13 +86,13 @@ exports.update =  (c) =>{
 
 exports.load5ProductByCat = (id)=>{
     var sql=`select * from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh!=${id} and ma_loai=
-    (select ma_loai from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 3 offset 0`;
+    (select ma_loai from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 6 offset 0`;
     return db.load(sql);
 }
 
 exports.load5ProductByProducer = (id)=>{
     var sql=`select * from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh!=${id} and ma_loai=
-    (select ma_nsx from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 3 offset 0`;
+    (select ma_nsx from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 6 offset 0`;
     return db.load(sql);
 }
 
