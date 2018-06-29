@@ -19,12 +19,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/add', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         res.render('category/add');
-    }else{
-        res.render('error/index');
-    }
+    
 });
 
 router.post('/add', (req, res) => {
@@ -39,8 +36,7 @@ router.post('/add', (req, res) => {
 });
 
 router.get('/edit', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         categoryRepo.single(req.query.id).then(c => {
             // console.log(c);
             var vm = {
@@ -50,9 +46,7 @@ router.get('/edit', (req, res) => {
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
 });
 
 router.post('/edit',(req, res)=>{
@@ -67,28 +61,22 @@ router.post('/edit',(req, res)=>{
 });
 
 router.get('/delete', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         var vm = {
             CatId: req.query.id
         }
         res.render('category/delete', vm);
-    }else{
-        res.render('error/index');
-    }
+    
 });
 
 router.post('/delete', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         categoryRepo.delete(req.body.CatId).then(value => {
             res.redirect('/category');
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
 });
 
 module.exports = router;

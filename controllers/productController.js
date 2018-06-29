@@ -51,8 +51,7 @@ router.get('/',(req, res) => {
 });
 
 router.get('/add', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         var p1=categoryRepo.loadAll();
         var p2=producerRepo.loadAll();
         var p3=supplierRepo.loadAll();
@@ -66,9 +65,7 @@ router.get('/add', (req, res) => {
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.end('BẠN CÓ THỂ THỰC HIỆN TÁC VỤ NÀY');
-    }
+    
 });
 
 router.post('/add', (req, res) => {
@@ -101,8 +98,7 @@ function convert2FormatYYYYmmdd(date) {
 // thực hiện nhiều request
 router.get('/edit', (req, res) => {
 
-    if(req.session.isAdmin==true)
-    {
+    
         var p1=categoryRepo.loadAll();
         var p2=producerRepo.loadAll();
         var p3=supplierRepo.loadAll();
@@ -120,9 +116,7 @@ router.get('/edit', (req, res) => {
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 
@@ -141,23 +135,19 @@ router.post("/edit", (req, res) => {
 });
 
 router.get('/delete', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         productRepo.single(req.query.id).then(value=>{
             var product=value;
             res.render('product/delete',product);
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 
 router.post('/delete',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         productRepo.delete(req.body.ProductId).then(value =>{
             // thông báo đã xóa thành công
             var vm = {
@@ -167,9 +157,7 @@ router.post('/delete',(req,res)=>{
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
 
 });
 
@@ -266,9 +254,13 @@ router.get("/detail/:proId", (req, res) => {
           product: row1[0],
           noProduct: row1.length === 0,
         };
+        var number=vm.product.so_luong_xem;
+        number++;
+        productRepo.updateView(vm.product.ma_may_anh,number);
         res.render("product/detail", vm);
     })
     .catch(error => {
+      console('fail');
       res.end("fail");
     });
 });

@@ -95,3 +95,13 @@ exports.load5ProductByProducer = (id)=>{
     (select ma_nsx from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 3 offset 0`;
     return db.load(sql);
 }
+
+exports.loadView=(id)=>{
+    var sql=`select so_luong_xem as view from may_anh where ma_may_anh=${id}`;
+    return db.load(sql);
+}
+
+exports.updateView=(id, number)=>{
+    var sql=`update may_anh set so_luong_xem=${number} where ma_may_anh=${id} `;
+    return db.save(sql);
+}
