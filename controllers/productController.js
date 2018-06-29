@@ -253,6 +253,7 @@ router.get("/detail/:proId", (req, res) => {
           itemCungNSX: row3,
           product: row1[0],
           noProduct: row1.length === 0,
+          isAdmin: req.session.isAdmin
         };
         var number=vm.product.so_luong_xem;
         number++;

@@ -60,6 +60,7 @@
 
             <div class="btn-toolbar">
                 <div class="btn-group">
+                    {{#if isAdmin}}
                     <span class="btn">
                         <a href="/product/edit/?id={{ma_may_anh}}">
                             <i class="icon-edit"></i>
@@ -102,6 +103,7 @@
                             </div>
                         </div>
                     </span>
+                    {{/if}}
                     <span class="btn">
                         <i class="icon-zoom-in"></i>
                     </span>
