@@ -1,12 +1,57 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{{#if layoutVM.isAdmin}}
+<div class="container-fluid">
+    <div class="col col-md-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            QUẢN LÝ SẢN PHẨM</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">{{layoutVM.numberProduct}}</span> <a href="/home">Sản phẩm</a></li>
+                        <li class="list-group-item">
+                            <span class="badge">{{layoutVM.numberCat}}</span> <a href="/category">Loại sản phẩm</a></li>
+                        <li class="list-group-item">
+                            <span class="badge">{{layoutVM.numberProducer}}</span> <a href="/producer">Nhà sản xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            QUẢN LÝ ĐƠN HÀNG</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">{{layoutVM.numberReceipt}}</span> <a href="/admin/receipt">Đơn hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-9">
+        <div class="row">
+{{/if}}
 {{#if isLogged}} {{#if length}}
 <div class="row" style="background:#ffffff">
 	<div class="col-md-12">
 		<table class="table table-hover table-stripe">
 			<thead>
 				<tr>
-					<th class="col-sm-2">Mã đơn hàng</th>
+					<th class="col-sm-1">Mã đơn hàng</th>
 					<th class="col-sm-2">Ngày đặt hàng</th>
-					<th class="col-sm-2">Sản phẩm</th>
+					<th class="col-sm-5">Sản phẩm</th>
 					<th class="col-sm-2">Tổng tiền</th>
 					<th class="col-sm-2">Trang thái đơn hàng</th>
 				</tr>

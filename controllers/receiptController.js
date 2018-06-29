@@ -157,35 +157,6 @@ router.get('/detail/:receiptId', (req, res) => {
     });
 });
 
-router.get('/admin', (req, res) => {
-    receiptRepo.getAllReceipt().then(result => {
-        var receipts = [];
-        // console.log('results', result);
-        for (var i = result.length - 1; i >= 0; i--) {
-            var receipt = {
-                ma_ddh: result[i].ma_ddh,
-                ngay_lap: result[i].ngay_lap.toISOString().substring(0, 10),
-                sample: result[i].sample,
-                tong_tien: result[i].tong_tien,
-                so_luong_hang: result[i].so_luong_hang - 1,
-                showMore: result[i].so_luong_hang > 1 ? true : false,
-                trang_thai_don_hang: result[i].trang_thai_don_hang == 0 ? 'Đang giao hàng' : (result[i].trang_thai_don_hang == 2 ? 'Đã huỷ' : 'Giao hàng thành công'),
-                statusRow: result[i].trang_thai_don_hang == 0 ? 'warning' : (result[i].trang_thai_don_hang == 2 ? 'error' : 'success'),
-            }
-            receipts.push(receipt);
-        }
-
-        console.log('receipts', receipts);
-        var vm = {
-            receipts: receipts,
-            isLogged: req.session.isLogged,
-            isAdmin: req.session.isAdmin,
-            length: receipts && receipts.length > 0 ? true : false
-        };
-        res.render('receipt/personal', vm);
-    });
-});
-
 router.post('/update', (req, res) => {
     receiptRepo.updateReceipt(req.body.maddh, req.body.trang_thai);
     res.redirect('./admin');
