@@ -264,14 +264,14 @@
 					</div>
 					{{/if}} {{!-- Đoạn lệnh này dùng để kiểm tra điều kiện cho chức năng search + nếu đang ở màn hình search thì các đường dẫn
 					trong menu sẽ là tham số + nếu không phải màn hình search thì sẽ là đường dẫn danh sách sản phẩm tương ứng --}} 
-					{{#if isSearch}}
+					{{!-- {{#if isSearch}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="/category">LOẠI MÁY ẢNH</a>
 							<ul>
 								{{#each layoutVM.categories}}
 								<li class="list-group-item">
-									<a class="subMenu item" href="" onclick='return theFunction("&catId={{ma_loai}}");'>
+									<a class="subMenu item" href="&catId={{ma_loai}}" onclick=''>
 										<i class="icon-chevron-right"></i>
 										{{ten_loai}}
 									</a>
@@ -284,7 +284,7 @@
 							<ul>
 								{{#each layoutVM.producers}}
 								<li class="subMenu open">
-									<a class="subMenu item" href="" onclick='window.location.href= theFunction("&producerId={{ma_nsx}}");'>
+									<a class="subMenu item" href="" onclick='window.location.href= "theFunction("&producerId={{ma_nsx}}");'>
 										<i class="icon-chevron-right"></i>
 										{{ten_nsx}}
 									</a>
@@ -293,7 +293,7 @@
 							</ul>
 						</li>
 					</ul>
-					{{else}}
+					{{else}} --}}
 					<ul id="sideManu" class="nav nav-tabs nav-stacked">
 						<li class="subMenu open">
 							<a href="/category">LOẠI MÁY ẢNH</a>
@@ -322,7 +322,7 @@
 							</ul>
 						</li>
 					</ul>
-					{{/if}}
+					{{!-- {{/if}} --}}
 
 					<br/>
 					<br/>
