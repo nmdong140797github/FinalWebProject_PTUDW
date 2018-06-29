@@ -7,7 +7,8 @@ var router = express.Router();
 router.get('/',(req,res)=>{
     producerRepo.loadAll().then(rows=>{
         var vm = {
-            producers: rows
+            producers: rows,
+            isAdmin: req.session.isAdmin
         };
         //console.log(vm);
         res.render('producer/index',vm);

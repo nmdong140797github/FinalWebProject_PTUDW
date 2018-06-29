@@ -9,7 +9,8 @@ var router = express.Router();
 router.get('/', (req, res) => {
     categoryRepo.loadAll().then(rows => {
         var vm = {
-            categories: rows
+            categories: rows,
+            isAdmin: req.session.isAdmin
         };
         res.render('category/index', vm);
     }).catch(error=>{

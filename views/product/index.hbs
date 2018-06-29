@@ -28,7 +28,7 @@
 	<ul class="thumbnails">		
 	{{#each products}}
 	<li class="span3">
-		<div class="thumbnail">
+		<div class="thumbnail" style="height:360px">
 			<a href="/product/detail/{{ma_may_anh}}">
 				<img src="/web/image/{{duong_dan}}" alt="">
 			</a>
@@ -42,18 +42,17 @@
 					<a class="btn" href="/product/detail/{{ma_may_anh}}">
 						<i class="icon-zoom-in"></i>
 					</a>
-					<br>
-					<a class="btn btn-primary" href="#">{{gia}} Đ</a>
+					<a class="btn btn-primary" href="#">{{gia}} Đ</a> </br>
 
                     {{#if ../isAdmin}}
-                    <button style="padding:5px; margin: 5px" type="submit"  class="btn btn-large btn-primary pull-right btn_add">
+                    <button style="padding:5px; margin: 5px; margin-right:32px" type="submit"  class="btn btn-large btn-info pull-right btn_add">
 						<a href="/product/edit/?id={{ma_may_anh}}">Edit
 							<i class="icon-edit"></i>
 						</a>
 					</button>
 
-					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-primary pull-right btn_add">
-						<a href="#delete{{ma_may_anh}}" role="button" data-toggle="modal" >Delete
+					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-danger pull-right btn_add">
+						<a href="#delete{{ma_may_anh}}" role="button" data-toggle="modal" style="color:white;text-align:center">Delete
 							<i class="icon-remove-sign"></i>
 						</a><br>
 					</button>

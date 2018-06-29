@@ -64,7 +64,8 @@ router.get('/receipt', (req, res) => {
             receipts: receipts,
             isLogged: req.session.isLogged,
             isAdmin: req.session.isAdmin,
-            length: receipts && receipts.length > 0 ? true : false
+            length: receipts && receipts.length > 0 ? true : false,
+            isAdminDashboard: true
         };
         res.locals.layoutVM = {
             ...res.locals.layoutVM,
@@ -82,6 +83,7 @@ router.get('/receipt', (req, res) => {
         res.render('receipt/personal', vm);
     });
 });
+
 
 
 module.exports = router;
