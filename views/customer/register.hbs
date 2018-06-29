@@ -14,28 +14,24 @@
 {{/if}}
 
 <script type="text/javascript">
-    
-    var validate = function () {
-        if ($('#txtEmail').val().length === 0) {
-            $('#email_error').html("Email không được để trống")
-            return false;
-        }
-
-        if ($('#txtPWD').val().length === 0) {
-            $('#password_error').html("Password không được để trống")
-            return false;
-        }
-
-        if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
-            $('#confirm_error').html("Password không trung nhau")
-            return false;
-        }
-
-        return true;
-    }
+ //hàm kiểm tra lỗi
+ function kiemTraLoi(){
+    if ($('#txtEmail').val().length === 0) {
+                $('#email_error').html(`<P style="color: red">email không được để trống</P>`)
+            }else if ($('#txtPWD').val().length === 0) {
+                $('#password_error').html(`<P style="color: red">Password không được để trống</P>`)
+            }else if($('#txtPWD').val() !== $('#txtCPWD').val()) {
+                $('#confirm_error').html(`<P style="color: red">Password không trung nhau</P>`)
+            }else{
+                $('#DK').removeAttr("disabled");
+            }
+ }
+//Xử lí captcha
+    function enableRegisterButton() {
+        kiemTraLoi();
+}
 </script> {{/section}}
-
-<form action="" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
+<form id="frmRegister" action="register/check" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
     <div class="form-group">
         <label for="txtName" class="col-sm-2 control-label">Họ tên</label>
         <div class="col-sm-4">
@@ -106,9 +102,10 @@
     </div>
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
-            <button type="submit" class="btn btn-success">
+            <button id="DK" type="submit" show class="btn btn-success" disabled="">
                 Đăng ký
             </button>
         </div>
     </div>
+     <div class="g-recaptcha" data-sitekey="6LdBOmEUAAAAAM29Vxje-SgOdRpXwLt1ijYK5Sh0" data-callback="enableRegisterButton"></div>
 </form>

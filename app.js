@@ -23,6 +23,8 @@ adminController = require('./controllers/adminController');
 cartController = require('./controllers/cartController');
 //receipt
 receiptController = require('./controllers/receiptController');
+//register
+register=require('./server/handle_register');
 
 var app = express();
 
@@ -91,8 +93,10 @@ app.use('/customer', customerController);
 app.use('/search', searchController);
 app.use('/producer', producerController);
 app.use('/admin', adminController);
-app.use('/cart', cartController);
+app.use('/cart',restrict, cartController);
+app.use('/cart/add',restrict, cartController);
 app.use('/receipt', receiptController);
+app.use('/customer/register',register);
 
 
 app.use(handle404MDW);

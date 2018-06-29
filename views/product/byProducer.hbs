@@ -38,7 +38,17 @@
 					<a class="btn" href="/product/detail/{{ma_may_anh}}">
 						<i class="icon-zoom-in"></i>
 					</a>
-					
+					<a class="btn btn-link" style="height: 30px;width: 70px">
+									<form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
+													<input name="proId" type="hidden" value="{{ma_may_anh}}">
+													<input id="txtQ" name="quantity" type="hidden" class="form-control" placeholder="Slg" value="1">
+													<span class="input-group-btn">
+														<button class="btn btn-primary" type="submit">
+															<span class="glyphicons glyphicons-cart-in" aria-hidden="true">Add to</span>
+														</button>
+													</span>
+									</form>
+								</a>
 					<br>
 					<a class="btn btn-primary" href="#">{{gia}} Đ</a>
 				</h4>
