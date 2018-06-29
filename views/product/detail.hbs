@@ -37,7 +37,7 @@
         <li class="active">Product Details</li>
     </ul>
     <div class="row">
-        <div id="gallery" class="span3">
+            <div id="gallery" class="span3">
             {{#with product}}
             <a href="/web/image/{{duong_dan}}" title="">
                 <img src="/web/image/{{duong_dan}}" style="width:100%" alt="">
@@ -118,10 +118,10 @@
             </div>
         </div>
 
+        
+
         <div class="span6">
             <h3>{{ten_may_anh}} </h3>
-            {{!--
-            <small>- (14MP, 18x Optical Zoom) 3-inch LCD</small> --}}
             <hr class="soft"> {{{mo_ta}}}
 
         </div>
@@ -133,9 +133,41 @@
         <form class="form-horizontal qtyFrm" method="post" action="/cart/add">
             <input name="proId" value="{{product.ma_may_anh}}" type="hidden">
             <div class="control-group">
-                <label class="control-label">
-                    <span>{{number_format product.gia}} đ</span>
-                </label>
+                {{!-- <label class="control-label">
+                    <span>Số lượng: {{number_format product.so_luong}}</span><br/>
+                    <span>Xuất xứ: {{product.xuat_xu}}</span><br/>
+                    <span>Số lượt xem: {{number_format product.so_luong_xem}}</span><br/>
+                    <span>GIÁ BÁN: {{number_format product.gia}} đ</span><br/>
+                </label> --}}
+
+                <h4>THÔNG TIN CHI TIẾT</h4>
+            <div class="info-detail">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th style="color:blue">SỐ LƯỢNG CÒN LẠI</th>
+                                    <td style="font-weight:bold">{{number_format product.so_luong}}</td>
+                                </tr>
+                                <tr>
+                                    <th style="color:blue">XUẤT XỨ</th>
+                                    <td style="font-weight:bold">{{product.xuat_xu}}</td>
+                                </tr>
+                                <tr>
+                                    <th style="color:blue">SỐ LƯỢT XEM</th>
+                                    <td style="font-weight:bold"    >{{number_format product.so_luong_xem}} (lượt)</td>
+                                </tr>
+                                <tr>
+                                    <th style="color:blue">GIÁ BÁN</th>
+                                    <td style="color:red; font-size:20pt">{{number_format product.gia}} Đ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                 {{#if layoutVM.isLogged}}
                 <div class="controls">
                     <input id ="txtQuantity" class="Quantity" placeholder="" type="number" name="quantity" value="1">
@@ -173,10 +205,30 @@
                     </li>
                     {{/each}}
                 </ul>
-                {{!--
-                <li class="active">
-                    <a href="#profile" data-toggle="tab">Related Products</a>
-                </li> --}}
+                
+                <h4>CÁC SẢN PHẨM CÙNG NHÀ SẢN XUẤT </h4>
+
+                <ul class="thumbnails">
+                    {{#each itemCungNSX}}
+                    <li class="span3">
+                        <div class="thumbnail" style="height:360px">
+                            <a href="../product/detail/{{ma_may_anh}}">
+                                <img src="/imgs/{{duong_dan}}" alt="" />
+                            </a>
+                            <div class="caption">
+                                <h5>{{ten_may_anh}}</h5>
+                                <h4 style="text-align:center">
+                                    <a class="btn" href="../product/detail/{{ma_may_anh}}">
+                                        <i class="icon-zoom-in"></i>
+                                    </a>
+                                    </br>
+                                    <a class="btn btn-primary" href="#">{{number_format gia}} đ</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade" id="profile">

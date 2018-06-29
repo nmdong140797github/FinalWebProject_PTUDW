@@ -33,15 +33,17 @@ router.get('/',(req, res) => {
         for (i = 1; i <= nPages; i++) {
             numbers.push({
                 value: i,
-                isCurPage: i === +page
+                isCurPage: i === +page,
             });
         }
 
         var vm = {
             products: pRows,
             noProducts: pRows.length === 0,
-            page_numbers: numbers
+            page_numbers: numbers,
+            isAdmin: req.session.isAdmin
         };
+        console.log('đây là của trang product'+vm.isAdmin);
         res.render('product/index', vm);
     }).catch(error=>{
         res.end('fail');
@@ -49,8 +51,7 @@ router.get('/',(req, res) => {
 });
 
 router.get('/add', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         var p1=categoryRepo.loadAll();
         var p2=producerRepo.loadAll();
         var p3=supplierRepo.loadAll();
@@ -64,9 +65,7 @@ router.get('/add', (req, res) => {
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.end('BẠN CÓ THỂ THỰC HIỆN TÁC VỤ NÀY');
-    }
+    
 });
 
 router.post('/add', (req, res) => {
@@ -99,8 +98,7 @@ function convert2FormatYYYYmmdd(date) {
 // thực hiện nhiều request
 router.get('/edit', (req, res) => {
 
-    if(req.session.isAdmin==true)
-    {
+    
         var p1=categoryRepo.loadAll();
         var p2=producerRepo.loadAll();
         var p3=supplierRepo.loadAll();
@@ -118,9 +116,7 @@ router.get('/edit', (req, res) => {
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 
@@ -139,23 +135,19 @@ router.post("/edit", (req, res) => {
 });
 
 router.get('/delete', (req, res) => {
-    if(req.session.isAdmin==true)
-    {
+    
         productRepo.single(req.query.id).then(value=>{
             var product=value;
             res.render('product/delete',product);
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 
 router.post('/delete',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         productRepo.delete(req.body.ProductId).then(value =>{
             // thông báo đã xóa thành công
             var vm = {
@@ -165,9 +157,7 @@ router.post('/delete',(req,res)=>{
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
 
 });
 
@@ -254,17 +244,23 @@ router.get("/byProducer/:producerId", (req, res) => {
 router.get("/detail/:proId", (req, res) => {
   var proId = req.params.proId;
   var p1 = productRepo.single(proId);
-  var p2 = productRepo.DanhSachSanPhamBanChay(3);
+  var p2 = productRepo.load5ProductByCat(proId);
+  var p3 = productRepo.load5ProductByProducer(proId);
 
-  Promise.all([p1, p2]).then(([row1, row2]) => {
+  Promise.all([p1, p2, p3]).then(([row1, row2, row3]) => {
         var vm = {
           itemCungLoai: row2,
+          itemCungNSX: row3,
           product: row1[0],
           noProduct: row1.length === 0,
         };
+        var number=vm.product.so_luong_xem;
+        number++;
+        productRepo.updateView(vm.product.ma_may_anh,number);
         res.render("product/detail", vm);
     })
     .catch(error => {
+      console('fail');
       res.end("fail");
     });
 });

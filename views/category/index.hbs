@@ -20,25 +20,26 @@
 	<ul class="thumbnails">		
 	{{#each categories}}
 	<li class="span3">
-		<div class="thumbnail">
+		<div class="thumbnail" style="height:280px">
 			<a href="/product/byCat/{{ma_loai}}">
 				<img style="width: 260px; height:180px"src="/web/image/{{ma_loai}}_loai.jpg" alt="">
 			</a>
 			<div class="caption">
 				<h5>{{ten_loai}}</h5>
 				
+				{{#if ../isAdmin}}
 				<h4 style="text-align:center">
 					{{!-- <a class="btn" href="/product/detail/{{ma_may_anh}}">
 						<i class="icon-zoom-in"></i>
 					</a> --}}
-					<button style="padding:5px; margin: 5px" type="submit"  class="btn btn-large btn-primary pull-right btn_add">
+					<button style="padding:5px; margin: 5px; margin-right:32px" type="submit"  class="btn btn-large btn-success pull-right btn_add">
 						<a href="/category/edit/?id={{ma_loai}}">Edit
 							<i class="icon-edit"></i>
 						</a>
 					</button>
 
-					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-primary pull-right btn_add">
-						<a href="#delete{{ma_loai}}" role="button" data-toggle="modal" >Delete
+					<button style="padding:5px; margin: 5px" type="submit"   class="btn btn-large btn-danger pull-right btn_add">
+						<a href="#delete{{ma_loai}}" role="button" data-toggle="modal" style="color:white;text-align:center">Delete
 							<i class="icon-remove-sign"></i>
 						</a><br>
 					</button>
@@ -70,6 +71,7 @@
 						</div>
 					</div>
 				</h4>
+				{{/if}}
 			</div>
 		</div>
 	</li>

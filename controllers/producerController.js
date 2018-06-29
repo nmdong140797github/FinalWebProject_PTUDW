@@ -7,7 +7,8 @@ var router = express.Router();
 router.get('/',(req,res)=>{
     producerRepo.loadAll().then(rows=>{
         var vm = {
-            producers: rows
+            producers: rows,
+            isAdmin: req.session.isAdmin
         };
         //console.log(vm);
         res.render('producer/index',vm);
@@ -18,12 +19,9 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/add',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         res.render('producer/add')
-    }else{
-        res.render('error/index');
-    }
+    
 });
 
 router.post('/add',(req,res)=>{
@@ -39,23 +37,19 @@ router.post('/add',(req,res)=>{
 });
 
 router.get('/delete',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         producerRepo.single(req.query.id).then(value=>{
             var producer=value;
             res.render('producer/delete',product);
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 
 router.post('/delete',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         producerRepo.delete(req.body.ProducerId).then(value =>{
             // thông báo đã xóa thành công
             var vm = {
@@ -65,15 +59,12 @@ router.post('/delete',(req,res)=>{
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
 
 });
 
 router.get('/edit',(req,res)=>{
-    if(req.session.isAdmin==true)
-    {
+    
         producerRepo.single(req.query.id).then(value=>{
             var vm={
                 producer: value[0]
@@ -82,9 +73,7 @@ router.get('/edit',(req,res)=>{
         }).catch(error=>{
             res.end('fail');
         });
-    }else{
-        res.render('error/index');
-    }
+    
     
 });
 

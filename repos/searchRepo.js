@@ -21,7 +21,7 @@ exports.findResult = (tim_kiem,gia_bat_dau,gia_ket_thuc,loai, nha_san_xuat, offs
 
     if(loai)
     {
-        sql+=` and ma_loai =${loai} )`;
+        sql+=` and ma_loai =${loai} `;
     }
 
     if(nha_san_xuat)
@@ -49,7 +49,7 @@ exports.countByProduct = (tim_kiem,gia_bat_dau,gia_ket_thuc,loai, nha_san_xuat, 
 
     if(loai)
     {
-        sql+=` and ma_loai =${loai} )`;
+        sql+=` and ma_loai =${loai} `;
     }
 
     if(nha_san_xuat)

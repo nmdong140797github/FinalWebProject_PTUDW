@@ -83,3 +83,25 @@ exports.update =  (c) =>{
     var sql=`UPDATE may_anh SET ten_may_anh = '${c.ProductName}', gia = ${c.ProductPrice}, duong_dan='${c.ProductLink}', ma_loai=${c.ProductCat},  ma_ncc=${c.ProductSupplier}, ma_nsx=${c.ProductProducer}, so_luong=${c.ProductNumber}, ngay_nhap='${c.ProductDate}', mo_ta='${c.ProductDescribe}', xuat_xu='${c.ProductOrigin}' WHERE ma_may_anh = ${c.ProductId}`;
     return db.save(sql);
 }
+
+exports.load5ProductByCat = (id)=>{
+    var sql=`select * from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh!=${id} and ma_loai=
+    (select ma_loai from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 3 offset 0`;
+    return db.load(sql);
+}
+
+exports.load5ProductByProducer = (id)=>{
+    var sql=`select * from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh!=${id} and ma_loai=
+    (select ma_nsx from heroku_7aaf2925f12f4f6.may_anh where ma_may_anh=${id}) limit 3 offset 0`;
+    return db.load(sql);
+}
+
+exports.loadView=(id)=>{
+    var sql=`select so_luong_xem as view from may_anh where ma_may_anh=${id}`;
+    return db.load(sql);
+}
+
+exports.updateView=(id, number)=>{
+    var sql=`update may_anh set so_luong_xem=${number} where ma_may_anh=${id} `;
+    return db.save(sql);
+}
