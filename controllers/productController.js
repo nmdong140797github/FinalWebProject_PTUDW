@@ -266,9 +266,13 @@ router.get("/detail/:proId", (req, res) => {
           product: row1[0],
           noProduct: row1.length === 0,
         };
+        var number=vm.product.so_luong_xem;
+        number++;
+        productRepo.updateView(vm.product.ma_may_anh,number);
         res.render("product/detail", vm);
     })
     .catch(error => {
+      console('fail');
       res.end("fail");
     });
 });
