@@ -1,3 +1,4 @@
+{{#if layoutVM.isAdmin}}
 {{#section 'title'}}
 	Add Category
 {{/section}}
@@ -37,3 +38,11 @@
         </div>
     </form>
 </div>
+{{else}}
+<p style="text-align:center;font-size: 50px;">BẠN KHÔNG CÓ QUYỀN TRUY CẬP TRANG NÀY</p>
+<img style="display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;" 
+    src="https://vignette.wikia.nocookie.net/hive/images/9/9d/Spoiler.png/revision/latest?cb=20140924212820">
+{{/if}}
