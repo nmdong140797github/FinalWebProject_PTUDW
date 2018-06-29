@@ -5,6 +5,8 @@ let request = require('request');    // Sử dụng thư viện request để g�
 //Xử lí captcha
 var router = express.Router();
 router.post('/check', (req, res) => {
+    res.setHeader("Content-Type", "app/json");
+    var check=false;
     var data=req.body;
     var captchaResponse = req.body['g-recaptcha-response'];
     if (captchaResponse) {
@@ -24,23 +26,44 @@ router.post('/check', (req, res) => {
             }
     
             if (!error && response.statusCode == 200 && body.success) {
-                console.log(this.method);
-                console.log(this.body);
-                res.render(req.headers.referer);
+                let options = {  
+                    url: req.headers.referer,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Accept-Charset': 'utf-8',
+                        'User-Agent': 'my-reddit-client'
+                    },
+                    form: {
+                        name: data.name,
+                        email: data.email,
+                        rawPWD: data.rawPWD,
+                        dob: data.dob,
+                        address:data.address,
+                        telephone: data.telephone
+                    }
+                };
+                
+                request.post(options, function(p1, p2, body){
+                  check=true;
+                } );
+                console.log("captcha hợp lệ");
+                //res.redirect(`http://127.0.0.1:3000/customer/register`);
             }else{
                 // Xử lý lỗi nếu Captcha không hợp lệ
-                console.log(this.method);
-                console.log(this.body);
-                res.render(req.headers.referer);
-                console.log("captcha khong hop le");   
+                console.log("captcha khong hop le");
+               // res.redirect(`http://127.0.0.1:3000/customer/register`);
+               res.render('/home');
             }
         });
     } else {
         // Xử lý lỗi nếu không có Captcha
-        res.render(req.headers.referer);
-        console.log("captcha khong hop le");   
+       // res.redirect(`http://127.0.0.1:3000/customer/register`);
+        console.log("captcha khong co");   
+        res.render('/home');
     }
-   
+    if(check==true){
+        res.render("/customer/register")
+    }
 });
 
 

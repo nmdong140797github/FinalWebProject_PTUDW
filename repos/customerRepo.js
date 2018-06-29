@@ -18,7 +18,7 @@ exports.single = (id) => {
 }
 
 exports.add = (c) => {
-    var sql = `insert into nguoi_dung(ten_nd,email,password,ngay_sinh,dia_chi,sdt,permission) values('${c.name}','${c.email}','${c.newPassword}','${c.dob}','${c.addr}','${c.telephone}','${c.permission}')`;
+    var sql = `insert into nguoi_dung(ten_nd,email,password,ngay_sinh,dia_chi,sdt,permission) values('${c.name}','${c.email}','${c.password}','${c.dob}','${c.addr}','${c.telephone}','${c.permission}')`;
     return db.save(sql);
 }
 
@@ -37,7 +37,7 @@ exports.updateAccount = (c) => {
     return db.save(sql);
 }
 
-exports.email = email => {
+exports.email = (email) => {
     var sql = `select * from nguoi_dung where email = '${email}'`;
     return db.load(sql);
 }

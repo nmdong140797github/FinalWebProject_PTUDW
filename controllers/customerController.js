@@ -15,6 +15,7 @@ function getString(date)
 
 function CheckEmailExists(srcEmail)
 {
+    console.log("chieu dai so sanh email",customerRepo.email(srcEmail));
     if(customerRepo.email(srcEmail).length>0)
         return false;
     return true;
@@ -90,6 +91,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
     var err;
+    console.log("vô post register");
     if(CheckEmailExists(req.body.email)==false)
     {
         err=true;
@@ -108,7 +110,7 @@ router.post('/register', (req, res) => {
             telephone: req.body.telephone,
             permission: 0
         };
-        
+        console.log(user);
         customerRepo.add(user).then(value => {
             var vm={
                 showAlert: true

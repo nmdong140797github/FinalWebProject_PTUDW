@@ -7,11 +7,6 @@
     </style>
 {{/section}} {{#section 'js'}}
 
-{{#if showAlert}}
-    <div class="alert alert-success">
-	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	Bạn đã thêm một tài khoản thành công
-{{/if}}
 
 <script type="text/javascript">
  //hàm kiểm tra lỗi
@@ -31,7 +26,13 @@
         kiemTraLoi();
 }
 </script> {{/section}}
-<form id="frmRegister" action="register/check" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
+{{#if showAlert}}
+    <div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	Bạn đã thêm một tài khoản thành công
+{{/if}}
+
+<form id="frmRegister" action="customer/register" method="POST" class="form-horizontal" role="form" onsubmit="return validate();">
     <div class="form-group">
         <label for="txtName" class="col-sm-2 control-label">Họ tên</label>
         <div class="col-sm-4">
